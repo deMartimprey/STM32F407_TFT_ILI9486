@@ -19,7 +19,7 @@ void fill_with_RGB()
 	  color = 0b1111100000000000;
 	}
 	
-      for(int y = 0; y < 320; y++)
+      for(int y = 0; y < Y_SIZE; y++)
 	{
 	  Write_Data(color);
 	}
