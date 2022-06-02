@@ -144,12 +144,25 @@ void pos_pixel(uint16_t x, uint16_t y)
   Write_Data((y & 0b0000000011111111));
   Write_Data((Y_SIZE & 0b1111111100000000) >> 8);
   Write_Data((Y_SIZE & 0b0000000011111111));
-  /* Write_Data(x & 0b1111111100000000); */
 
   Write_Command(0x2B);	// Page Address Set
   Write_Data((x & 0b1111111100000000) >> 8);
   Write_Data((x & 0b0000000011111111));
   Write_Data((X_SIZE & 0b1111111100000000) >> 8);
   Write_Data((X_SIZE & 0b0000000011111111));
-  /* Write_Data((x & 0b1111111100000000); */
+}
+
+void write_zone(uint16_t x, uint16_t y, uint16_t x_size, uint16_t y_size)
+{
+  Write_Command(0x2A);	// Column Address Set
+  Write_Data((y & 0b1111111100000000) >> 8);
+  Write_Data((y & 0b0000000011111111));
+  Write_Data(((y + y_size) & 0b1111111100000000) >> 8);
+  Write_Data(((y + y_size) & 0b0000000011111111));
+
+  Write_Command(0x2B);	// Page Address Set
+  Write_Data((x & 0b1111111100000000) >> 8);
+  Write_Data((x & 0b0000000011111111));
+  Write_Data(((x + x_size) & 0b1111111100000000) >> 8);
+  Write_Data(((x + x_size) & 0b0000000011111111));
 }

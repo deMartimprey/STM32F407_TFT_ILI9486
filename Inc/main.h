@@ -11,6 +11,7 @@ extern "C" {
 #include "global.h"
 #include "effect.h"
 #include "timer.h"
+#include "draw.h"
 
 void Error_Handler(void);
 

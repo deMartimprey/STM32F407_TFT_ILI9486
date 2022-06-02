@@ -37,6 +37,7 @@ BUILD_DIR = build
 # C sources
 C_SOURCES =  \
 Src/main.c \
+Src/draw.c \
 Src/timer.c \
 Src/global.c \
 Src/effect.c \

@@ -17,6 +17,8 @@ int main(void)
   delay_init();
   Initialization();
   fill_with_Color(0xFFFF);
+  draw_rectangle(100, 150, 20, 20, 0x0000);
+  HAL_Delay(1000);
   pos_pixel(0, 0);
   while (1)
   {
