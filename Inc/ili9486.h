@@ -12,6 +12,7 @@ extern "C" {
 void Error_Handler(void);
 
 void Initialization();
+void pos_pixel(uint16_t x, uint16_t y);
   
 #ifdef __cplusplus
 }

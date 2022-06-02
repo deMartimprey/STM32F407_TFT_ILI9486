@@ -12,6 +12,7 @@ extern "C" {
 void Error_Handler(void);
 
 void fill_with_RGB();
+void fill_with_Color(uint16_t color);
 
 #ifdef __cplusplus
 }

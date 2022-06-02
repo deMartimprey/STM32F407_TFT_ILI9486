@@ -16,10 +16,13 @@ int main(void)
   MX_GPIO_Init();
   delay_init();
   Initialization();
-  HAL_Delay(1);
-  Write_Command(0x2C);	// Memory Write
-  fill_with_RGB();
-  while (1);
+  fill_with_Color(0xFFFF);
+  pos_pixel(0, 0);
+  while (1)
+  {
+    fill_with_Color(0x000000);
+    fill_with_RGB();
+  }
 }
 
 /**

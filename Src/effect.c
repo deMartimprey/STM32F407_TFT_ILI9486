@@ -1,8 +1,25 @@
 #include "effect.h"
 
+void fill_with_Color(uint16_t color)
+{
+  Write_Command(0x2C);
+
+  for(int x = 0; x < X_SIZE; x++)
+    {
+      for(int y = 0; y < Y_SIZE; y++)
+	{
+	  Write_Data(color);
+	}
+    }
+
+  Write_Command(0x00);
+}
+
 void fill_with_RGB()
 {
   uint16_t color = 0;
+
+  Write_Command(0x2C);
 
   for(int x = 0; x < X_SIZE; x++)
     {
@@ -24,4 +41,6 @@ void fill_with_RGB()
 	  Write_Data(color);
 	}
     }
+
+  Write_Command(0x00);
 }
