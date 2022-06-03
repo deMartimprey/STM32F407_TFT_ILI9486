@@ -8,6 +8,7 @@ extern "C" {
 #include "stm32f4xx_hal.h"
 #include "para_16.h"
 #include "ili9486.h"
+#include "font5x7.h"
 #include "global.h"
 #include "effect.h"
 #include "timer.h"

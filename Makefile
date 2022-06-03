@@ -39,10 +39,12 @@ C_SOURCES =  \
 Src/main.c \
 Src/draw.c \
 Src/timer.c \
+Src/tools.c \
 Src/global.c \
 Src/effect.c \
 Src/para_16.c \
 Src/ili9486.c \
+Src/font5x7.c \
 Src/stm32f4xx_it.c \
 Src/stm32f4xx_hal_msp.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c \

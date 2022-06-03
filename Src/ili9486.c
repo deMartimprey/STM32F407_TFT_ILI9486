@@ -157,14 +157,14 @@ void write_zone(uint16_t x, uint16_t y, uint16_t x_size, uint16_t y_size)
   Write_Command(0x2A);	// Column Address Set
   Write_Data((y & 0b1111111100000000) >> 8);
   Write_Data((y & 0b0000000011111111));
-  Write_Data(((y + y_size) & 0b1111111100000000) >> 8);
-  Write_Data(((y + y_size) & 0b0000000011111111));
+  Write_Data(((y + y_size - 1) & 0b1111111100000000) >> 8);
+  Write_Data(((y + y_size - 1) & 0b0000000011111111));
 
   Write_Command(0x2B);	// Page Address Set
   Write_Data((x & 0b1111111100000000) >> 8);
   Write_Data((x & 0b0000000011111111));
-  Write_Data(((x + x_size) & 0b1111111100000000) >> 8);
-  Write_Data(((x + x_size) & 0b0000000011111111));
+  Write_Data(((x + x_size - 1) & 0b1111111100000000) >> 8);
+  Write_Data(((x + x_size - 1) & 0b0000000011111111));
 }
 
 void write_one_pixel(uint16_t x, uint16_t y, uint16_t color)
@@ -209,7 +209,7 @@ uint8_t write_buffer(uint16_t** buffer, uint16_t x_pos, uint16_t y_pos, uint16_t
 
   write_zone(x_pos, y_pos, x_size, y_size);
 
-  Write_Command(0x2C);	// Page Address Set
+  Write_Command(0x2C);	// Start writing
 
   for(int x = 0; x < x_size; x++)
     {
@@ -223,4 +223,5 @@ uint8_t write_buffer(uint16_t** buffer, uint16_t x_pos, uint16_t y_pos, uint16_t
     return 1;
   return 0;
 }
+
 #endif /* USE_RAM_BUFFER */

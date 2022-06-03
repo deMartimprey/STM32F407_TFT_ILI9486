@@ -73,6 +73,8 @@
 #define TFT_D15_Pin GPIO_PIN_7
 #define TFT_D15_GPIO_Port GPIOB
 
+#define USE_5X7
+
 #define X_SIZE	480
 #define Y_SIZE	320
 
@@ -92,6 +94,12 @@ extern "C" {
 #include "stm32f4xx_hal.h"
 
 extern TIM_HandleTypeDef htim_timer;
+
+#ifdef USE_5X7
+extern uint16_t x_font_pos;
+extern uint16_t y_font_pos;
+#endif /* USE_5X7 */
+
 #ifdef USE_RAM_BUFFER
 extern uint16_t buffer[X_SIZE][Y_SIZE];
 #endif /* USE_RAM_BUFFER */

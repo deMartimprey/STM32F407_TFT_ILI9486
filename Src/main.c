@@ -17,12 +17,19 @@ int main(void)
   delay_init();
   Initialization();
   fill_with_Color(0xFFFF);
-  draw_rectangle(100, 150, 20, 20, RED);
+  draw_rectangle(100, 150, 5, 7, RED);
   draw_rectangle(50, 150, 30, 20, YELLOW);
   DrawCircle(X_SIZE / 2, Y_SIZE / 2, Y_SIZE / 2, RED);
+  set_font_pos(10, 10);
+  draw_one_char_5x7('H', BLACK, WHITE);
+  draw_one_char_5x7('E', BLACK, WHITE);
+  draw_one_char_5x7('L', BLACK, WHITE);
+  draw_one_char_5x7('L', BLACK, WHITE);
+  draw_one_char_5x7('O', BLACK, WHITE);
+  print_str_5x7((uint8_t*)"123456789", BLACK, WHITE);
   HAL_Delay(1000);
   pos_pixel(0, 0);
-  while (1)
+  while (1);
   {
     fill_with_Color(0x000000);
     fill_with_RGB();

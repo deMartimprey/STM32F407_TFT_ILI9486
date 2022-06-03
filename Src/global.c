@@ -1,6 +1,12 @@
 #include "global.h"
 
 TIM_HandleTypeDef htim_timer;
+
+#ifdef USE_5X7
+uint16_t x_font_pos = 0;
+uint16_t y_font_pos = 0;
+#endif /* USE_5X7 */
+
 #ifdef USE_RAM_BUFFER
 uint16_t buffer[X_SIZE][Y_SIZE] = {0, };
 #endif /* USE_RAM_BUFFER */
