@@ -17,7 +17,9 @@ int main(void)
   delay_init();
   Initialization();
   fill_with_Color(0xFFFF);
-  draw_rectangle(100, 150, 20, 20, 0x0000);
+  draw_rectangle(100, 150, 20, 20, RED);
+  draw_rectangle(50, 150, 30, 20, YELLOW);
+  DrawCircle(X_SIZE / 2, Y_SIZE / 2, Y_SIZE / 2, RED);
   HAL_Delay(1000);
   pos_pixel(0, 0);
   while (1)

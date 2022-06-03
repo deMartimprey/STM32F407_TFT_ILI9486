@@ -76,6 +76,15 @@
 #define X_SIZE	480
 #define Y_SIZE	320
 
+#define BLACK   0x0000
+#define BLUE    0x001F
+#define RED     0xF800
+#define GREEN   0x07E0
+#define CYAN    0x07FF
+#define MAGENTA 0xF81F
+#define YELLOW  0xFFE0
+#define WHITE   0xFFFF
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -83,6 +92,9 @@ extern "C" {
 #include "stm32f4xx_hal.h"
 
 extern TIM_HandleTypeDef htim_timer;
+#ifdef USE_RAM_BUFFER
+extern uint16_t buffer[X_SIZE][Y_SIZE];
+#endif /* USE_RAM_BUFFER */
 
 #ifdef __cplusplus
 }

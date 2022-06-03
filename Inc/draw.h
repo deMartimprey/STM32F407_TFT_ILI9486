@@ -13,6 +13,8 @@ extern "C" {
 void Error_Handler(void);
 
 uint8_t draw_rectangle(uint16_t x, uint16_t y, uint16_t x_size, uint16_t y_size, uint16_t color);
+void DrawCircle(uint16_t x, uint16_t y, uint16_t r, uint16_t color);
+void DrawCircle2(uint16_t x, uint16_t y, uint16_t r, uint16_t color);
 
 #ifdef __cplusplus
 }
