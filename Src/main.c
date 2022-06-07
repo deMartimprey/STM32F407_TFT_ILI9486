@@ -27,6 +27,13 @@ int main(void)
   draw_one_char_5x7('L', BLACK, WHITE);
   draw_one_char_5x7('O', BLACK, WHITE);
   print_str_5x7((uint8_t*)"123456789", BLACK, WHITE);
+  set_font_pos(30, 30);
+  draw_one_char_10x16('H', BLACK, WHITE);
+  draw_one_char_10x16('E', BLACK, WHITE);
+  draw_one_char_10x16('L', BLACK, WHITE);
+  draw_one_char_10x16('L', BLACK, WHITE);
+  draw_one_char_10x16('O', BLACK, WHITE);
+  print_str_10x16((uint8_t*)"123456789!", BLACK, WHITE);
   HAL_Delay(1000);
   pos_pixel(0, 0);
   while (1);

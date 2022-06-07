@@ -74,6 +74,7 @@
 #define TFT_D15_GPIO_Port GPIOB
 
 #define USE_5X7
+#define USE_10X16
 
 #define X_SIZE	480
 #define Y_SIZE	320

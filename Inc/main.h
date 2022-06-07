@@ -9,6 +9,7 @@ extern "C" {
 #include "para_16.h"
 #include "ili9486.h"
 #include "font5x7.h"
+#include "font10x16.h"
 #include "global.h"
 #include "effect.h"
 #include "timer.h"
