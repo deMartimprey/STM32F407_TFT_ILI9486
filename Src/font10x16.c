@@ -8,6 +8,10 @@ void print_str_10x16(uint8_t* str, uint16_t color, uint16_t font)
   for (uint16_t i = 0; i < len; i++)
     {
       draw_one_char_10x16(str[i], color, font);
+      // Fill space between char whith font color exept for the end
+      if (i != len - 1)
+	draw_rectangle(x_font_pos + 10, y_font_pos, 10, 16, font);
+      x_font_pos += 11; // decal for the next char
     }
 }
 
@@ -41,7 +45,6 @@ void draw_one_char_10x16(uint8_t num, uint16_t color, uint16_t font)
 	    Write_Data(font);
 	}
     }
-  x_font_pos += 11; // decal for the next char
 }
 
 #endif /* USE_10x16 */

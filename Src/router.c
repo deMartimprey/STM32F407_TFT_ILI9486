@@ -70,7 +70,10 @@ void display_router(router* my_router, uint16_t x_pos, uint8_t y_pos)
 	  fill_string_with_space(str, MAX_NAME_ROUTER);
 	  fill_one_line_router(str, my_router->sub_routers[my_router->first_elem_pos + i]);
 	  if (i == my_router->arrow_pos) // If this is the element seleted we display it with highlight with different backcolor
-	    print_str_10x16(str, BLACK, YELLOW);
+	    {
+	      str[0] = '>';
+	      print_str_10x16(str, BLACK, YELLOW);
+	    }
 	  else // If it is not the select elem print it with normal backcolor
 	    print_str_10x16(str, BLACK, WHITE);
 	  /* add_line_number(str, i + my_router->pos_router); */

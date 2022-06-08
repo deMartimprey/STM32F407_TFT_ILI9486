@@ -10,6 +10,7 @@ extern "C" {
 #include "font5x7.h"
 #include "global.h"
 #include "tools.h"
+#include "draw.h"
 
 void Error_Handler(void);
 
