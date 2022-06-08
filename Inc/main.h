@@ -6,12 +6,13 @@ extern "C" {
 #endif
 
 #include "stm32f4xx_hal.h"
+#include "font10x16.h"
 #include "para_16.h"
 #include "ili9486.h"
 #include "font5x7.h"
-#include "font10x16.h"
-#include "global.h"
 #include "effect.h"
+#include "router.h"
+#include "global.h"
 #include "timer.h"
 #include "draw.h"
 

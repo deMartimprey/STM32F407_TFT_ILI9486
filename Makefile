@@ -40,6 +40,7 @@ Src/main.c \
 Src/draw.c \
 Src/timer.c \
 Src/tools.c \
+Src/router.c \
 Src/global.c \
 Src/effect.c \
 Src/para_16.c \

@@ -10,3 +10,7 @@ uint16_t y_font_pos = 0;
 #ifdef USE_RAM_BUFFER
 uint16_t buffer[X_SIZE][Y_SIZE] = {0, };
 #endif /* USE_RAM_BUFFER */
+
+uint8_t current_lang = 0;
+uint8_t* p_current_lang;
+router* cur_router;

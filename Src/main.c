@@ -14,6 +14,8 @@ int main(void)
   SystemClock_Config();
 
   MX_GPIO_Init();
+  current_lang = FR;
+  p_current_lang = &current_lang;
   delay_init();
   Initialization();
   fill_with_Color(0xFFFF);
@@ -34,8 +36,73 @@ int main(void)
   draw_one_char_10x16('L', BLACK, WHITE);
   draw_one_char_10x16('O', BLACK, WHITE);
   print_str_10x16((uint8_t*)"123456789!", BLACK, WHITE);
-  HAL_Delay(1000);
   pos_pixel(0, 0);
+
+  router router1;
+  router1.name = &s_router_1;
+  router1.pos_router = 0;
+  router1.size = 0;
+  router1.arrow_pos = 0;
+  router1.first_elem_pos = 0;
+
+  router router2;
+  router2.name = &s_router_2;
+  router2.pos_router = 0;
+  router2.size = 0;
+  router2.arrow_pos = 0;
+  router2.first_elem_pos = 0;
+
+  router router3;
+  router3.name = &s_router_3;
+  router3.pos_router = 0;
+  router3.size = 0;
+  router3.arrow_pos = 0;
+  router3.first_elem_pos = 0;
+
+  router router4;
+  router4.name = &s_router_4;
+  router4.pos_router = 0;
+  router4.size = 0;
+  router4.arrow_pos = 0;
+  router4.first_elem_pos = 0;
+
+  router router5;
+  router5.name = &s_router_5;
+  router5.pos_router = 0;
+  router5.size = 0;
+  router5.arrow_pos = 0;
+  router5.first_elem_pos = 0;
+
+  router router6;
+  router6.name = &s_router_6;
+  router6.pos_router = 0;
+  router6.size = 0;
+  router6.arrow_pos = 0;
+  router6.first_elem_pos = 0;
+
+  router router7;
+  router7.name = &s_router_7;
+  router7.pos_router = 0;
+  router7.size = 0;
+  router7.arrow_pos = 0;
+  router7.first_elem_pos = 0;
+
+  cur_router = &router1;
+  add_elem_router(&router1, &router1);
+  add_elem_router(&router1, &router2);
+  add_elem_router(&router1, &router3);
+  add_elem_router(&router1, &router4);
+  add_elem_router(&router1, &router5);
+  add_elem_router(&router1, &router6);
+  add_elem_router(&router1, &router7);
+
+  display_router(cur_router, 150, 150);
+  while (1)
+    {
+      HAL_Delay(1000);
+      router_up(cur_router);
+      display_router(cur_router, 150, 150);
+    }
   while (1);
   {
     fill_with_Color(0x000000);

@@ -105,6 +105,76 @@ extern uint16_t y_font_pos;
 extern uint16_t buffer[X_SIZE][Y_SIZE];
 #endif /* USE_RAM_BUFFER */
 
+#define NB_LANG 2 // Number of lang availble for menu
+#define FR 0 // French by default, sorry
+#define EN 1 // English
+#define SIZE_NAME_VAR 20
+
+extern uint8_t current_lang;
+extern uint8_t* p_current_lang;
+
+#define MAX_NAME_ROUTER 20
+#define MAX_NB_ROUTER 20
+#define NB_LINE_ROUTER 10
+
+typedef struct router router;
+
+struct router
+{
+  const uint8_t (*name)[NB_LANG][SIZE_NAME_VAR + 1]; // Name in menu
+  uint8_t pos_router; // Actual position in the liste of router
+  uint8_t size; // size for scrolling gestion and give a tab position when new submenu is added
+  uint8_t arrow_pos; // position of arrow or highlight
+  uint8_t first_elem_pos; // if there is scrolling beacuse it doesn't fit
+  router* sub_routers[MAX_NB_ROUTER]; // list of other router that make the liste to display
+};
+
+extern router* cur_router; // Position in menu and submenu sytem
+
+// Strings const static so its stay on the rom and don't go in the ram
+
+const static uint8_t s_router_1[NB_LANG][SIZE_NAME_VAR + 1] =
+{
+ "Sous menu 1",
+ "Sub menu 1"
+};
+
+const static uint8_t s_router_2[NB_LANG][SIZE_NAME_VAR + 1] =
+{
+ "Sous menu 2",
+ "Sub menu 2"
+};
+
+const static uint8_t s_router_3[NB_LANG][SIZE_NAME_VAR + 1] =
+{
+ "Sous menu 3",
+ "Sub menu 3"
+};
+
+const static uint8_t s_router_4[NB_LANG][SIZE_NAME_VAR + 1] =
+{
+ "Sous menu 4",
+ "Sub menu 4"
+};
+
+const static uint8_t s_router_5[NB_LANG][SIZE_NAME_VAR + 1] =
+{
+ "Sous menu 5",
+ "Sub menu 5"
+};
+
+const static uint8_t s_router_6[NB_LANG][SIZE_NAME_VAR + 1] =
+{
+ "Sous menu 6",
+ "Sub menu 6"
+};
+
+const static uint8_t s_router_7[NB_LANG][SIZE_NAME_VAR + 1] =
+{
+ "Sous menu 7",
+ "Sub menu 7"
+};
+
 #ifdef __cplusplus
 }
 #endif
