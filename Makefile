@@ -20,7 +20,7 @@ TARGET = carteEcran
 # building variables
 ######################################
 # debug build?
-DEBUG = 0
+DEBUG = 1
 # optimization
 OPT = #-Og
 
@@ -47,6 +47,7 @@ Src/para_16.c \
 Src/ili9486.c \
 Src/font5x7.c \
 Src/font10x16.c \
+Src/font16x26.c \
 Src/stm32f4xx_it.c \
 Src/stm32f4xx_hal_msp.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c \

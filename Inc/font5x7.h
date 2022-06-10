@@ -20,7 +20,7 @@ void Error_Handler(void);
 #ifdef USE_5X7
 // Standard ASCII 5x7 font
 
-void set_font_pos(uint16_t x_pos, uint8_t y_pos);
+void set_font_pos(uint16_t x_pos, uint16_t y_pos);
 void print_str_5x7(uint8_t* str, uint16_t color, uint16_t font);
 void draw_one_char_5x7(uint8_t num, uint16_t color, uint16_t font);
 void draw_one_char_5x7_reverse(uint8_t num, uint16_t color, uint16_t font);

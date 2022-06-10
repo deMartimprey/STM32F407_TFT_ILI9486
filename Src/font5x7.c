@@ -2,7 +2,7 @@
 
 #ifdef USE_5X7
 
-void set_font_pos(uint16_t x_pos, uint8_t y_pos)
+void set_font_pos(uint16_t x_pos, uint16_t y_pos)
 {
   x_font_pos = x_pos;
   y_font_pos = y_pos;

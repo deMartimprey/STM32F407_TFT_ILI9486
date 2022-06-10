@@ -75,6 +75,7 @@
 
 #define USE_5X7
 #define USE_10X16
+#define USE_16X26
 
 #define X_SIZE	480
 #define Y_SIZE	320

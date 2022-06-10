@@ -10,6 +10,7 @@ extern "C" {
 #include "para_16.h"
 #include "ili9486.h"
 #include "font5x7.h"
+#include "font16x26.h"
 #include "effect.h"
 #include "router.h"
 #include "global.h"

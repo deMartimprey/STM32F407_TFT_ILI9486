@@ -18,7 +18,7 @@ int main(void)
   p_current_lang = &current_lang;
   delay_init();
   Initialization();
-  fill_with_Color(0xFFFF);
+  fill_with_Color(WHITE);
   draw_rectangle(100, 150, 5, 7, RED);
   draw_rectangle(50, 150, 30, 20, YELLOW);
   DrawCircle(X_SIZE / 2, Y_SIZE / 2, Y_SIZE / 2, RED);
@@ -36,6 +36,17 @@ int main(void)
   draw_one_char_10x16('L', BLACK, WHITE);
   draw_one_char_10x16('O', BLACK, WHITE);
   print_str_10x16((uint8_t*)"123456789!", BLACK, WHITE);
+  set_font_pos(0, 280);
+  print_str_16x26((uint8_t*)"abcdefghijklmnopqrs12345678", BLACK, YELLOW);
+  fill_with_Color(WHITE);
+  uint16_t len = my_strlen("1234");
+  uint16_t len2 = my_strlen("5678");
+  while (1) {
+    sleep_screen_str("1234", len, RED, WHITE);
+    sleep_screen_str2("5678", len2, RED, WHITE);
+    sleep_screen_str2("5678", len2, RED, WHITE);
+    sleep_screen_str2("5678", len2, RED, WHITE);
+  }
   pos_pixel(0, 0);
 
   router router1;
@@ -103,7 +114,7 @@ int main(void)
       router_up(cur_router);
       display_router(cur_router, 150, 150);
     }
-  while (1);
+  while (1)
   {
     fill_with_Color(0x000000);
     fill_with_RGB();
@@ -131,7 +142,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLM = 8; // REDUCE HERE TO SPEED UP
+  RCC_OscInitStruct.PLL.PLLM = 6; // REDUCE HERE TO SPEED UP
   RCC_OscInitStruct.PLL.PLLN = 168;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 4;

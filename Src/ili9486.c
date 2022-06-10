@@ -10,7 +10,7 @@ void Initialization()
   HAL_Delay(120);
  
   //************* Start Initial Sequence **********//
-  Write_Command(0xF2);	
+  Write_Command_init(0xF2);
   Write_Data(0x18);
 
   Write_Data(0xA3);
@@ -22,39 +22,39 @@ void Initialization()
   Write_Data(0x10);
   Write_Data(0x00);
 
-  Write_Command(0xF1);
+  Write_Command_init(0xF1);
   Write_Data(0x36);
   Write_Data(0xA4);
  
-  Write_Command(0xF8);	
+  Write_Command_init(0xF8);
   Write_Data(0x21);
   Write_Data(0x04);
  
-  Write_Command(0xF9);	
+  Write_Command_init(0xF9);
   Write_Data(0x00);
   Write_Data(0x08);
  
-  Write_Command(0x36);	//Memory Access Control
+  Write_Command_init(0x36);	//Memory Access Control
   Write_Data(0x08);		
  
-  Write_Command(0xB4);	//Display Inversion Control
+  Write_Command_init(0xB4);	//Display Inversion Control
   Write_Data(0x00);
  
-  Write_Command(0xC1);	//Power Control 2
+  Write_Command_init(0xC1);	//Power Control 2
   Write_Data(0x41);		
   //Write_Data(0x00);	
  
-  Write_Command(0xC5);	//VCOM Control
+  Write_Command_init(0xC5);	//VCOM Control
   Write_Data(0x08);		//is used to set factor to generate VCOM voltage from the reference voltage VREG2OUT.
  
-  Write_Command(0xC0);	//Power Control 1
+  Write_Command_init(0xC0);	//Power Control 1
   Write_Data(0x0D);		
   Write_Data(0x0D);		
  
-  Write_Command(0xC2);	//Power Control 3
+  Write_Command_init(0xC2);	//Power Control 3
   Write_Data(0x00);		
  
-  Write_Command(0xE0);	// PGAMCTRL (Positive Gamma Control)
+  Write_Command_init(0xE0);	// PGAMCTRL (Positive Gamma Control)
   Write_Data(0x0F);
   Write_Data(0x24);
   Write_Data(0x1C);
@@ -71,7 +71,7 @@ void Initialization()
   Write_Data(0x07);
   Write_Data(0x00);
  
-  Write_Command(0xE1);	// NGAMCTRL (Negative Gamma Control)
+  Write_Command_init(0xE1);	// NGAMCTRL (Negative Gamma Control)
   Write_Data(0x0F);
   Write_Data(0x38);
   Write_Data(0x30);
@@ -88,7 +88,7 @@ void Initialization()
   Write_Data(0x1B);
   Write_Data(0x00);
  
-  Write_Command(0xE2);	// Digital Gamma Control 1
+  Write_Command_init(0xE2);	// Digital Gamma Control 1
   Write_Data(0x0F);
   Write_Data(0x32);
   Write_Data(0x2E);
@@ -105,36 +105,36 @@ void Initialization()
   Write_Data(0x20);
   Write_Data(0x00);
  
-  Write_Command(0xB6);	//Display Function Control
+  Write_Command_init(0xB6);	//Display Function Control
   Write_Data(0x00);
   Write_Data(0x22);		//0x42=Rotation 180 degrees  //0x22
   Write_Data(0x3B);
  
-  Write_Command(0x20);	// Display Inversion OFF
+  Write_Command_init(0x20);	// Display Inversion OFF
   //Write_Data(0xC8);	//C8???
  
-  Write_Command(0x3A);	// Interface Pixel Format
+  Write_Command_init(0x3A);	// Interface Pixel Format
   Write_Data(0x55);
  
-  Write_Command(0x2A);	// Column Address Set
+  Write_Command_init(0x2A);	// Column Address Set
   Write_Data(0x00);
   Write_Data(0x00);
   Write_Data(0x01);
   Write_Data(0x3F);
  
-  Write_Command(0x2B);	// Page Address Set
+  Write_Command_init(0x2B);	// Page Address Set
   Write_Data(0x00);
   Write_Data(0x00);
   Write_Data(0x01);
   Write_Data(0xDF);
  
-  Write_Command(0x11);	//Sleep out
+  Write_Command_init(0x11);	//Sleep out
   HAL_Delay(120);
  
-  Write_Command(0x38);	//Idle Mode Off
-  Write_Command(0x13);	//Normal Mode On
+  Write_Command_init(0x38);	//Idle Mode Off
+  Write_Command_init(0x13);	//Normal Mode On
  
-  Write_Command(0x29);	// Display ON
+  Write_Command_init(0x29);	// Display ON
 }
 
 void pos_pixel(uint16_t x, uint16_t y)
