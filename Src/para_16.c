@@ -12,6 +12,7 @@ void TFT_Send_A_2Byte_To_TFT_DataPins_register(uint32_t character)
   GPIOC->ODR = (GPIOC->ODR & 0b1111111111110000) | (0b0000111100000000 & character) >> 8;
 }
 
+// Same as Write_Command but with delay for init TFT otherwise it's not working well don't have time to investigate more deosn't affect speed of the screen after the init is complete
 void Write_Command_init(uint32_t Command)
 {
   /* HAL_GPIO_WritePin(TFT_DCX_GPIO_Port, TFT_DCX_Pin, 0); */

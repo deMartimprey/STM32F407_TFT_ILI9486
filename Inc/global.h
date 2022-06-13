@@ -116,7 +116,7 @@ extern uint8_t* p_current_lang;
 
 #define MAX_NAME_ROUTER 20
 #define MAX_NB_ROUTER 20
-#define NB_LINE_ROUTER 10
+#define NB_LINE_ROUTER 4
 
 typedef struct router router;
 

@@ -9,8 +9,8 @@ void print_str_16x26(uint8_t* str, uint16_t color, uint16_t font)
     {
       draw_one_char_16x26(str[i], color, font);
       // Fill space between char whith font color exept for the end
-      /* if (i != len - 1) */
-      /* 	draw_rectangle(x_font_pos + 16, y_font_pos, 16, 26, font); */
+      if (i != len - 1)
+	draw_rectangle(x_font_pos + 16, y_font_pos, 16, 26, font);
       x_font_pos += 17; // decal for the next char
     }
 }
@@ -44,7 +44,7 @@ int find_one_pixel_in_16x26(uint8_t charactere, uint8_t x, uint8_t y)
   if (x < 8)
     return horizontal_pixel[0] & (1 << x);
   else /* if (x < 16) */
-    return horizontal_pixel[1] & (1 << x - 8);
+    return horizontal_pixel[1] & (1 << (x - 8));
   return 0;
 }
 

@@ -1,5 +1,5 @@
 #include "effect.h"
-
+// Same as sleep_screen_str() with this own static variable so we can display multiple string moving
 void sleep_screen_str2(uint8_t* str, uint16_t len_str, uint16_t color_str, uint16_t color_font)
 {
   static uint16_t xd = 1;

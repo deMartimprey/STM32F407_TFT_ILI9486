@@ -44,7 +44,7 @@ void router_up(router *my_router)
   else
     {
       my_router->pos_router += 1;
-      if (my_router->arrow_pos < MAX_NB_ROUTER - 1)
+      if (my_router->arrow_pos < NB_LINE_ROUTER - 1)
 	my_router->arrow_pos += 1;
       else
 	my_router->first_elem_pos += 1;

@@ -39,13 +39,13 @@ int main(void)
   set_font_pos(0, 280);
   print_str_16x26((uint8_t*)"abcdefghijklmnopqrs12345678", BLACK, YELLOW);
   fill_with_Color(WHITE);
-  uint16_t len = my_strlen("1234");
-  uint16_t len2 = my_strlen("5678");
+  uint16_t len = my_strlen((uint8_t*)"1234");
+  uint16_t len2 = my_strlen((uint8_t*)"5678");
   while (1) {
-    sleep_screen_str("1234", len, RED, WHITE);
-    sleep_screen_str2("5678", len2, RED, WHITE);
-    sleep_screen_str2("5678", len2, RED, WHITE);
-    sleep_screen_str2("5678", len2, RED, WHITE);
+    sleep_screen_str((uint8_t*)"1234", len, RED, WHITE);
+    sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE);
+    sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE);
+    sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE);
   }
   pos_pixel(0, 0);
 
@@ -110,7 +110,7 @@ int main(void)
   display_router(cur_router, 150, 150);
   while (1)
     {
-      HAL_Delay(1000);
+      HAL_Delay(300);
       router_up(cur_router);
       display_router(cur_router, 150, 150);
     }
