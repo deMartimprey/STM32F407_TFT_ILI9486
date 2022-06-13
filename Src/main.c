@@ -110,6 +110,11 @@ int main(void)
   add_elem_router(&router2, &router6);
   add_elem_router(&router2, &router7);
 
+  var1 = new_var(vars, &s_var1, 0, 0, 99999, 11);
+  var2 = new_var(vars, &s_var2, 0, 0, 99999, 12);
+  var3 = new_var(vars, &s_var3, 0, 0, 99999, 13);
+  var4 = new_var(vars, &s_var4, 0, 0, 99999, 14);
+
   display_router(cur_router, 150, 150);
   router_up(cur_router);
   display_router(cur_router, 150, 150);

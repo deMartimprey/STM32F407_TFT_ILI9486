@@ -109,7 +109,43 @@ extern uint16_t buffer[X_SIZE][Y_SIZE];
 #define NB_LANG 2 // Number of lang availble for menu
 #define FR 0 // French by default, sorry
 #define EN 1 // English
-#define SIZE_NAME_VAR 20
+
+#define NB_VAR		        40
+#define SIZE_NAME_VAR	        20
+#define NB_NAME_VAR_MENU	5
+#define SIZE_NAME_VAR_MENU	20
+
+#define DIGIT_TYPE		0
+#define NAME_TYPE		1
+
+typedef struct
+{
+  uint16_t id;
+  uint8_t type;
+  int32_t min;
+  int32_t max;
+  int32_t value;
+  uint16_t eeprom_addr;
+#ifdef USE_EEPROM
+  eeprom *link_eeprom;
+#endif /* USE_EEPROM */
+  const uint8_t (*name)[NB_LANG][SIZE_NAME_VAR];
+  const uint8_t (*menu_var)[NB_LANG][NB_NAME_VAR_MENU][SIZE_NAME_VAR_MENU ];
+} var;
+
+extern var vars[NB_VAR];
+
+extern var* var0;
+extern var* var1;
+extern var* var2;
+extern var* var3;
+extern var* var4;
+extern var* var5;
+extern var* var6;
+extern var* var7;
+extern var* var8;
+extern var* var9;
+extern var* var10;
 
 extern uint8_t current_lang;
 extern uint8_t* p_current_lang;
@@ -176,6 +212,30 @@ const static uint8_t s_router_7[NB_LANG][SIZE_NAME_VAR + 1] =
  "Sous menu 7",
  "Sub menu 7"
 };
+
+const static uint8_t s_var1[NB_LANG][SIZE_NAME_VAR] =
+  {
+    "VAR1_FR",
+    "VAR1_EN"
+  };
+
+const static uint8_t s_var2[NB_LANG][SIZE_NAME_VAR] =
+  {
+    "VAR2_FR",
+    "VAR2_EN"
+  };
+
+const static uint8_t s_var3[NB_LANG][SIZE_NAME_VAR] =
+  {
+    "VAR3_FR",
+    "VAR3_EN"
+  };
+
+const static uint8_t s_var4[NB_LANG][SIZE_NAME_VAR] =
+  {
+    "VAR4_FR",
+    "VAR4_EN"
+  };
 
 #ifdef __cplusplus
 }

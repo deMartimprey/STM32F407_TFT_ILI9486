@@ -36,6 +36,7 @@ BUILD_DIR = build
 ######################################
 # C sources
 C_SOURCES =  \
+Src/var.c \
 Src/main.c \
 Src/draw.c \
 Src/timer.c \
