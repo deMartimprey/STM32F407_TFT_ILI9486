@@ -38,15 +38,15 @@ int main(void)
   print_str_10x16((uint8_t*)"123456789!", BLACK, WHITE);
   set_font_pos(0, 280);
   print_str_16x26((uint8_t*)"abcdefghijklmnopqrs12345678", BLACK, YELLOW);
-  fill_with_Color(WHITE);
-  uint16_t len = my_strlen((uint8_t*)"1234");
-  uint16_t len2 = my_strlen((uint8_t*)"5678");
-  while (1) {
-    sleep_screen_str((uint8_t*)"1234", len, RED, WHITE);
-    sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE);
-    sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE);
-    sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE);
-  }
+  /* fill_with_Color(WHITE); */
+  /* uint16_t len = my_strlen((uint8_t*)"1234"); */
+  /* uint16_t len2 = my_strlen((uint8_t*)"5678"); */
+  /* while (1) { */
+  /*   sleep_screen_str((uint8_t*)"1234", len, RED, WHITE); */
+  /*   sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE); */
+  /*   sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE); */
+  /*   sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE); */
+  /* } */
   pos_pixel(0, 0);
 
   router router1;
@@ -105,12 +105,21 @@ int main(void)
   add_elem_router(&router1, &router4);
   add_elem_router(&router1, &router5);
   add_elem_router(&router1, &router6);
-  add_elem_router(&router1, &router7);
+  add_elem_router(&router2, &router4);
+  add_elem_router(&router2, &router5);
+  add_elem_router(&router2, &router6);
+  add_elem_router(&router2, &router7);
 
   display_router(cur_router, 150, 150);
+  router_up(cur_router);
+  display_router(cur_router, 150, 150);
+  HAL_Delay(1000);
+  into_router(cur_router);
+  display_router(cur_router, 150, 150);
+
   while (1)
     {
-      HAL_Delay(300);
+      HAL_Delay(3000);
       router_up(cur_router);
       display_router(cur_router, 150, 150);
     }

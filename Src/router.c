@@ -11,6 +11,14 @@ uint8_t add_elem_router(router* my_router, router* router_to_add)
   return 0;
 }
 
+void into_router(router *my_router)
+{
+  if (my_router->pos_router <= NB_LINE_ROUTER && my_router->sub_routers[my_router->pos_router] != NULL)
+    {
+      cur_router = my_router->sub_routers[my_router->pos_router];
+    }
+}
+
 // Scroll one elem to the bottom, if already at the bottom go back to the first element
 void router_down(router *my_router)
 {
@@ -62,10 +70,14 @@ void display_router(router* my_router, uint16_t x_pos, uint8_t y_pos)
 
   x_font_pos = x_pos;
   y_font_pos = y_pos;
+  if (my_router == NULL)
+    return;
+  print_str_10x16((uint8_t*)my_router->name[*p_current_lang], BLACK, 0x9DDF);
+  y_font_pos -= 18;
   for (uint8_t i = 0; i < NB_LINE_ROUTER; i++) // For the number of router elem we want to display
     {
       x_font_pos = x_pos;
-      if (i + my_router->first_elem_pos < my_router->size) // If the elem we display + the offset the first elem we display doesn't exed the size of the router elem tab
+      if (i + my_router->first_elem_pos < my_router->size && my_router->sub_routers[my_router->first_elem_pos + i] != NULL) // If the elem we display + the offset the first elem we display doesn't exed the size of the router elem tab, check if the pointeur is not null
 	{
 	  fill_string_with_space(str, MAX_NAME_ROUTER);
 	  fill_one_line_router(str, my_router->sub_routers[my_router->first_elem_pos + i]);
