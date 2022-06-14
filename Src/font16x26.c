@@ -79,14 +79,6 @@ void draw_one_char_16x26(uint8_t num, uint16_t color, uint16_t font)
     {
       for (uint8_t y = 0; y < 26; y++)
 	{
-	  /* if (x > 7) */
-	  /*   { */
-	  /*     /\* if (font16x26[num][x * 2 + 1] & 1 << (y - 1)) *\/ */
-	  /*   } */
-	  /* else */
-	  /*   { */
-
-	  /*   } */
 	  if (x_font_pos + x < X_SIZE && y_font_pos + y < Y_SIZE)
 	    {
 	      if (find_one_pixel_in_16x26(num, x, y))

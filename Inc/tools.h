@@ -11,6 +11,7 @@ void Error_Handler(void);
 uint16_t my_strlen(const uint8_t *s);
 uint8_t* my_strncpy(uint8_t *dst, const uint8_t *src, register int n);
 void fill_string_with_space(uint8_t* str, uint8_t size);
+void num32ToString(uint8_t* str, uint32_t nb);
 
 #ifdef __cplusplus
 }

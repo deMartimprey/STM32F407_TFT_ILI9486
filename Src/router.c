@@ -66,7 +66,7 @@ static void fill_one_line_router(uint8_t* str, router* my_router)
 
 void display_router(router* my_router, uint16_t x_pos, uint8_t y_pos)
 {
-  uint8_t str[MAX_NAME_ROUTER + 1] = {0, };
+  uint8_t str[SIZE_NAME_ROUTER] = {0, };
 
   x_font_pos = x_pos;
   y_font_pos = y_pos;
@@ -79,7 +79,7 @@ void display_router(router* my_router, uint16_t x_pos, uint8_t y_pos)
       x_font_pos = x_pos;
       if (i + my_router->first_elem_pos < my_router->size && my_router->sub_routers[my_router->first_elem_pos + i] != NULL) // If the elem we display + the offset the first elem we display doesn't exed the size of the router elem tab, check if the pointeur is not null
 	{
-	  fill_string_with_space(str, MAX_NAME_ROUTER);
+	  fill_string_with_space(str, SIZE_NAME_ROUTER - 1);
 	  fill_one_line_router(str, my_router->sub_routers[my_router->first_elem_pos + i]);
 	  if (i == my_router->arrow_pos) // If this is the element seleted we display it with highlight with different backcolor
 	    {
@@ -92,7 +92,7 @@ void display_router(router* my_router, uint16_t x_pos, uint8_t y_pos)
 	}
       else // Print space at the end
 	{
-	  fill_string_with_space(str, MAX_NAME_ROUTER);
+	  fill_string_with_space(str, SIZE_NAME_ROUTER - 1);
 	  print_str_10x16(str, BLACK, WHITE);
 	}
   y_font_pos -= 18;

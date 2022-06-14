@@ -14,8 +14,8 @@ void update_var(var* vars);
 void erase_var(var* vars);
 int32_t get_var(var* vars);
 
-int32_t set_minus_one_var(var* vars);
-int32_t set_plus_one_var(var* vars);
+int32_t minus_one_var(var* vars);
+int32_t plus_one_var(var* vars);
 int32_t set_add_var(var* vars, int32_t value);
 int32_t set_minus_var(var* vars, int32_t value);
 var* new_var(var* vars, const uint8_t (*name)[NB_LANG][SIZE_NAME_VAR], const uint8_t (*menu_var)[NB_LANG][NB_NAME_VAR_MENU][SIZE_NAME_VAR_MENU],

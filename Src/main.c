@@ -118,11 +118,40 @@ int main(void)
   display_router(cur_router, 150, 150);
   router_up(cur_router);
   display_router(cur_router, 150, 150);
-  HAL_Delay(1000);
+  HAL_Delay(500);
   into_router(cur_router);
   display_router(cur_router, 150, 150);
 
-  while (1)
+  menu menu1;
+  menu1.name = &s_menu1;
+  menu1.pos_menu = 0;
+  menu1.size = 0;
+  menu1.arrow_pos = 0;
+  menu1.first_elem_pos = 0;
+  add_elem_menu(&menu1, var1);
+  add_elem_menu(&menu1, var2);
+  add_elem_menu(&menu1, var3);
+  add_elem_menu(&menu1, var4);
+
+  fill_with_Color(0xFFFF);
+  menu_up(&menu1);
+  display_menu(&menu1, 150, 150);
+  HAL_Delay(500);
+  menu_up(&menu1);
+  display_menu(&menu1, 150, 150);
+  HAL_Delay(500);
+  display_menu(&menu1, 150, 150);
+  HAL_Delay(500);
+  menu_var_up(&menu1);
+  display_menu(&menu1, 150, 150);
+  HAL_Delay(500);
+  menu_var_up(&menu1);
+  display_menu(&menu1, 150, 150);
+  HAL_Delay(500);
+  menu_var_up(&menu1);
+  display_menu(&menu1, 150, 150);
+  HAL_Delay(500);
+  while (1);
     {
       HAL_Delay(3000);
       router_up(cur_router);

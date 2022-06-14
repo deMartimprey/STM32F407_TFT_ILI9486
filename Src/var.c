@@ -30,7 +30,11 @@ int32_t read_value_var(var* vars)
 
 uint8_t init_var(var* vars, int32_t min, int32_t max, int32_t default_value)
 {
+#ifdef USE_EEPROM
   vars->value = read_value_var(vars);
+#else
+  vars->value = default_value;
+#endif /* USE_EEPROM */
   if (vars->value == (int32_t)0b11111111111111111111111111111111 || vars->value > max)
     {
       set_value_var(vars, default_value);
@@ -54,24 +58,23 @@ int32_t get_var(var* vars)
   return vars->value;
 }
 
-int32_t set_minus_one_var(var* vars)
+int32_t minus_one_var(var* vars)
 {
   if (vars->value == vars->min)
-    vars->value = vars->max;
+    set_value_var(vars, vars->max);
   else
-    vars->value -= 1;
-  update_var(vars);
+    set_value_var(vars, vars->value - 1);
   return vars->value;
 }
 
-int32_t set_plus_one_var(var* vars)
+int32_t plus_one_var(var* vars)
 {
   if (vars->value == vars->max)
-    vars->value = vars->min;
+    set_value_var(vars, vars->min);
   else
-    vars->value += 1;
-  update_var(vars);
+    set_value_var(vars, vars->value + 1);
   return vars->value;
+
 }
 
 var* new_var(var* vars, const uint8_t (*name)[NB_LANG][SIZE_NAME_VAR], const uint8_t (*menu_var)[NB_LANG][NB_NAME_VAR_MENU][SIZE_NAME_VAR_MENU],

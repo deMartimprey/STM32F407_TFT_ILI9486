@@ -1,7 +1,7 @@
 # STM32F407_TFT_ILI9486
 Driver for ILI9486 on a STM32F407
 
-Simply change the pin in global.h
+Simply change the pin in global.h and adapte TFT_Send_A_2Byte_To_TFT_DataPins_register
 
 Compile with make
 

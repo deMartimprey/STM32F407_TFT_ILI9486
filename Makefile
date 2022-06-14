@@ -39,6 +39,7 @@ C_SOURCES =  \
 Src/var.c \
 Src/main.c \
 Src/draw.c \
+Src/menu.c \
 Src/timer.c \
 Src/tools.c \
 Src/router.c \
