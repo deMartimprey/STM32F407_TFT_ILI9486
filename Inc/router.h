@@ -15,7 +15,7 @@ extern "C" {
 void Error_Handler(void);
 
 uint8_t add_elem_router(router* my_router, router* router_to_add);
-void display_router(router* my_router, uint16_t x_pos, uint8_t y_pos);
+void display_router(router* my_router, uint16_t x_pos, uint16_t y_pos);
 void router_down(router *my_router);
 void router_up(router *my_router);
 void into_router(router *my_router);

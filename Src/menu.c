@@ -53,7 +53,7 @@ void add_line_number(uint8_t* str, uint8_t position)
     }
 }
 
-void display_menu(menu *my_menu, uint16_t x_pos, uint8_t y_pos)
+void display_menu(menu *my_menu, uint16_t x_pos, uint16_t y_pos)
 {
   uint8_t str[SIZE_NAME_MENU] = {0, };
 
@@ -63,6 +63,7 @@ void display_menu(menu *my_menu, uint16_t x_pos, uint8_t y_pos)
     return;
   fill_string_with_space(str, SIZE_NAME_MENU - 1);
   my_strncpy((uint8_t*)str, (uint8_t*)my_menu->name[*p_current_lang], my_strlen((uint8_t*)my_menu->name[*p_current_lang]));
+  y_font_pos -= 16;
   print_str_10x16(str, BLACK, 0x9DDF);
   y_font_pos -= 18;
   for (uint8_t i = 0; i < MAX_SIZE_MENU; i++)
