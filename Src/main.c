@@ -56,6 +56,7 @@ int main(void)
   router1.size = 0;
   router1.arrow_pos = 0;
   router1.first_elem_pos = 0;
+  router1.up_router = &router1;
 
   router router2;
   router2.name = &s_router_2;
@@ -63,6 +64,7 @@ int main(void)
   router2.size = 0;
   router2.arrow_pos = 0;
   router2.first_elem_pos = 0;
+  router2.up_router = &router1;
 
   router router3;
   router3.name = &s_router_3;
@@ -70,6 +72,7 @@ int main(void)
   router3.size = 0;
   router3.arrow_pos = 0;
   router3.first_elem_pos = 0;
+  router3.up_router = &router1;
 
   router router4;
   router4.name = &s_router_4;
@@ -77,6 +80,7 @@ int main(void)
   router4.size = 0;
   router4.arrow_pos = 0;
   router4.first_elem_pos = 0;
+  router4.up_router = &router1;
 
   router router5;
   router5.name = &s_router_5;
@@ -84,6 +88,7 @@ int main(void)
   router5.size = 0;
   router5.arrow_pos = 0;
   router5.first_elem_pos = 0;
+  router5.up_router = &router1;
 
   router router6;
   router6.name = &s_router_6;
@@ -91,6 +96,7 @@ int main(void)
   router6.size = 0;
   router6.arrow_pos = 0;
   router6.first_elem_pos = 0;
+  router6.up_router = &router1;
 
   router router7;
   router7.name = &s_router_7;
@@ -98,6 +104,7 @@ int main(void)
   router7.size = 0;
   router7.arrow_pos = 0;
   router7.first_elem_pos = 0;
+  router7.up_router = &router1;
 
   cur_router = &router1;
   add_elem_router(&router1, &router1);
@@ -123,6 +130,7 @@ int main(void)
   menu1.size = 0;
   menu1.arrow_pos = 0;
   menu1.first_elem_pos = 0;
+  menu1.up_router = &router3;
   add_elem_menu(&menu1, var1);
   add_elem_menu(&menu1, var2);
   add_elem_menu(&menu1, var3);
@@ -136,6 +144,7 @@ int main(void)
   menu2.size = 0;
   menu2.arrow_pos = 0;
   menu2.first_elem_pos = 0;
+  menu2.up_router = &router3;
   add_elem_menu(&menu2, var1);
   add_elem_menu(&menu2, var2);
   add_elem_menu(&menu2, var3);
@@ -144,42 +153,48 @@ int main(void)
   add_menu_router(&router3, &menu2);
 
   display_router(cur_router, 150, 150);
-  router_up(cur_router);
+  nav_up();
   display_router(cur_router, 150, 150);
   HAL_Delay(500);
-  router_up(cur_router);
+  nav_up();
   display_router(cur_router, 150, 150);
   HAL_Delay(500);
   into_router(cur_router);
   display_router(cur_router, 150, 150);
   HAL_Delay(500);
-  router_up(cur_router);
+  nav_up();
   display_router(cur_router, 150, 150);
   HAL_Delay(500);
 
-
-  into_router(cur_router);
+  nav_valid(cur_router);
   display_router(cur_router, 150, 150);
   HAL_Delay(500);
-  menu_up(cur_menu);
+  nav_up();
   display_router(cur_router, 150, 150);
   HAL_Delay(500);
-  menu_up(cur_menu);
+  nav_up();
   display_router(cur_router, 150, 150);
   HAL_Delay(500);
-  menu_var_up(cur_menu);
-  display_router(cur_router, 150, 150);
-  HAL_Delay(2000);
-  menu_var_up(cur_menu);
+  nav_right();
   display_router(cur_router, 150, 150);
   HAL_Delay(500);
-  menu_var_up(cur_menu);
+  nav_right();
   display_router(cur_router, 150, 150);
+  HAL_Delay(500);
+  nav_right();
+  display_router(cur_router, 150, 150);
+  HAL_Delay(500);
+  nav_back();
+  display_router(cur_router, 150, 150);
+  HAL_Delay(500);
+  nav_back();
+  display_router(cur_router, 150, 150);
+  HAL_Delay(500);
 
   while (1);
     {
       HAL_Delay(3000);
-      router_up(cur_router);
+      nav_up();
       display_router(cur_router, 150, 150);
     }
   while (1)

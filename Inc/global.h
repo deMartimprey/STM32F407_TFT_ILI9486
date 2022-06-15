@@ -148,7 +148,7 @@ typedef struct
   uint8_t size; // Size of the menu
   uint8_t arrow_pos; // Position of highlight / selected paramter
   uint8_t first_elem_pos; // First parameter display, used for better scrolling experience
-  router* up_routers; // Router when press the back button, if null no router is up the current
+  router* up_router; // Router when press the back button, if null no router is up the current
   var* vars[MAX_SIZE_MENU]; // list of parameter
 } menu;
 
@@ -175,7 +175,7 @@ struct router
   uint8_t size; // size for scrolling gestion and give a tab position when new submenu is added
   uint8_t arrow_pos; // position of arrow or highlight
   uint8_t first_elem_pos; // if there is scrolling beacuse it doesn't fit
-  router* up_routers; // Router when press the back button, if null no router is up the current
+  router* up_router; // Router when press the back button, if null no router is up the current
   router* sub_routers[MAX_NB_ROUTER]; // list of other router that make the liste to display, null if contains menus
   menu* sub_menus[MAX_NB_ROUTER]; // list of menu to display null, if containt routers
 };

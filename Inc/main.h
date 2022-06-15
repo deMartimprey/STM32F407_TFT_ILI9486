@@ -6,6 +6,7 @@ extern "C" {
 #endif
 
 #include "stm32f4xx_hal.h"
+#include "navigation.h"
 #include "font10x16.h"
 #include "para_16.h"
 #include "ili9486.h"
