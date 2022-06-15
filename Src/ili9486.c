@@ -127,7 +127,7 @@ void Initialization()
   Write_Data(0x00);
   Write_Data(0x01);
   Write_Data(0xDF);
- 
+
   Write_Command_init(0x11);	//Sleep out
   HAL_Delay(120);
  

@@ -61,7 +61,9 @@ void display_menu(menu *my_menu, uint16_t x_pos, uint8_t y_pos)
   y_font_pos = y_pos;
   if (my_menu  == NULL)
     return;
-  print_str_10x16((uint8_t*)my_menu->name[*p_current_lang], BLACK, 0x9DDF);
+  fill_string_with_space(str, SIZE_NAME_MENU - 1);
+  my_strncpy((uint8_t*)str, (uint8_t*)my_menu->name[*p_current_lang], my_strlen((uint8_t*)my_menu->name[*p_current_lang]));
+  print_str_10x16(str, BLACK, 0x9DDF);
   y_font_pos -= 18;
   for (uint8_t i = 0; i < MAX_SIZE_MENU; i++)
     {

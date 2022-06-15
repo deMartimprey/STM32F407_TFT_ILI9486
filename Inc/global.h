@@ -138,6 +138,8 @@ typedef struct
 #define SIZE_NAME_MENU		20 // Max size of a menu name
 extern var vars[NB_VAR];
 
+typedef struct router router;
+
   // Menu contain list of vars that can change value
 typedef struct
 {
@@ -146,6 +148,7 @@ typedef struct
   uint8_t size; // Size of the menu
   uint8_t arrow_pos; // Position of highlight / selected paramter
   uint8_t first_elem_pos; // First parameter display, used for better scrolling experience
+  router* up_routers; // Router when press the back button, if null no router is up the current
   var* vars[MAX_SIZE_MENU]; // list of parameter
 } menu;
 
@@ -163,7 +166,6 @@ extern uint8_t* p_current_lang;
 #define MAX_NB_ROUTER 20
 #define NB_LINE_ROUTER 4
 
-typedef struct router router;
 
 // A router is a menu that contain other router or menu
 struct router
@@ -175,50 +177,51 @@ struct router
   uint8_t first_elem_pos; // if there is scrolling beacuse it doesn't fit
   router* up_routers; // Router when press the back button, if null no router is up the current
   router* sub_routers[MAX_NB_ROUTER]; // list of other router that make the liste to display, null if contains menus
-  router* sub_menus[MAX_NB_ROUTER]; // list of menu to display null, if containt routers
+  menu* sub_menus[MAX_NB_ROUTER]; // list of menu to display null, if containt routers
 };
 
 extern router* cur_router; // Position in menu and submenu sytem
+extern menu* cur_menu; // Position in menu and submenu sytem
 
 // Strings const static so its stay on the rom and don't go in the ram
 
-const static uint8_t s_router_1[NB_LANG][SIZE_NAME_VAR + 1] =
+const static uint8_t s_router_1[NB_LANG][SIZE_NAME_VAR] =
 {
  "Sous menu 1",
  "Sub menu 1"
 };
 
-const static uint8_t s_router_2[NB_LANG][SIZE_NAME_VAR + 1] =
+const static uint8_t s_router_2[NB_LANG][SIZE_NAME_VAR] =
 {
  "Sous menu 2",
  "Sub menu 2"
 };
 
-const static uint8_t s_router_3[NB_LANG][SIZE_NAME_VAR + 1] =
+const static uint8_t s_router_3[NB_LANG][SIZE_NAME_VAR] =
 {
  "Sous menu 3",
  "Sub menu 3"
 };
 
-const static uint8_t s_router_4[NB_LANG][SIZE_NAME_VAR + 1] =
+const static uint8_t s_router_4[NB_LANG][SIZE_NAME_VAR] =
 {
  "Sous menu 4",
  "Sub menu 4"
 };
 
-const static uint8_t s_router_5[NB_LANG][SIZE_NAME_VAR + 1] =
+const static uint8_t s_router_5[NB_LANG][SIZE_NAME_VAR] =
 {
  "Sous menu 5",
  "Sub menu 5"
 };
 
-const static uint8_t s_router_6[NB_LANG][SIZE_NAME_VAR + 1] =
+const static uint8_t s_router_6[NB_LANG][SIZE_NAME_VAR] =
 {
  "Sous menu 6",
  "Sub menu 6"
 };
 
-const static uint8_t s_router_7[NB_LANG][SIZE_NAME_VAR + 1] =
+const static uint8_t s_router_7[NB_LANG][SIZE_NAME_VAR] =
 {
  "Sous menu 7",
  "Sub menu 7"
@@ -228,6 +231,12 @@ const static uint8_t s_menu1[NB_LANG][SIZE_NAME_VAR] =
 {
   "MENU_1",
   "MENU_1"
+};
+
+const static uint8_t s_menu2[NB_LANG][SIZE_NAME_VAR] =
+{
+  "MENU_2",
+  "MENU_2"
 };
 
 const static uint8_t s_var1[NB_LANG][SIZE_NAME_VAR] =

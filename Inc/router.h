@@ -10,6 +10,7 @@ extern "C" {
 #include "ili9486.h"
 #include "global.h"
 #include "tools.h"
+#include "menu.h"
 
 void Error_Handler(void);
 
@@ -18,6 +19,7 @@ void display_router(router* my_router, uint16_t x_pos, uint8_t y_pos);
 void router_down(router *my_router);
 void router_up(router *my_router);
 void into_router(router *my_router);
+uint8_t add_menu_router(router* my_router, menu* menu_to_add);
 
 #ifdef __cplusplus
 }

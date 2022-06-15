@@ -17,6 +17,7 @@ int main(void)
   current_lang = FR;
   p_current_lang = &current_lang;
   delay_init();
+  HAL_Delay(150);
   Initialization();
   fill_with_Color(WHITE);
   draw_rectangle(100, 150, 5, 7, RED);
@@ -105,6 +106,7 @@ int main(void)
   add_elem_router(&router1, &router4);
   add_elem_router(&router1, &router5);
   add_elem_router(&router1, &router6);
+  add_elem_router(&router2, &router3);
   add_elem_router(&router2, &router4);
   add_elem_router(&router2, &router5);
   add_elem_router(&router2, &router6);
@@ -114,13 +116,6 @@ int main(void)
   var2 = new_var(vars, &s_var2, 0, 0, 99999, 12);
   var3 = new_var(vars, &s_var3, 0, 0, 99999, 13);
   var4 = new_var(vars, &s_var4, 0, 0, 99999, 14);
-
-  display_router(cur_router, 150, 150);
-  router_up(cur_router);
-  display_router(cur_router, 150, 150);
-  HAL_Delay(500);
-  into_router(cur_router);
-  display_router(cur_router, 150, 150);
 
   menu menu1;
   menu1.name = &s_menu1;
@@ -133,24 +128,54 @@ int main(void)
   add_elem_menu(&menu1, var3);
   add_elem_menu(&menu1, var4);
 
-  fill_with_Color(0xFFFF);
-  menu_up(&menu1);
-  display_menu(&menu1, 150, 150);
+  add_menu_router(&router3, &menu1);
+
+  menu menu2;
+  menu2.name = &s_menu2;
+  menu2.pos_menu = 0;
+  menu2.size = 0;
+  menu2.arrow_pos = 0;
+  menu2.first_elem_pos = 0;
+  add_elem_menu(&menu2, var1);
+  add_elem_menu(&menu2, var2);
+  add_elem_menu(&menu2, var3);
+  add_elem_menu(&menu2, var4);
+
+  add_menu_router(&router3, &menu2);
+
+  display_router(cur_router, 150, 150);
+  router_up(cur_router);
+  display_router(cur_router, 150, 150);
   HAL_Delay(500);
-  menu_up(&menu1);
-  display_menu(&menu1, 150, 150);
+  router_up(cur_router);
+  display_router(cur_router, 150, 150);
   HAL_Delay(500);
-  display_menu(&menu1, 150, 150);
+  into_router(cur_router);
+  display_router(cur_router, 150, 150);
   HAL_Delay(500);
-  menu_var_up(&menu1);
-  display_menu(&menu1, 150, 150);
+  router_up(cur_router);
+  display_router(cur_router, 150, 150);
   HAL_Delay(500);
-  menu_var_up(&menu1);
-  display_menu(&menu1, 150, 150);
+
+
+  into_router(cur_router);
+  display_router(cur_router, 150, 150);
   HAL_Delay(500);
-  menu_var_up(&menu1);
-  display_menu(&menu1, 150, 150);
+  menu_up(cur_menu);
+  display_router(cur_router, 150, 150);
   HAL_Delay(500);
+  menu_up(cur_menu);
+  display_router(cur_router, 150, 150);
+  HAL_Delay(500);
+  menu_var_up(cur_menu);
+  display_router(cur_router, 150, 150);
+  HAL_Delay(2000);
+  menu_var_up(cur_menu);
+  display_router(cur_router, 150, 150);
+  HAL_Delay(500);
+  menu_var_up(cur_menu);
+  display_router(cur_router, 150, 150);
+
   while (1);
     {
       HAL_Delay(3000);
