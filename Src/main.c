@@ -157,6 +157,8 @@ int main(void)
   add_menu_router(&router3, &menu2);
   fill_with_Color(WHITE);
 
+  draw_empty_rectangle(220, 20, 100, 100, 25, BLACK);
+
   display_router(cur_router, X_MENU, Y_MENU);
   nav_up();
   display_router(cur_router, X_MENU, Y_MENU);

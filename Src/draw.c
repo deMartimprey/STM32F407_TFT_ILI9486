@@ -1,5 +1,15 @@
 #include "draw.h"
 
+uint8_t draw_empty_rectangle(uint16_t x_pos, uint16_t y_pos, uint16_t x_size, uint16_t y_size, uint16_t thickness, uint16_t color)
+{
+  draw_rectangle(x_pos, y_pos, x_size, thickness, color);
+  draw_rectangle(x_pos, y_pos, thickness, y_size, color);
+  draw_rectangle(x_pos + thickness, y_pos + y_size - thickness, x_size, thickness, color);
+  draw_rectangle(x_pos + thickness, y_pos + y_size - thickness, x_size, thickness, color);
+  draw_rectangle(x_pos + x_size, y_pos, thickness, y_size, color);
+  return 0;
+}
+
 // return 0 : OK
 // return 1 : DRAW BUT TO BIG
 // reuturn 2 : OUTSIDE SCREEN, DIDN'T DRAW
