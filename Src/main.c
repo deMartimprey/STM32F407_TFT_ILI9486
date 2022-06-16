@@ -17,7 +17,6 @@ int main(void)
 
   MX_GPIO_Init();
   current_lang = FR;
-  p_current_lang = &current_lang;
   delay_init();
   HAL_Delay(150);
   Initialization();
@@ -125,6 +124,8 @@ int main(void)
   var2 = new_var(vars, &s_var2, 0, 0, 99999, 12);
   var3 = new_var(vars, &s_var3, 0, 0, 99999, 13);
   var4 = new_var(vars, &s_var4, 0, 0, 99999, 14);
+  current_lang = new_var(vars, &s_lang, 0, 0, 1, 0);
+  p_current_lang = &current_lang->value;
 
   menu menu1;
   menu1.name = &s_menu1;
@@ -151,6 +152,7 @@ int main(void)
   add_elem_menu(&menu2, var2);
   add_elem_menu(&menu2, var3);
   add_elem_menu(&menu2, var4);
+  add_elem_menu(&menu2, current_lang);
 
   add_menu_router(&router3, &menu2);
   fill_with_Color(WHITE);
@@ -170,6 +172,12 @@ int main(void)
   HAL_Delay(500);
 
   nav_valid(cur_router);
+  display_router(cur_router, X_MENU, Y_MENU);
+  HAL_Delay(500);
+  nav_up();
+  display_router(cur_router, X_MENU, Y_MENU);
+  HAL_Delay(500);
+  nav_up();
   display_router(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
   nav_up();

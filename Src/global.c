@@ -11,8 +11,8 @@ uint16_t y_font_pos = 0;
 uint16_t buffer[X_SIZE][Y_SIZE] = {0, };
 #endif /* USE_RAM_BUFFER */
 
-uint8_t current_lang = 0;
-uint8_t* p_current_lang;
+var* current_lang;
+int32_t* p_current_lang;
 router* cur_router;
 menu* cur_menu;
 

@@ -159,8 +159,8 @@ extern var* var2;
 extern var* var3;
 extern var* var4;
 
-  extern uint8_t current_lang; // current lang will be modified to parameter
-extern uint8_t* p_current_lang;
+extern var* current_lang; // current lang will be modified to parameter
+extern int32_t* p_current_lang;
 
 #define SIZE_NAME_ROUTER 20
 #define MAX_NB_ROUTER 20
@@ -239,29 +239,35 @@ const static uint8_t s_menu2[NB_LANG][SIZE_NAME_VAR] =
   "MENU_2"
 };
 
+const static uint8_t s_lang[NB_LANG][SIZE_NAME_VAR] =
+{
+  "LANG",
+  "LANG"
+};
+
 const static uint8_t s_var1[NB_LANG][SIZE_NAME_VAR] =
-  {
-    "VAR1_FR",
-    "VAR1_EN"
-  };
+{
+  "VAR1_FR",
+  "VAR1_EN"
+};
 
 const static uint8_t s_var2[NB_LANG][SIZE_NAME_VAR] =
-  {
-    "VAR2_FR",
-    "VAR2_EN"
-  };
+{
+  "VAR2_FR",
+  "VAR2_EN"
+};
 
 const static uint8_t s_var3[NB_LANG][SIZE_NAME_VAR] =
-  {
-    "VAR3_FR",
-    "VAR3_EN"
-  };
+{
+  "VAR3_FR",
+  "VAR3_EN"
+};
 
 const static uint8_t s_var4[NB_LANG][SIZE_NAME_VAR] =
-  {
-    "VAR4_FR",
-    "VAR4_EN"
-  };
+{
+  "VAR4_FR",
+  "VAR4_EN"
+};
 
 #ifdef __cplusplus
 }
