@@ -40,7 +40,28 @@ int main(void)
   print_str_10x16((uint8_t*)"123456789!", BLACK, WHITE);
   set_font_pos(0, 280);
   print_str_16x26((uint8_t*)"abcdefghijklmnopqrs12345678", BLACK, YELLOW);
-  /* fill_with_Color(WHITE); */
+  fill_with_Color(WHITE);
+
+  view view1;
+
+  window window1_1;
+  window1_1.window_x = 10;
+  window1_1.window_y = 10;
+  window1_1.window_size_x = 150;
+  window1_1.window_size_y = 150;
+
+  window window2_1;
+  window2_1.window_x = 170;
+  window2_1.window_y = 10;
+  window2_1.window_size_x = 150;
+  window2_1.window_size_y = 150;
+
+  init_view(&view1);
+  add_one_window(&view1, &window1_1);
+  add_one_window(&view1, &window2_1);
+  display_view(&view1);
+
+  while (1);
   /* uint16_t len = my_strlen((uint8_t*)"1234"); */
   /* uint16_t len2 = my_strlen((uint8_t*)"5678"); */
   /* while (1) { */
@@ -156,8 +177,6 @@ int main(void)
 
   add_menu_router(&router3, &menu2);
   fill_with_Color(WHITE);
-
-  draw_empty_rectangle(220, 20, 100, 100, 25, BLACK);
 
   display_router26(cur_router, X_MENU, Y_MENU);
   nav_up();

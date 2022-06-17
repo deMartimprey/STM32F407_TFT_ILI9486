@@ -162,8 +162,9 @@ typedef struct
   uint8_t first_elem_pos; // First parameter display, used for better scrolling experience
   router* up_router; // Router when press the back button, if null no router is up the current
   var* vars[MAX_SIZE_MENU]; // list of parameter
+  uint16_t menu_x; // offset x
+  uint16_t menu_y; // offset y
 } menu;
-
 
 extern var* var0;
 extern var* var1;
@@ -190,6 +191,35 @@ struct router
   router* up_router; // Router when press the back button, if null no router is up the current
   router* sub_routers[MAX_NB_ROUTER]; // list of other router that make the liste to display, null if contains menus
   menu* sub_menus[MAX_NB_ROUTER]; // list of menu to display null, if containt routers
+  uint16_t router_x; // offset x
+  uint16_t router_y; // offset y
+};
+
+typedef struct view view;
+
+typedef struct window window;
+
+#define MAX_WINDOW_PER_VIEW 5
+
+struct window
+{
+  uint16_t window_size_x;
+  uint16_t window_size_y;
+  uint16_t window_x;
+  uint16_t window_y;
+  window* window_up;
+  window* window_down;
+  window* window_right;
+  window* window_left;
+  router* router;
+  menu* menu;
+};
+
+struct view
+{
+  window* windows[MAX_WINDOW_PER_VIEW];
+  uint16_t view_x;
+  uint16_t view_y;
 };
 
 extern router* cur_router; // Position in menu and submenu sytem

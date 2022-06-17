@@ -37,6 +37,7 @@ BUILD_DIR = build
 # C sources
 C_SOURCES =  \
 Src/var.c \
+Src/view.c \
 Src/main.c \
 Src/draw.c \
 Src/menu.c \
@@ -45,6 +46,7 @@ Src/tools.c \
 Src/router.c \
 Src/global.c \
 Src/effect.c \
+Src/window.c \
 Src/para_16.c \
 Src/ili9486.c \
 Src/font5x7.c \
