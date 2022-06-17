@@ -108,7 +108,7 @@ void display_router(router* my_router, uint16_t x_pos, uint16_t y_pos)
   fill_string_with_space(str, SIZE_NAME_ROUTER - 1);
   my_strncpy((uint8_t*)str, (uint8_t*)my_router->name[*p_current_lang], my_strlen((uint8_t*)my_router->name[*p_current_lang]));
   y_font_pos -= 16;
-  print_str_10x16(str, BLACK, 0x9DDF);
+  print_str_10x16(str, WHITE, FONT_COLOR);
   y_font_pos -= 18;
   for (uint8_t i = 0; i < NB_LINE_ROUTER; i++) // For the number of router elem we want to display
     {
@@ -122,10 +122,10 @@ void display_router(router* my_router, uint16_t x_pos, uint16_t y_pos)
 	      if (i == my_router->arrow_pos) // If this is the element seleted we display it with highlight with different backcolor
 		{
 		  str[0] = '>';
-		  print_str_10x16(str, BLACK, YELLOW);
+		  print_str_10x16(str, WHITE, MENU_HIGHLIGHT_FONT_COLOR);
 		}
 	      else // If it is not the select elem print it with normal backcolor
-		print_str_10x16(str, BLACK, WHITE);
+		print_str_10x16(str, STRONG_GRAY, (i % 2 ? MENU_PAIR_FONT_COLOR : MENU_UNPAIR_FONT_COLOR));
 	      /* add_line_number(str, i + my_router->pos_router); */
 	    }
 	  else // Print space at the end
@@ -157,5 +157,73 @@ void display_router(router* my_router, uint16_t x_pos, uint16_t y_pos)
 	    }
 	}
       y_font_pos -= 18;
+   }
+}
+
+void display_router26(router* my_router, uint16_t x_pos, uint16_t y_pos)
+{
+  if (cur_menu != 0)
+    {
+      display_menu(cur_menu, x_pos, y_pos);
+      return;
+    }
+  uint8_t str[SIZE_NAME_ROUTER] = {0, };
+
+  x_font_pos = x_pos;
+  y_font_pos = y_pos;
+  if (my_router == NULL)
+    return;
+  fill_string_with_space(str, SIZE_NAME_ROUTER - 1);
+  my_strncpy((uint8_t*)str, (uint8_t*)my_router->name[*p_current_lang], my_strlen((uint8_t*)my_router->name[*p_current_lang]));
+  y_font_pos -= 26;
+  print_str_16x26(str, WHITE, FONT_COLOR);
+  y_font_pos -= 28;
+  for (uint8_t i = 0; i < NB_LINE_ROUTER; i++) // For the number of router elem we want to display
+    {
+      x_font_pos = x_pos;
+      if (my_router->sub_routers[0] != 0)
+	{
+	  if (i + my_router->first_elem_pos < my_router->size && my_router->sub_routers[my_router->first_elem_pos + i] != NULL) // If the elem we display + the offset the first elem we display doesn't exed the size of the router elem tab, check if the pointeur is not null
+	    {
+	      fill_string_with_space(str, SIZE_NAME_ROUTER - 1);
+	      fill_one_line_router(str, my_router->sub_routers[my_router->first_elem_pos + i]);
+	      if (i == my_router->arrow_pos) // If this is the element seleted we display it with highlight with different backcolor
+		{
+		  str[0] = '>';
+		  print_str_16x26(str, WHITE, MENU_HIGHLIGHT_FONT_COLOR);
+		}
+	      else // If it is not the select elem print it with normal backcolor
+		print_str_16x26(str, STRONG_GRAY, (i % 2 ? MENU_PAIR_FONT_COLOR : MENU_UNPAIR_FONT_COLOR));
+	      /* add_line_number(str, i + my_router->pos_router); */
+	    }
+	  else // Print space at the end
+	    {
+	      fill_string_with_space(str, SIZE_NAME_ROUTER - 1);
+	      print_str_16x26(str, BLACK, WHITE);
+	    }
+	}
+      else if (my_router->sub_menus[0] != 0)
+	{
+	  if (i + my_router->first_elem_pos < my_router->size && my_router->sub_menus[my_router->first_elem_pos + i] != NULL) // If the elem we display + the offset the first elem we display doesn't exed the size of the router elem tab, check if the pointeur is not null
+
+	    {
+	      fill_string_with_space(str, SIZE_NAME_ROUTER - 1);
+	      fill_one_line_menu_from_router(str, my_router->sub_menus[my_router->first_elem_pos + i]);
+	      if (i == my_router->arrow_pos) // If this is the element seleted we display it with highlight with different backcolor
+		{
+		  /* str[0] = '>'; */
+		  print_str_16x26(str, BLACK, YELLOW);
+		}
+	      else // If it is not the select elem print it with normal backcolor
+		print_str_16x26(str, BLACK, WHITE);
+	      /* add_line_number(str, i + my_router->pos_router); */
+	    }
+	  else // Print space at the end
+	    {
+	      fill_string_with_space(str, SIZE_NAME_ROUTER - 1);
+	      print_str_16x26(str, BLACK, WHITE);
+	    }
+	}
+      y_font_pos -= 28;
    }
 }

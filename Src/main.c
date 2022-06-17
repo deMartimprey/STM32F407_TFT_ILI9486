@@ -159,56 +159,56 @@ int main(void)
 
   draw_empty_rectangle(220, 20, 100, 100, 25, BLACK);
 
-  display_router(cur_router, X_MENU, Y_MENU);
+  display_router26(cur_router, X_MENU, Y_MENU);
   nav_up();
-  display_router(cur_router, X_MENU, Y_MENU);
+  display_router26(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
   nav_up();
-  display_router(cur_router, X_MENU, Y_MENU);
+  display_router26(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
   into_router(cur_router);
-  display_router(cur_router, X_MENU, Y_MENU);
+  display_router26(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
   nav_up();
-  display_router(cur_router, X_MENU, Y_MENU);
+  display_router26(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
 
   nav_valid(cur_router);
-  display_router(cur_router, X_MENU, Y_MENU);
+  display_router26(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
   nav_up();
-  display_router(cur_router, X_MENU, Y_MENU);
+  display_router26(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
   nav_up();
-  display_router(cur_router, X_MENU, Y_MENU);
+  display_router26(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
   nav_up();
-  display_router(cur_router, X_MENU, Y_MENU);
+  display_router26(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
   nav_up();
-  display_router(cur_router, X_MENU, Y_MENU);
+  display_router26(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
   nav_right();
-  display_router(cur_router, X_MENU, Y_MENU);
+  display_router26(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
   nav_right();
-  display_router(cur_router, X_MENU, Y_MENU);
+  display_router26(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
   nav_right();
-  display_router(cur_router, X_MENU, Y_MENU);
+  display_router26(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
   nav_back();
-  display_router(cur_router, X_MENU, Y_MENU);
+  display_router26(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
   nav_back();
-  display_router(cur_router, X_MENU, Y_MENU);
+  display_router26(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
 
   while (1);
     {
       HAL_Delay(3000);
       nav_up();
-      display_router(cur_router, X_MENU, Y_MENU);
+      display_router26(cur_router, X_MENU, Y_MENU);
     }
   while (1)
   {

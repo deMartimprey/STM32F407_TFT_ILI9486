@@ -88,6 +88,18 @@
 #define MAGENTA 0xF81F
 #define YELLOW  0xFFE0
 #define WHITE   0xFFFF
+#define ORANGE  0xFCC0
+
+#define NICE_GREEN 0xFCC0
+#define STRONG_GRAY 0x630C
+
+#define FONT_COLOR			0xBF1C
+#define STRONG_FONT			0x3C72
+#define FONT_TEXT			0xE7FF
+#define MENU_PAIR_FONT_COLOR		0xE79E
+#define MENU_UNPAIR_FONT_COLOR		0xF7DF
+#define MENU_HIGHLIGHT_FONT_COLOR	0x3193
+#define MENU_STRONG_COLOR		0x0398
 
 #ifdef __cplusplus
 extern "C" {
