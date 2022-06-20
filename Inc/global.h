@@ -130,11 +130,13 @@ extern uint16_t buffer[X_SIZE][Y_SIZE]; // Not enough place
 #define DIGIT_TYPE		0 // Pointer null to menu_var mean this var (parameter is display a number)
 #define NAME_TYPE		1 // Value display as string
 
+#define SIZE_TEXT 20
 typedef struct text text;
 
 struct text
 {
-  uint8_t (*name)[NB_LANG][SIZE_NAME_VAR];
+  uint8_t (*str)[NB_LANG][SIZE_TEXT];
+  uint16_t text_x;
   uint16_t text_y;
 };
 
@@ -152,7 +154,6 @@ typedef struct
   const uint8_t (*name)[NB_LANG][SIZE_NAME_VAR]; // Name
   const uint8_t (*menu_var)[NB_LANG][NB_NAME_VAR_MENU][SIZE_NAME_VAR_MENU]; // List of string in case the paramaters is display as string, value 0 is menu_var[0], value 1 is menu_var[1] l...
 } var;
-
 
 #define MAX_SIZE_MENU	        20 // Number of parameter max in one menu
 #define SIZE_NAME_MENU		20 // Max size of a menu name
@@ -319,6 +320,12 @@ const static uint8_t s_var4[NB_LANG][SIZE_NAME_VAR] =
 {
   "VAR4_FR",
   "VAR4_EN"
+};
+
+const static uint8_t t_1_w1_v1[NB_LANG][SIZE_TEXT] =
+{
+  "text1FR",
+  "text1EN"
 };
 
 #ifdef __cplusplus

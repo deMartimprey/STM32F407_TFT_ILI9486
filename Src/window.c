@@ -32,5 +32,12 @@ uint8_t display_window(window* w, uint16_t view_x, uint16_t view_y)
 {
   draw_rectangle(view_x + w->window_x, view_y + w->window_y, w->window_size_x, w->window_size_y, FONT_COLOR);
   draw_empty_rectangle(view_x + w->window_x, view_y + w->window_y, w->window_size_x, w->window_size_y, 5, STRONG_FONT);
+  for (uint8_t i = 0; i < MAX_NB_TEXT_PER_WINDOWS; i++)
+    {
+      if (w->text[i] != 0)
+	{
+	  display_text(w->text[i], view_x + w->window_x, view_y + w->window_y);
+	}
+    }
   return 0;
 }

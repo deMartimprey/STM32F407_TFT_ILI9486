@@ -41,6 +41,7 @@ Src/view.c \
 Src/main.c \
 Src/draw.c \
 Src/menu.c \
+Src/text.c \
 Src/timer.c \
 Src/tools.c \
 Src/router.c \

@@ -7,7 +7,7 @@ void init_view(view* v)
       v->windows[i] = NULL;
     }
   v->view_x = 0;
-  v->view_x = 0;
+  v->view_y = 0;
 }
 
 // 0 OK // 1 FAIL NOT ENOUGH SPACE

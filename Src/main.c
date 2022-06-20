@@ -21,6 +21,8 @@ int main(void)
   HAL_Delay(150);
   Initialization();
   fill_with_Color(WHITE);
+  current_lang = new_var(vars, &s_lang, 0, 0, 1, 0);
+  p_current_lang = &current_lang->value;
   draw_rectangle(100, 150, 5, 7, RED);
   draw_rectangle(50, 150, 30, 20, YELLOW);
   DrawCircle(X_SIZE / 2, Y_SIZE / 2, Y_SIZE / 2, RED);
@@ -45,17 +47,23 @@ int main(void)
   view view1;
 
   window window1_v1;
+  init_window(&window1_v1);
   window1_v1.window_x = 10;
   window1_v1.window_y = 10;
   window1_v1.window_size_x = 200;
   window1_v1.window_size_y = 250;
 
   window window2_v1;
+  init_window(&window2_v1);
   window2_v1.window_x = 220;
-  window2_v1.window_y = 10;
+  window2_v1.window_y = 60;
   window2_v1.window_size_x = 200;
   window2_v1.window_size_y = 250;
 
+  text text1_w1_v1;
+  text1_w1_v1.text_x = 10;
+  text1_w1_v1.text_y = 50;
+  text1_w1_v1.str = &t_1_w1_v1;
   /* router router1_w1_v1; */
   /* router1_w1_v1.name = &s_router_1; */
   /* router1_w1_v1.pos_router = 0; */
@@ -67,9 +75,22 @@ int main(void)
   init_view(&view1);
   add_one_window(&view1, &window1_v1);
   add_one_window(&view1, &window2_v1);
+  add_text_to_window(&window2_v1, &text1_w1_v1);
   display_view(&view1);
 
-  while (1);
+  while (1)
+  {
+    for (uint8_t i = 35; i > 0; i--)
+      {
+	window2_v1.window_y -= 1;
+	display_view(&view1);
+      }
+    for (uint8_t i = 0; i < 35; i++)
+      {
+	window2_v1.window_y += 1;
+	display_view(&view1);
+      }
+  }
   /* uint16_t len = my_strlen((uint8_t*)"1234"); */
   /* uint16_t len2 = my_strlen((uint8_t*)"5678"); */
   /* while (1) { */
@@ -153,8 +174,6 @@ int main(void)
   var2 = new_var(vars, &s_var2, 0, 0, 99999, 12);
   var3 = new_var(vars, &s_var3, 0, 0, 99999, 13);
   var4 = new_var(vars, &s_var4, 0, 0, 99999, 14);
-  current_lang = new_var(vars, &s_lang, 0, 0, 1, 0);
-  p_current_lang = &current_lang->value;
 
   menu menu1;
   menu1.name = &s_menu1;

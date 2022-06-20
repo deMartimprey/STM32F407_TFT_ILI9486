@@ -5,6 +5,7 @@
 #include "global.h"
 #include "tools.h"
 #include "draw.h"
+#include "text.h"
 
 void init_window(window* w);
 uint8_t add_text_to_window(window* w, text* t);

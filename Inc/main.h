@@ -20,6 +20,7 @@ extern "C" {
 #include "view.h"
 #include "draw.h"
 #include "menu.h"
+#include "text.h"
 #include "var.h"
 
 void Error_Handler(void);
