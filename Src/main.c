@@ -83,12 +83,14 @@ int main(void)
     for (uint8_t i = 35; i > 0; i--)
       {
 	window2_v1.window_y -= 1;
-	display_view(&view1);
+	window2_v1.update = 1;
+	update_view(&view1);
       }
     for (uint8_t i = 0; i < 35; i++)
       {
 	window2_v1.window_y += 1;
-	display_view(&view1);
+	window2_v1.update = 1;
+	update_view(&view1);
       }
   }
   /* uint16_t len = my_strlen((uint8_t*)"1234"); */

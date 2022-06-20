@@ -41,3 +41,21 @@ uint8_t display_window(window* w, uint16_t view_x, uint16_t view_y)
     }
   return 0;
 }
+
+uint8_t update_window(window* w, uint16_t view_x, uint16_t view_y)
+{
+  if (w->update == 1)
+    {
+      display_window(w, view_x, view_y);
+      w->update = 0;
+      return 0;
+    }
+  for (uint8_t i = 0; i < MAX_NB_TEXT_PER_WINDOWS; i++)
+    {
+      if (w->text[i] != 0)
+	{
+	  /* update_text(w->text[i], view_x + w->window_x, view_y + w->window_y); */
+	}
+    }
+  return 0;
+}

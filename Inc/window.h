@@ -10,5 +10,6 @@
 void init_window(window* w);
 uint8_t add_text_to_window(window* w, text* t);
 uint8_t display_window(window* w, uint16_t view_x, uint16_t view_y);
+uint8_t update_window(window* w, uint16_t view_x, uint16_t view_y);
 
 #endif /* __WINDOW_H */

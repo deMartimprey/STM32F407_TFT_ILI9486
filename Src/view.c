@@ -49,7 +49,7 @@ uint8_t update_view(view* v)
     {
       if (v->windows[i] != 0)
 	{
-	  /* update_window(v->windows[i], v->view_x, v->view_y); */
+	  update_window(v->windows[i], v->view_x, v->view_y);
 	}
     }
   return 0;
