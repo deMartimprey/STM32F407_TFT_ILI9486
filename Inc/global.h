@@ -130,6 +130,14 @@ extern uint16_t buffer[X_SIZE][Y_SIZE]; // Not enough place
 #define DIGIT_TYPE		0 // Pointer null to menu_var mean this var (parameter is display a number)
 #define NAME_TYPE		1 // Value display as string
 
+typedef struct text text;
+
+struct text
+{
+  uint8_t (*name)[NB_LANG][SIZE_NAME_VAR];
+  uint16_t text_y;
+};
+
 typedef struct
 {
   uint16_t id; // Unique id of var(parameter) increment of 1 each time a new one is created
@@ -200,6 +208,7 @@ typedef struct view view;
 typedef struct window window;
 
 #define MAX_WINDOW_PER_VIEW 5
+#define MAX_NB_TEXT_PER_WINDOWS 5
 
 struct window
 {
@@ -213,6 +222,7 @@ struct window
   window* window_left;
   router* router;
   menu* menu;
+  text *text[MAX_NB_TEXT_PER_WINDOWS];
 };
 
 struct view

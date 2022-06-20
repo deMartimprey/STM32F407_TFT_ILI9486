@@ -44,21 +44,29 @@ int main(void)
 
   view view1;
 
-  window window1_1;
-  window1_1.window_x = 10;
-  window1_1.window_y = 10;
-  window1_1.window_size_x = 150;
-  window1_1.window_size_y = 150;
+  window window1_v1;
+  window1_v1.window_x = 10;
+  window1_v1.window_y = 10;
+  window1_v1.window_size_x = 200;
+  window1_v1.window_size_y = 250;
 
-  window window2_1;
-  window2_1.window_x = 170;
-  window2_1.window_y = 10;
-  window2_1.window_size_x = 150;
-  window2_1.window_size_y = 150;
+  window window2_v1;
+  window2_v1.window_x = 220;
+  window2_v1.window_y = 10;
+  window2_v1.window_size_x = 200;
+  window2_v1.window_size_y = 250;
+
+  /* router router1_w1_v1; */
+  /* router1_w1_v1.name = &s_router_1; */
+  /* router1_w1_v1.pos_router = 0; */
+  /* router1_w1_v1.size = 0; */
+  /* router1_w1_v1.arrow_pos = 0; */
+  /* router1_w1_v1.first_elem_pos = 0; */
+  /* router1_w1_v1.up_router = &router1_w1_v1; */
 
   init_view(&view1);
-  add_one_window(&view1, &window1_1);
-  add_one_window(&view1, &window2_1);
+  add_one_window(&view1, &window1_v1);
+  add_one_window(&view1, &window2_v1);
   display_view(&view1);
 
   while (1);
