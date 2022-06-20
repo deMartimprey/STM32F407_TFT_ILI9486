@@ -234,6 +234,7 @@ typedef struct window window;
 
 #define MAX_WINDOW_PER_VIEW 5
 #define MAX_NB_TEXT_PER_WINDOWS 5
+#define MAX_NB_DRAW_PER_WINDOWS 5
 
 struct window
 {
@@ -248,6 +249,7 @@ struct window
   router* router;
   menu* menu;
   text *text[MAX_NB_TEXT_PER_WINDOWS];
+  draw *draw[MAX_NB_DRAW_PER_WINDOWS];
   uint8_t update;
 };
 

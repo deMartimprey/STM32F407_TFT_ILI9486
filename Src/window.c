@@ -12,6 +12,10 @@ void init_window(window* w)
     {
       w->text[i] = 0;
     }
+  for (uint8_t i = 0; i < MAX_NB_DRAW_PER_WINDOWS; i++)
+    {
+      w->draw[i] = 0;
+    }
 }
 
 // 0 OK // 1 FAIL NOT ENOUGH SPACE
@@ -28,6 +32,20 @@ uint8_t add_text_to_window(window* w, text* t)
   return 1;
 }
 
+// 0 OK // 1 FAIL NOT ENOUGH SPACE
+uint8_t add_draw_to_window(window* w, draw* d)
+{
+    for (uint8_t i = 0; i < MAX_NB_DRAW_PER_WINDOWS; i++)
+    {
+      if (w->draw[i] == 0)
+	{
+	  w->draw[i] = d;
+	  return 0;
+	}
+    }
+  return 1;
+}
+
 uint8_t display_window(window* w, uint16_t view_x, uint16_t view_y)
 {
   draw_rectangle(view_x + w->window_x, view_y + w->window_y, w->window_size_x, w->window_size_y, FONT_COLOR);
@@ -37,6 +55,13 @@ uint8_t display_window(window* w, uint16_t view_x, uint16_t view_y)
       if (w->text[i] != 0)
 	{
 	  display_text(w->text[i], view_x + w->window_x, view_y + w->window_y);
+	}
+    }
+  for (uint8_t i = 0; i < MAX_NB_DRAW_PER_WINDOWS; i++)
+    {
+      if (w->draw[i] != 0)
+	{
+	  display_draw(w->draw[i], view_x + w->window_x, view_y + w->window_y);
 	}
     }
   return 0;
@@ -55,6 +80,13 @@ uint8_t update_window(window* w, uint16_t view_x, uint16_t view_y)
       if (w->text[i] != 0)
 	{
 	  update_text(w->text[i], view_x + w->window_x, view_y + w->window_y);
+	}
+    }
+  for (uint8_t i = 0; i < MAX_NB_DRAW_PER_WINDOWS; i++)
+    {
+      if (w->draw[i] != 0)
+	{
+	  update_draw(w->draw[i], view_x + w->window_x, view_y + w->window_y);
 	}
     }
   return 0;

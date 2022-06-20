@@ -100,7 +100,7 @@ void DrawCircle2(uint16_t x_pos, uint16_t y_pos, uint16_t r, uint16_t color)
       angle = i;
       x1 = r * cos(angle * PI / 180);
       y1 = r * sin(angle * PI / 180);
-      write_one_pixel_buffer(buffer, (uint16_t)x1, (uint16_t)y1, GREEN);
+      write_one_pixel_buffer(buffer, (uint16_t)x1, (uint16_t)y1, color);
     }
   write_buffer(buffer, x_pos, y_pos, r * 2, r * 2);
 }
@@ -112,7 +112,7 @@ void DrawFillCircle(uint16_t x_pos, uint16_t y_pos, uint16_t r, uint16_t color)
   for(int y=-r; y<=r; y++)
     for(int x=-r; x<=r; x++)
       if(x*x+y*y <= r*r)
-        write_one_pixel(x_pos+x, y_pos+y, YELLOW);
+        write_one_pixel(x_pos+x, y_pos+y, color);
 }
 
 void DrawCircle(uint16_t x, uint16_t y, uint16_t r, uint16_t color)

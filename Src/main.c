@@ -65,6 +65,17 @@ int main(void)
   text1_w1_v1.text_y = 50;
   text1_w1_v1.str = &t_1_w1_v1;
   text1_w1_v1.update = 0;
+
+  draw draw1;
+  draw1.type = DOT;
+  draw1.x_pos = 140;
+  draw1.y_pos = 60;
+  draw1.x_size = 10;
+  draw1.y_size = 0;
+  draw1.thickness = 0;
+  draw1.color = NICE_GREEN;
+  draw1.update = 0;
+
   /* router router1_w1_v1; */
   /* router1_w1_v1.name = &s_router_1; */
   /* router1_w1_v1.pos_router = 0; */
@@ -77,26 +88,30 @@ int main(void)
   add_one_window(&view1, &window1_v1);
   add_one_window(&view1, &window2_v1);
   add_text_to_window(&window2_v1, &text1_w1_v1);
+  add_draw_to_window(&window2_v1, &draw1);
   display_view(&view1);
 
   while (1)
   {
-    for (uint8_t i = 35; i > 0; i--)
-      {
-	window2_v1.window_y -= 1;
-	window2_v1.update = 1;
-	text1_w1_v1.str = &t_2_w1_v1;
-	text1_w1_v1.update = 1;
-	update_view(&view1);
-      }
-    for (uint8_t i = 0; i < 35; i++)
-      {
-	window2_v1.window_y += 1;
-	window2_v1.update = 1;
-	text1_w1_v1.str = &t_1_w1_v1;
-	text1_w1_v1.update = 1;
-	update_view(&view1);
-      }
+    HAL_Delay(500);
+    
+    HAL_Delay(500);
+    
+    /* window2_v1.window_y -= 30; */
+    /* window2_v1.window_x -= 200; */
+    /* window2_v1.update = 1; */
+    /* update_view(&view1); */
+    /* draw1.color = GREEN; */
+    /* draw1.update = 1; */
+    /* update_view(&view1); */
+
+    /* window2_v1.window_y += 30; */
+    /* window2_v1.window_x += 200; */
+    /* window2_v1.update = 1; */
+    /* update_view(&view1); */
+    /* draw1.color = YELLOW; */
+    /* draw1.update = 1; */
+    /* update_view(&view1); */
   }
   /* uint16_t len = my_strlen((uint8_t*)"1234"); */
   /* uint16_t len2 = my_strlen((uint8_t*)"5678"); */
