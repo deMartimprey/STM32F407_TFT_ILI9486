@@ -27,3 +27,10 @@ uint8_t add_text_to_window(window* w, text* t)
     }
   return 1;
 }
+
+uint8_t display_window(window* w, uint16_t view_x, uint16_t view_y)
+{
+  draw_rectangle(view_x + w->window_x, view_y + w->window_y, w->window_size_x, w->window_size_y, FONT_COLOR);
+  draw_empty_rectangle(view_x + w->window_x, view_y + w->window_y, w->window_size_x, w->window_size_y, 5, STRONG_FONT);
+  return 0;
+}

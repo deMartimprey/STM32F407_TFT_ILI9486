@@ -30,8 +30,7 @@ uint8_t display_view(view* v)
     {
       if (v->windows[i] != 0)
 	{
-	  draw_rectangle(v->view_x + v->windows[i]->window_x, v->view_x + v->windows[i]->window_y, v->windows[i]->window_size_x, v->windows[i]->window_size_y, FONT_COLOR);
-	  draw_empty_rectangle(v->view_x + v->windows[i]->window_x, v->view_x + v->windows[i]->window_y, v->windows[i]->window_size_x, v->windows[i]->window_size_y, 5, STRONG_FONT);
+	  display_window(v->windows[i], v->view_x, v->view_y);
 	}
     }
   return 0;
