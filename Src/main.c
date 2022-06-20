@@ -25,7 +25,7 @@ int main(void)
   p_current_lang = &current_lang->value;
   draw_rectangle(100, 150, 5, 7, RED);
   draw_rectangle(50, 150, 30, 20, YELLOW);
-  DrawCircle(X_SIZE / 2, Y_SIZE / 2, Y_SIZE / 2, RED);
+  DrawFillCircle(X_SIZE / 2, Y_SIZE / 2, Y_SIZE / 2, RED);
   set_font_pos(10, 10);
   draw_one_char_5x7('H', BLACK, WHITE);
   draw_one_char_5x7('E', BLACK, WHITE);

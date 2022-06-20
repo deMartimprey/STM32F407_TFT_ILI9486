@@ -75,6 +75,15 @@ void DrawCircle2(uint16_t x_pos, uint16_t y_pos, uint16_t r, uint16_t color)
 }
 #endif /* USE_RAM_BUFFER */
 
+
+void DrawFillCircle(uint16_t x_pos, uint16_t y_pos, uint16_t r, uint16_t color)
+{
+  for(int y=-r; y<=r; y++)
+    for(int x=-r; x<=r; x++)
+      if(x*x+y*y <= r*r)
+        write_one_pixel(x_pos+x, y_pos+y, YELLOW);
+}
+
 void DrawCircle(uint16_t x, uint16_t y, uint16_t r, uint16_t color)
 {
       static const double PI = 3.1415926535;
