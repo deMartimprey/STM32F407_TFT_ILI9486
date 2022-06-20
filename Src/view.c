@@ -8,6 +8,7 @@ void init_view(view* v)
     }
   v->view_x = 0;
   v->view_y = 0;
+  v->update = 0;
 }
 
 // 0 OK // 1 FAIL NOT ENOUGH SPACE
@@ -31,6 +32,24 @@ uint8_t display_view(view* v)
       if (v->windows[i] != 0)
 	{
 	  display_window(v->windows[i], v->view_x, v->view_y);
+	}
+    }
+  return 0;
+}
+
+uint8_t update_view(view* v)
+{
+  if (v->update == 1)
+    {
+      display_view(v);
+      v->update = 0;
+      return 0;
+    }
+  for (uint8_t i = 0; i < MAX_WINDOW_PER_VIEW; i++)
+    {
+      if (v->windows[i] != 0)
+	{
+	  /* update_window(v->windows[i], v->view_x, v->view_y); */
 	}
     }
   return 0;

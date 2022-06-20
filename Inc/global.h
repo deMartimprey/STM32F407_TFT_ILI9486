@@ -138,6 +138,7 @@ struct text
   uint8_t (*str)[NB_LANG][SIZE_TEXT];
   uint16_t text_x;
   uint16_t text_y;
+  uint8_t update;
 };
 
 typedef struct
@@ -153,6 +154,7 @@ typedef struct
 #endif /* USE_EEPROM */
   const uint8_t (*name)[NB_LANG][SIZE_NAME_VAR]; // Name
   const uint8_t (*menu_var)[NB_LANG][NB_NAME_VAR_MENU][SIZE_NAME_VAR_MENU]; // List of string in case the paramaters is display as string, value 0 is menu_var[0], value 1 is menu_var[1] l...
+  uint8_t update;
 } var;
 
 #define MAX_SIZE_MENU	        20 // Number of parameter max in one menu
@@ -173,6 +175,7 @@ typedef struct
   var* vars[MAX_SIZE_MENU]; // list of parameter
   uint16_t menu_x; // offset x
   uint16_t menu_y; // offset y
+  uint8_t update;
 } menu;
 
 extern var* var0;
@@ -202,6 +205,7 @@ struct router
   menu* sub_menus[MAX_NB_ROUTER]; // list of menu to display null, if containt routers
   uint16_t router_x; // offset x
   uint16_t router_y; // offset y
+  uint8_t update;
 };
 
 typedef struct view view;
@@ -224,6 +228,7 @@ struct window
   router* router;
   menu* menu;
   text *text[MAX_NB_TEXT_PER_WINDOWS];
+  uint8_t update;
 };
 
 struct view
@@ -231,6 +236,7 @@ struct view
   window* windows[MAX_WINDOW_PER_VIEW];
   uint16_t view_x;
   uint16_t view_y;
+  uint8_t update;
 };
 
 extern router* cur_router; // Position in menu and submenu sytem
