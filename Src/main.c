@@ -64,6 +64,7 @@ int main(void)
   text1_w1_v1.text_x = 10;
   text1_w1_v1.text_y = 50;
   text1_w1_v1.str = &t_1_w1_v1;
+  text1_w1_v1.update = 0;
   /* router router1_w1_v1; */
   /* router1_w1_v1.name = &s_router_1; */
   /* router1_w1_v1.pos_router = 0; */
@@ -84,12 +85,16 @@ int main(void)
       {
 	window2_v1.window_y -= 1;
 	window2_v1.update = 1;
+	text1_w1_v1.str = &t_2_w1_v1;
+	text1_w1_v1.update = 1;
 	update_view(&view1);
       }
     for (uint8_t i = 0; i < 35; i++)
       {
 	window2_v1.window_y += 1;
 	window2_v1.update = 1;
+	text1_w1_v1.str = &t_1_w1_v1;
+	text1_w1_v1.update = 1;
 	update_view(&view1);
       }
   }

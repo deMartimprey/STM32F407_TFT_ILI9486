@@ -54,7 +54,7 @@ uint8_t update_window(window* w, uint16_t view_x, uint16_t view_y)
     {
       if (w->text[i] != 0)
 	{
-	  /* update_text(w->text[i], view_x + w->window_x, view_y + w->window_y); */
+	  update_text(w->text[i], view_x + w->window_x, view_y + w->window_y);
 	}
     }
   return 0;

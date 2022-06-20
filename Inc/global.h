@@ -334,6 +334,12 @@ const static uint8_t t_1_w1_v1[NB_LANG][SIZE_TEXT] =
   "text1EN"
 };
 
+const static uint8_t t_2_w1_v1[NB_LANG][SIZE_TEXT] =
+{
+  "text2FR",
+  "text2EN"
+};
+
 #ifdef __cplusplus
 }
 #endif
