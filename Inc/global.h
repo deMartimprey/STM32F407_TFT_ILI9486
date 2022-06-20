@@ -130,7 +130,27 @@ extern uint16_t buffer[X_SIZE][Y_SIZE]; // Not enough place
 #define DIGIT_TYPE		0 // Pointer null to menu_var mean this var (parameter is display a number)
 #define NAME_TYPE		1 // Value display as string
 
+#define RECTANGLE	0
+#define FRAME		1
+#define DOT		2
+#define CIRCLE		3
+
 #define SIZE_TEXT 20
+
+typedef struct draw draw;
+
+struct draw
+{
+  uint8_t type;
+  uint16_t x_pos;
+  uint16_t y_pos;
+  uint16_t x_size; // r in case of circle or dot
+  uint16_t y_size; // use only rectangle or frame
+  uint16_t thickness; // Frame only
+  uint16_t color;
+  uint8_t update;
+};
+
 typedef struct text text;
 
 struct text

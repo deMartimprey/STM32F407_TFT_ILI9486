@@ -1,5 +1,36 @@
 #include "draw.h"
 
+uint8_t display_draw(draw* d, uint16_t window_x, uint16_t window_y)
+{
+  if (d->type == RECTANGLE)
+    {
+      draw_rectangle(d->x_pos + window_x, d->y_pos + window_y, d->x_size, d->y_size, d->color);
+    }
+  if (d->type == FRAME)
+    {
+      draw_empty_rectangle(d->x_pos + window_x, d->y_pos + window_y, d->x_size, d->y_size, d->thickness, d->color);
+    }
+  if (d->type == DOT)
+    {
+      DrawFillCircle(d->x_pos + window_x, d->y_pos + window_y, d->x_size, d->color);
+    }
+  if (d->type == CIRCLE)
+    {
+      DrawCircle(d->x_pos + window_x, d->y_pos + window_y, d->x_size, d->color);
+    }
+  return 0;
+}
+
+uint8_t update_draw(draw* d, uint16_t window_x, uint16_t window_y)
+{
+  if (d->update == 1)
+    {
+      display_draw(d, window_x, window_y);
+      return 0;
+    }
+  return 0;
+}
+
 uint8_t draw_empty_rectangle(uint16_t x_pos, uint16_t y_pos, uint16_t x_size, uint16_t y_size, uint16_t thickness, uint16_t color)
 {
   draw_rectangle(x_pos, y_pos, x_size, thickness, color);
