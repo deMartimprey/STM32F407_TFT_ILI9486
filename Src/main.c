@@ -59,16 +59,16 @@ int main(void)
   window1_v1.window_y = 10;
   window1_v1.window_size_x = 150;
   window1_v1.window_size_y = 150;
-  window1_v1.window_right = &window4_v1;
-  window1_v1.window_left = &window2_v1;
+  window1_v1.window_right = &window5_v1;
+  window1_v1.window_left = &window5_v1;
 
   init_window(&window2_v1);
-  window2_v1.window_x = 170;
-  window2_v1.window_y = 10 ;
+  window2_v1.window_x = 10;
+  window2_v1.window_y = 170 ;
   window2_v1.window_size_x = 150;
   window2_v1.window_size_y = 150;
-  window2_v1.window_left = &window1_v1;
-  window2_v1.window_right = &window3_v1;
+  window2_v1.window_left = &window5_v1;
+  window2_v1.window_right = &window5_v1;
 
   init_window(&window3_v1);
   window3_v1.window_x = 10;
@@ -87,9 +87,9 @@ int main(void)
   window4_v1.window_right = &window1_v1;
 
   init_window(&window5_v1);
-  window5_v1.window_x = 330;
+  window5_v1.window_x = 180;
   window5_v1.window_y = 10;
-  window5_v1.window_size_x = 140;
+  window5_v1.window_size_x = 290;
   window5_v1.window_size_y = 310;
   window5_v1.window_left = &window1_v1;
   window5_v1.window_right = &window1_v1;
@@ -110,6 +110,16 @@ int main(void)
   draw1.color = GREEN;
   draw1.update = 0;
 
+  router router1;
+  router1.name = &s_router_1;
+  router1.pos_router = 0;
+  router1.size = 0;
+  router1.arrow_pos = 0;
+  router1.first_elem_pos = 0;
+  router1.up_router = &router1;
+  router1.router_x = 5;
+  router1.router_y = 295;
+
   /* router router1_w1_v1; */
   /* router1_w1_v1.name = &s_router_1; */
   /* router1_w1_v1.pos_router = 0; */
@@ -122,22 +132,16 @@ int main(void)
   add_one_window(&view1, &window1_v1);
   view1.cur_window = &window1_v1;
   add_one_window(&view1, &window2_v1);
-  add_one_window(&view1, &window3_v1);
-  add_one_window(&view1, &window4_v1);
+  /* add_one_window(&view1, &window3_v1); */
+  /* add_one_window(&view1, &window4_v1); */
   add_one_window(&view1, &window5_v1);
   add_text_to_window(&window2_v1, &text1_w1_v1);
   add_draw_to_window(&window2_v1, &draw1);
+  add_router_to_window(&window5_v1, &router1);
   cur_view = &view1;
-  display_view(&view1);
 
-  while (1)
-  {
-    HAL_Delay(500);
-    view_left(&view1);
-    display_view(&view1);
-    HAL_Delay(500);
-    view_right(&view1);
-    display_view(&view1);
+  /* while (1) */
+  /* { */
     
     /* window2_v1.window_y -= 30; */
     /* window2_v1.window_x -= 200; */
@@ -154,7 +158,7 @@ int main(void)
     /* draw1.color = YELLOW; */
     /* draw1.update = 1; */
     /* update_view(&view1); */
-  }
+  /* } */
   /* uint16_t len = my_strlen((uint8_t*)"1234"); */
   /* uint16_t len2 = my_strlen((uint8_t*)"5678"); */
   /* while (1) { */
@@ -163,15 +167,7 @@ int main(void)
   /*   sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE); */
   /*   sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE); */
   /* } */
-  pos_pixel(0, 0);
-
-  router router1;
-  router1.name = &s_router_1;
-  router1.pos_router = 0;
-  router1.size = 0;
-  router1.arrow_pos = 0;
-  router1.first_elem_pos = 0;
-  router1.up_router = &router1;
+  /* pos_pixel(0, 0); */
 
   router router2;
   router2.name = &s_router_2;
@@ -267,6 +263,16 @@ int main(void)
   add_elem_menu(&menu2, current_lang);
 
   add_menu_router(&router3, &menu2);
+  display_view(&view1);
+  while (1)
+    {
+    HAL_Delay(500);
+    view_left(&view1);
+    display_view(&view1);
+    HAL_Delay(500);
+    view_right(&view1);
+    display_view(&view1);
+    }
   fill_with_Color(WHITE);
 
   display_router26(cur_router, X_MENU, Y_MENU);

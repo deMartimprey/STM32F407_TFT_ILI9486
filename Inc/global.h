@@ -183,7 +183,7 @@ extern var vars[NB_VAR];
 
 typedef struct router router;
 
-  // Menu contain list of vars that can change value
+// Menu contain list of vars that can change value
 typedef struct
 {
   const uint8_t (*name)[NB_LANG][SIZE_NAME_MENU]; // Name of the menu
@@ -207,7 +207,7 @@ extern var* var4;
 extern var* current_lang; // current lang will be modified to parameter
 extern int32_t* p_current_lang;
 
-#define SIZE_NAME_ROUTER 20
+#define SIZE_NAME_ROUTER 18
 #define MAX_NB_ROUTER 20
 #define NB_LINE_ROUTER 4
 
@@ -235,6 +235,7 @@ typedef struct window window;
 #define MAX_WINDOW_PER_VIEW 5
 #define MAX_NB_TEXT_PER_WINDOWS 5
 #define MAX_NB_DRAW_PER_WINDOWS 5
+#define MAX_NB_ROUTER_PER_WINDOWS 1
 
 struct window
 {
@@ -246,7 +247,7 @@ struct window
   window* window_down;
   window* window_right;
   window* window_left;
-  router* router;
+  router* router[MAX_NB_ROUTER_PER_WINDOWS];
   menu* menu;
   text *text[MAX_NB_TEXT_PER_WINDOWS];
   draw *draw[MAX_NB_DRAW_PER_WINDOWS];

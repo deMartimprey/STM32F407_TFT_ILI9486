@@ -3,6 +3,7 @@
 
 #include "stm32f4xx_hal.h"
 #include "global.h"
+#include "router.h"
 #include "tools.h"
 #include "draw.h"
 #include "text.h"

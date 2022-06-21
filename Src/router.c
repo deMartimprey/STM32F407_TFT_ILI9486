@@ -94,6 +94,8 @@ static void fill_one_line_menu_from_router(uint8_t* str, menu* my_menu)
 
 void display_router(router* my_router, uint16_t x_pos, uint16_t y_pos)
 {
+  x_pos += my_router->router_x;
+  y_pos += my_router->router_y;
   if (cur_menu != 0)
     {
       display_menu(cur_menu, x_pos, y_pos);
@@ -162,6 +164,8 @@ void display_router(router* my_router, uint16_t x_pos, uint16_t y_pos)
 
 void display_router26(router* my_router, uint16_t x_pos, uint16_t y_pos)
 {
+  x_pos += my_router->router_x;
+  y_pos += my_router->router_y;
   if (cur_menu != 0)
     {
       display_menu(cur_menu, x_pos, y_pos);
@@ -176,7 +180,7 @@ void display_router26(router* my_router, uint16_t x_pos, uint16_t y_pos)
   fill_string_with_space(str, SIZE_NAME_ROUTER - 1);
   my_strncpy((uint8_t*)str, (uint8_t*)my_router->name[*p_current_lang], my_strlen((uint8_t*)my_router->name[*p_current_lang]));
   y_font_pos -= 26;
-  print_str_16x26(str, WHITE, FONT_COLOR);
+  print_str_16x26(str, WHITE, STRONG_FONT);
   y_font_pos -= 28;
   for (uint8_t i = 0; i < NB_LINE_ROUTER; i++) // For the number of router elem we want to display
     {
