@@ -8,7 +8,30 @@ void init_view(view* v)
     }
   v->view_x = 0;
   v->view_y = 0;
+  v->cur_window = 0;
   v->update = 0;
+}
+
+void view_left(view* v)
+{
+  if (v->cur_window != 0)
+    {
+      if (v->cur_window->window_left != 0)
+	{
+	  v->cur_window = v->cur_window->window_left;
+	}
+    }
+}
+
+void view_right(view* v)
+{
+  if (v->cur_window != 0)
+    {
+      if (v->cur_window->window_right != 0)
+	{
+	  v->cur_window = v->cur_window->window_right;
+	}
+    }
 }
 
 // 0 OK // 1 FAIL NOT ENOUGH SPACE
@@ -31,7 +54,10 @@ uint8_t display_view(view* v)
     {
       if (v->windows[i] != 0)
 	{
-	  display_window(v->windows[i], v->view_x, v->view_y);
+	  if (v->windows[i] == v->cur_window)
+	    display_select_window(v->windows[i], v->view_x, v->view_y);
+	  else
+	    display_window(v->windows[i], v->view_x, v->view_y);
 	}
     }
   return 0;

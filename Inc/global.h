@@ -256,6 +256,7 @@ struct window
 struct view
 {
   window* windows[MAX_WINDOW_PER_VIEW];
+  window* cur_window;
   uint16_t view_x;
   uint16_t view_y;
   uint8_t update;
@@ -263,6 +264,7 @@ struct view
 
 extern router* cur_router; // Position in menu and submenu sytem
 extern menu* cur_menu; // Position in menu and submenu sytem
+extern view* cur_view;
 
 // Strings const static so its stay on the rom and don't go in the ram
 

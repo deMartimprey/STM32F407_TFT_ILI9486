@@ -9,6 +9,8 @@
 
 uint8_t add_one_window(view* v, window* win);
 void init_view(view* v);
+void view_right(view* v);
+void view_left(view* v);
 uint8_t display_view();
 uint8_t update_view(view* v);
 

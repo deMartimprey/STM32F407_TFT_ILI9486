@@ -47,18 +47,52 @@ int main(void)
   view view1;
 
   window window1_v1;
+  window window2_v1;
+
+  window window3_v1;
+  window window4_v1;
+
+  window window5_v1;
+
   init_window(&window1_v1);
   window1_v1.window_x = 10;
   window1_v1.window_y = 10;
-  window1_v1.window_size_x = 200;
-  window1_v1.window_size_y = 250;
+  window1_v1.window_size_x = 150;
+  window1_v1.window_size_y = 150;
+  window1_v1.window_right = &window4_v1;
+  window1_v1.window_left = &window2_v1;
 
-  window window2_v1;
   init_window(&window2_v1);
-  window2_v1.window_x = 220;
-  window2_v1.window_y = 60;
-  window2_v1.window_size_x = 200;
-  window2_v1.window_size_y = 250;
+  window2_v1.window_x = 170;
+  window2_v1.window_y = 10 ;
+  window2_v1.window_size_x = 150;
+  window2_v1.window_size_y = 150;
+  window2_v1.window_left = &window1_v1;
+  window2_v1.window_right = &window3_v1;
+
+  init_window(&window3_v1);
+  window3_v1.window_x = 10;
+  window3_v1.window_y = 170;
+  window3_v1.window_size_x = 150;
+  window3_v1.window_size_y = 150;
+  window3_v1.window_left = &window4_v1;
+  window3_v1.window_right = &window2_v1;
+
+  init_window(&window4_v1);
+  window4_v1.window_x = 170;
+  window4_v1.window_y = 170;
+  window4_v1.window_size_x = 150;
+  window4_v1.window_size_y = 150;
+  window4_v1.window_left = &window1_v1;
+  window4_v1.window_right = &window1_v1;
+
+  init_window(&window5_v1);
+  window5_v1.window_x = 330;
+  window5_v1.window_y = 10;
+  window5_v1.window_size_x = 140;
+  window5_v1.window_size_y = 310;
+  window5_v1.window_left = &window1_v1;
+  window5_v1.window_right = &window1_v1;
 
   text text1_w1_v1;
   text1_w1_v1.text_x = 10;
@@ -73,7 +107,7 @@ int main(void)
   draw1.x_size = 10;
   draw1.y_size = 0;
   draw1.thickness = 0;
-  draw1.color = NICE_GREEN;
+  draw1.color = GREEN;
   draw1.update = 0;
 
   /* router router1_w1_v1; */
@@ -86,16 +120,24 @@ int main(void)
 
   init_view(&view1);
   add_one_window(&view1, &window1_v1);
+  view1.cur_window = &window1_v1;
   add_one_window(&view1, &window2_v1);
+  add_one_window(&view1, &window3_v1);
+  add_one_window(&view1, &window4_v1);
+  add_one_window(&view1, &window5_v1);
   add_text_to_window(&window2_v1, &text1_w1_v1);
   add_draw_to_window(&window2_v1, &draw1);
+  cur_view = &view1;
   display_view(&view1);
 
   while (1)
   {
     HAL_Delay(500);
-    
+    view_left(&view1);
+    display_view(&view1);
     HAL_Delay(500);
+    view_right(&view1);
+    display_view(&view1);
     
     /* window2_v1.window_y -= 30; */
     /* window2_v1.window_x -= 200; */

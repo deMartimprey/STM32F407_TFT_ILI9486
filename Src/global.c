@@ -15,6 +15,7 @@ var* current_lang;
 int32_t* p_current_lang;
 router* cur_router;
 menu* cur_menu;
+view* cur_view;
 
 var vars[NB_VAR];
 
