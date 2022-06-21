@@ -247,6 +247,7 @@ struct window
   window* window_down;
   window* window_right;
   window* window_left;
+  window* window_back;
   router* router[MAX_NB_ROUTER_PER_WINDOWS];
   menu* menu;
   text *text[MAX_NB_TEXT_PER_WINDOWS];
@@ -261,51 +262,60 @@ struct view
   uint16_t view_x;
   uint16_t view_y;
   uint8_t update;
+  view* view_back;
 };
 
 extern router* cur_router; // Position in menu and submenu sytem
 extern menu* cur_menu; // Position in menu and submenu sytem
 extern view* cur_view;
+extern window* cur_window;
+
+extern uint8_t pressed_down;
+extern uint8_t pressed_up;
+extern uint8_t pressed_left;
+extern uint8_t pressed_right;
+extern uint8_t pressed_valid;
+extern uint8_t pressed_back;
 
 // Strings const static so its stay on the rom and don't go in the ram
 
-const static uint8_t s_router_1[NB_LANG][SIZE_NAME_VAR] =
+const static uint8_t s_router_1[NB_LANG][SIZE_NAME_ROUTER] =
 {
  "Sous menu 1",
  "Sub menu 1"
 };
 
-const static uint8_t s_router_2[NB_LANG][SIZE_NAME_VAR] =
+const static uint8_t s_router_2[NB_LANG][SIZE_NAME_ROUTER] =
 {
  "Sous menu 2",
  "Sub menu 2"
 };
 
-const static uint8_t s_router_3[NB_LANG][SIZE_NAME_VAR] =
+const static uint8_t s_router_3[NB_LANG][SIZE_NAME_ROUTER] =
 {
  "Sous menu 3",
  "Sub menu 3"
 };
 
-const static uint8_t s_router_4[NB_LANG][SIZE_NAME_VAR] =
+const static uint8_t s_router_4[NB_LANG][SIZE_NAME_ROUTER] =
 {
  "Sous menu 4",
  "Sub menu 4"
 };
 
-const static uint8_t s_router_5[NB_LANG][SIZE_NAME_VAR] =
+const static uint8_t s_router_5[NB_LANG][SIZE_NAME_ROUTER] =
 {
  "Sous menu 5",
  "Sub menu 5"
 };
 
-const static uint8_t s_router_6[NB_LANG][SIZE_NAME_VAR] =
+const static uint8_t s_router_6[NB_LANG][SIZE_NAME_ROUTER] =
 {
  "Sous menu 6",
  "Sub menu 6"
 };
 
-const static uint8_t s_router_7[NB_LANG][SIZE_NAME_VAR] =
+const static uint8_t s_router_7[NB_LANG][SIZE_NAME_ROUTER] =
 {
  "Sous menu 7",
  "Sub menu 7"

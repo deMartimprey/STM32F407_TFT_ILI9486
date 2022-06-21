@@ -1,5 +1,21 @@
 #include "navigation.h"
 
+void check_nav()
+{
+  if (pressed_up)
+    nav_up();
+  if (pressed_down)
+    nav_down();
+  if (pressed_left)
+    nav_left();
+  if (pressed_right)
+    nav_right();
+  if (pressed_valid)
+    nav_valid();
+  if (pressed_back)
+    nav_back();
+}
+
 void nav_up()
 {
   if (cur_menu != NULL)
@@ -51,7 +67,18 @@ void nav_back()
 {
   if (cur_menu != 0)
     cur_menu = 0;
-  else
-    cur_router = cur_router->up_router;
+  else if (cur_router != NULL)
+    {
+      if (cur_router->up_router != NULL)
+	{
+	  cur_router = cur_router->up_router;
+	}
+      else
+	cur_router = NULL;
+    }
+  else if (cur_view != NULL)
+    {
+      if (cur_view->view_back != NULL)
+      cur_view = cur_view->view_back;
+    }
 }
-

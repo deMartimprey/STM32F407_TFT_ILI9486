@@ -10,6 +10,7 @@ extern "C" {
 #include "router.h"
 #include "menu.h"
 
+void check_nav();
 void nav_up();
 void nav_down();
 void nav_right();

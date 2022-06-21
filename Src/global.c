@@ -16,6 +16,7 @@ int32_t* p_current_lang;
 router* cur_router;
 menu* cur_menu;
 view* cur_view;
+window* cur_window;
 
 var vars[NB_VAR];
 
@@ -30,3 +31,10 @@ var* var7;
 var* var8;
 var* var9;
 var* var10;
+
+uint8_t pressed_down;
+uint8_t pressed_up;
+uint8_t pressed_left;
+uint8_t pressed_right;
+uint8_t pressed_valid;
+uint8_t pressed_back;
