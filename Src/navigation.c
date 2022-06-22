@@ -54,8 +54,9 @@ void nav_right()
     {
       if (cur_window->window_right != NULL)
 	{
-	  cur_window = cur_window->window_right;
-	  cur_view->cur_window = cur_window->window_right;
+	  window* new_cur_window = cur_window->window_right;
+	  cur_window = new_cur_window;
+	  cur_view->cur_window = new_cur_window;
 	}
     }
 }
@@ -74,8 +75,9 @@ void nav_left()
     {
       if (cur_window->window_left != NULL)
 	{
-	  cur_window = cur_window->window_left;
-	  cur_view->cur_window = cur_window->window_left;
+	  window* new_cur_window = cur_window->window_left;
+	  cur_window = new_cur_window;
+	  cur_view->cur_window = new_cur_window;
 	}
     }
 }
@@ -89,7 +91,11 @@ void nav_valid()
     }
   else if (cur_window != NULL)
     {
-      cur_view = cur_window->view_enter;
+      if (cur_window->view_enter != NULL)
+	{
+	  cur_view = cur_window->view_enter;
+	  cur_window = cur_view->cur_window;
+	}
     }
 }
 
@@ -109,6 +115,9 @@ void nav_back()
   else if (cur_view != NULL)
     {
       if (cur_view->view_back != NULL)
-	cur_view = cur_view->view_back;
+	{
+	  cur_view = cur_view->view_back;
+	  cur_window = cur_view->cur_window;
+	}
     }
 }

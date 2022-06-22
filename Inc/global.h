@@ -376,10 +376,16 @@ const static uint8_t t_2_w1_v1[NB_LANG][SIZE_TEXT] =
   "View2T2EN"
 };
 
-  const static uint8_t t_1_w1_v2[NB_LANG][SIZE_TEXT] =
+const static uint8_t t_1_w1_v2[NB_LANG][SIZE_TEXT] =
 {
   "View2FR",
   "View2EN"
+};
+
+const static uint8_t t_1_w1_v3[NB_LANG][SIZE_TEXT] =
+{
+  "View3FR",
+  "View3EN"
 };
 
 #ifdef __cplusplus

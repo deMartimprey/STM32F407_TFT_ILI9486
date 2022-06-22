@@ -41,6 +41,8 @@ uint8_t add_one_window(view* v, window* win)
     {
       if (v->windows[i] == 0)
 	{
+	  if (i == 0)
+	      v->cur_window = win;
 	  v->windows[i] = win;
 	  return 0;
 	}

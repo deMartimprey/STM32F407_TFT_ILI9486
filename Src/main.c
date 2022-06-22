@@ -45,11 +45,14 @@ int main(void)
 
   view view1;
   view view2;
+  view view3;
 
   init_view(&view1);
   init_view(&view2);
+  init_view(&view3);
 
   view2.view_back = &view1;
+  view3.view_back = &view1;
 
   window window1_v1;
   window window2_v1;
@@ -57,6 +60,7 @@ int main(void)
   window window4_v1;
   window window5_v1;
   window window1_v2;
+  window window1_v3;
 
   init_window(&window1_v1);
   init_window(&window2_v1);
@@ -64,22 +68,23 @@ int main(void)
   init_window(&window4_v1);
   init_window(&window5_v1);
   init_window(&window1_v2);
+  init_window(&window1_v3);
 
   window1_v1.window_x = 10;
   window1_v1.window_y = 10;
   window1_v1.window_size_x = 150;
   window1_v1.window_size_y = 150;
   window1_v1.window_right = &window5_v1;
-  window1_v1.window_left = &window5_v1;
-  window1_v1.window_left = &window5_v1;
+  window1_v1.window_left = &window2_v1;
   window1_v1.view_enter = &view2;
 
   window2_v1.window_x = 10;
   window2_v1.window_y = 170 ;
   window2_v1.window_size_x = 150;
   window2_v1.window_size_y = 150;
-  window2_v1.window_left = &window5_v1;
+  window2_v1.window_left = &window1_v1;
   window2_v1.window_right = &window5_v1;
+  window2_v1.view_enter = &view3;
 
   window3_v1.window_x = 10;
   window3_v1.window_y = 170;
@@ -109,6 +114,14 @@ int main(void)
   window1_v2.window_left = &window1_v2;
   window1_v2.window_right = &window1_v2;
 
+  window1_v3.window_x = 180;
+  window1_v3.window_y = 100;
+  window1_v3.window_size_x = 100;
+  window1_v3.window_size_y = 200;
+  window1_v3.window_left = &window1_v3;
+  window1_v3.window_right = &window1_v3;
+  window1_v3.view_enter = &view1;
+
   text text1_w1_v1;
   text1_w1_v1.text_x = 10;
   text1_w1_v1.text_y = 50;
@@ -120,6 +133,12 @@ int main(void)
   text1_w1_v2.text_y = 10;
   text1_w1_v2.str = &t_1_w1_v2;
   text1_w1_v2.update = 0;
+
+  text text1_w1_v3;
+  text1_w1_v3.text_x = 10;
+  text1_w1_v3.text_y = 10;
+  text1_w1_v3.str = &t_1_w1_v3;
+  text1_w1_v3.update = 0;
 
   draw draw1;
   draw1.type = DOT;
@@ -150,8 +169,11 @@ int main(void)
   add_one_window(&view2, &window1_v2);
   view2.cur_window = &window1_v2;
 
+  add_one_window(&view3, &window1_v3);
+
   add_text_to_window(&window2_v1, &text1_w1_v1);
   add_text_to_window(&window1_v2, &text1_w1_v2);
+  add_text_to_window(&window1_v3, &text1_w1_v3);
 
   add_draw_to_window(&window2_v1, &draw1);
   add_router_to_window(&window5_v1, &router1);
@@ -253,6 +275,10 @@ int main(void)
   display_view(cur_view);
   while (1)
     {
+    HAL_Delay(500);
+    nav_left();
+    fill_with_Color(WHITE);
+    display_view(cur_view);
     HAL_Delay(500);
     nav_valid();
     fill_with_Color(WHITE);
