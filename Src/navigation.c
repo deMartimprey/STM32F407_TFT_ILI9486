@@ -85,6 +85,10 @@ void nav_left()
 void nav_valid()
 {
   if (cur_menu != 0);
+  if (cur_router == 0 && cur_window->router[0] != NULL)
+    {
+      cur_router = cur_window->router[0];
+    }
   else if (cur_router != 0)
     {
       into_router(cur_router);

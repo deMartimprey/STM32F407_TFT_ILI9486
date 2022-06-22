@@ -156,7 +156,7 @@ int main(void)
   router1.size = 0;
   router1.arrow_pos = 0;
   router1.first_elem_pos = 0;
-  router1.up_router = &router1;
+  router1.up_router = 0;
   router1.router_x = 5;
   router1.router_y = 295;
 
@@ -273,21 +273,64 @@ int main(void)
 
   add_menu_router(&router3, &menu2);
   display_view(cur_view);
+  HAL_Delay(500);
   while (1)
     {
-    HAL_Delay(500);
-    nav_left();
+    nav_right();
     fill_with_Color(WHITE);
     display_view(cur_view);
     HAL_Delay(500);
+
     nav_valid();
     fill_with_Color(WHITE);
     display_view(cur_view);
     HAL_Delay(500);
+
+    nav_up();
+    fill_with_Color(WHITE);
+    display_view(cur_view);
+    HAL_Delay(500);
+
+    nav_up();
+    fill_with_Color(WHITE);
+    display_view(cur_view);
+    HAL_Delay(500);
+
+    nav_down();
+    fill_with_Color(WHITE);
+    display_view(cur_view);
+    HAL_Delay(500);
+
     nav_back();
     fill_with_Color(WHITE);
     display_view(cur_view);
-    /* HAL_Delay(500); */
+    HAL_Delay(500);
+
+    nav_left();
+    fill_with_Color(WHITE);
+    display_view(cur_view);
+    HAL_Delay(500);
+
+    nav_left();
+    fill_with_Color(WHITE);
+    display_view(cur_view);
+    HAL_Delay(500);
+
+    nav_valid();
+    fill_with_Color(WHITE);
+    display_view(cur_view);
+    HAL_Delay(500);
+
+    nav_back();
+    fill_with_Color(WHITE);
+    display_view(cur_view);
+    HAL_Delay(500);
+
+    nav_left();
+    fill_with_Color(WHITE);
+    display_view(cur_view);
+    HAL_Delay(500);
+/* HAL_Delay(500); */
     /* view_left(&view1); */
     /* display_view(&view1); */
     /* HAL_Delay(500); */
