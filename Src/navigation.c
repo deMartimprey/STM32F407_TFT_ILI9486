@@ -46,6 +46,18 @@ void nav_right()
     {
       menu_var_up(cur_menu);
     }
+  else if (cur_router != NULL)
+    {
+      return;
+    }
+  else if (cur_window != NULL)
+    {
+      if (cur_window->window_right != NULL)
+	{
+	  cur_window = cur_window->window_right;
+	  cur_view->cur_window = cur_window->window_right;
+	}
+    }
 }
 
 void nav_left()
@@ -54,13 +66,31 @@ void nav_left()
     {
       menu_var_down(cur_menu);
     }
+  else if (cur_router != NULL)
+    {
+      return;
+    }
+  else if (cur_window != NULL)
+    {
+      if (cur_window->window_left != NULL)
+	{
+	  cur_window = cur_window->window_left;
+	  cur_view->cur_window = cur_window->window_left;
+	}
+    }
 }
 
 void nav_valid()
 {
   if (cur_menu != 0);
-  else
-    into_router(cur_router);
+  else if (cur_router != 0)
+    {
+      into_router(cur_router);
+    }
+  else if (cur_window != NULL)
+    {
+      cur_view = cur_window->view_enter;
+    }
 }
 
 void nav_back()
@@ -79,6 +109,6 @@ void nav_back()
   else if (cur_view != NULL)
     {
       if (cur_view->view_back != NULL)
-      cur_view = cur_view->view_back;
+	cur_view = cur_view->view_back;
     }
 }

@@ -248,6 +248,7 @@ struct window
   window* window_right;
   window* window_left;
   window* window_back;
+  view* view_enter;
   router* router[MAX_NB_ROUTER_PER_WINDOWS];
   menu* menu;
   text *text[MAX_NB_TEXT_PER_WINDOWS];
@@ -365,14 +366,20 @@ const static uint8_t s_var4[NB_LANG][SIZE_NAME_VAR] =
 
 const static uint8_t t_1_w1_v1[NB_LANG][SIZE_TEXT] =
 {
-  "text1FR",
-  "text1EN"
+  "View1FR",
+  "View1EN"
 };
 
 const static uint8_t t_2_w1_v1[NB_LANG][SIZE_TEXT] =
 {
-  "text2FR",
-  "text2EN"
+  "View2T2FR",
+  "View2T2EN"
+};
+
+  const static uint8_t t_1_w1_v2[NB_LANG][SIZE_TEXT] =
+{
+  "View2FR",
+  "View2EN"
 };
 
 #ifdef __cplusplus

@@ -7,6 +7,7 @@ void init_window(window* w)
   w->window_down = 0;
   w->window_right = 0;
   w->window_left = 0;
+  w->view_enter = NULL;
   for (uint8_t i = 0; i < MAX_NB_TEXT_PER_WINDOWS; i++)
     {
       w->text[i] = 0;

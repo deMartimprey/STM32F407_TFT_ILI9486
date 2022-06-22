@@ -23,7 +23,6 @@ int main(void)
   fill_with_Color(WHITE);
   current_lang = new_var(vars, &s_lang, 0, 0, 1, 0);
   p_current_lang = &current_lang->value;
-  draw_rectangle(100, 150, 5, 7, RED);
   draw_rectangle(50, 150, 30, 20, YELLOW);
   DrawFillCircle(X_SIZE / 2, Y_SIZE / 2, Y_SIZE / 2, RED);
   set_font_pos(10, 10);
@@ -45,24 +44,36 @@ int main(void)
   fill_with_Color(WHITE);
 
   view view1;
+  view view2;
+
+  init_view(&view1);
+  init_view(&view2);
+
+  view2.view_back = &view1;
 
   window window1_v1;
   window window2_v1;
-
   window window3_v1;
   window window4_v1;
-
   window window5_v1;
+  window window1_v2;
 
   init_window(&window1_v1);
+  init_window(&window2_v1);
+  init_window(&window3_v1);
+  init_window(&window4_v1);
+  init_window(&window5_v1);
+  init_window(&window1_v2);
+
   window1_v1.window_x = 10;
   window1_v1.window_y = 10;
   window1_v1.window_size_x = 150;
   window1_v1.window_size_y = 150;
   window1_v1.window_right = &window5_v1;
   window1_v1.window_left = &window5_v1;
+  window1_v1.window_left = &window5_v1;
+  window1_v1.view_enter = &view2;
 
-  init_window(&window2_v1);
   window2_v1.window_x = 10;
   window2_v1.window_y = 170 ;
   window2_v1.window_size_x = 150;
@@ -70,7 +81,6 @@ int main(void)
   window2_v1.window_left = &window5_v1;
   window2_v1.window_right = &window5_v1;
 
-  init_window(&window3_v1);
   window3_v1.window_x = 10;
   window3_v1.window_y = 170;
   window3_v1.window_size_x = 150;
@@ -78,7 +88,6 @@ int main(void)
   window3_v1.window_left = &window4_v1;
   window3_v1.window_right = &window2_v1;
 
-  init_window(&window4_v1);
   window4_v1.window_x = 170;
   window4_v1.window_y = 170;
   window4_v1.window_size_x = 150;
@@ -86,7 +95,6 @@ int main(void)
   window4_v1.window_left = &window1_v1;
   window4_v1.window_right = &window1_v1;
 
-  init_window(&window5_v1);
   window5_v1.window_x = 180;
   window5_v1.window_y = 10;
   window5_v1.window_size_x = 290;
@@ -94,11 +102,24 @@ int main(void)
   window5_v1.window_left = &window1_v1;
   window5_v1.window_right = &window1_v1;
 
+  window1_v2.window_x = 180;
+  window1_v2.window_y = 100;
+  window1_v2.window_size_x = 100;
+  window1_v2.window_size_y = 200;
+  window1_v2.window_left = &window1_v2;
+  window1_v2.window_right = &window1_v2;
+
   text text1_w1_v1;
   text1_w1_v1.text_x = 10;
   text1_w1_v1.text_y = 50;
   text1_w1_v1.str = &t_1_w1_v1;
   text1_w1_v1.update = 0;
+
+  text text1_w1_v2;
+  text1_w1_v2.text_x = 10;
+  text1_w1_v2.text_y = 10;
+  text1_w1_v2.str = &t_1_w1_v2;
+  text1_w1_v2.update = 0;
 
   draw draw1;
   draw1.type = DOT;
@@ -120,54 +141,21 @@ int main(void)
   router1.router_x = 5;
   router1.router_y = 295;
 
-  /* router router1_w1_v1; */
-  /* router1_w1_v1.name = &s_router_1; */
-  /* router1_w1_v1.pos_router = 0; */
-  /* router1_w1_v1.size = 0; */
-  /* router1_w1_v1.arrow_pos = 0; */
-  /* router1_w1_v1.first_elem_pos = 0; */
-  /* router1_w1_v1.up_router = &router1_w1_v1; */
-
-  init_view(&view1);
   add_one_window(&view1, &window1_v1);
-  view1.cur_window = &window1_v1;
   add_one_window(&view1, &window2_v1);
-  /* add_one_window(&view1, &window3_v1); */
-  /* add_one_window(&view1, &window4_v1); */
   add_one_window(&view1, &window5_v1);
+  view1.cur_window = &window1_v1;
+  cur_window = &window1_v1;
+
+  add_one_window(&view2, &window1_v2);
+  view2.cur_window = &window1_v2;
+
   add_text_to_window(&window2_v1, &text1_w1_v1);
+  add_text_to_window(&window1_v2, &text1_w1_v2);
+
   add_draw_to_window(&window2_v1, &draw1);
   add_router_to_window(&window5_v1, &router1);
   cur_view = &view1;
-
-  /* while (1) */
-  /* { */
-    
-    /* window2_v1.window_y -= 30; */
-    /* window2_v1.window_x -= 200; */
-    /* window2_v1.update = 1; */
-    /* update_view(&view1); */
-    /* draw1.color = GREEN; */
-    /* draw1.update = 1; */
-    /* update_view(&view1); */
-
-    /* window2_v1.window_y += 30; */
-    /* window2_v1.window_x += 200; */
-    /* window2_v1.update = 1; */
-    /* update_view(&view1); */
-    /* draw1.color = YELLOW; */
-    /* draw1.update = 1; */
-    /* update_view(&view1); */
-  /* } */
-  /* uint16_t len = my_strlen((uint8_t*)"1234"); */
-  /* uint16_t len2 = my_strlen((uint8_t*)"5678"); */
-  /* while (1) { */
-  /*   sleep_screen_str((uint8_t*)"1234", len, RED, WHITE); */
-  /*   sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE); */
-  /*   sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE); */
-  /*   sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE); */
-  /* } */
-  /* pos_pixel(0, 0); */
 
   router router2;
   router2.name = &s_router_2;
@@ -217,7 +205,6 @@ int main(void)
   router7.first_elem_pos = 0;
   router7.up_router = &router1;
 
-  cur_router = &router1;
   add_elem_router(&router1, &router1);
   add_elem_router(&router1, &router2);
   add_elem_router(&router1, &router3);
@@ -263,15 +250,23 @@ int main(void)
   add_elem_menu(&menu2, current_lang);
 
   add_menu_router(&router3, &menu2);
-  display_view(&view1);
+  display_view(cur_view);
   while (1)
     {
     HAL_Delay(500);
-    view_left(&view1);
-    display_view(&view1);
+    nav_valid();
+    fill_with_Color(WHITE);
+    display_view(cur_view);
     HAL_Delay(500);
-    view_right(&view1);
-    display_view(&view1);
+    nav_back();
+    fill_with_Color(WHITE);
+    display_view(cur_view);
+    /* HAL_Delay(500); */
+    /* view_left(&view1); */
+    /* display_view(&view1); */
+    /* HAL_Delay(500); */
+    /* view_right(&view1); */
+    /* display_view(&view1); */
     }
   fill_with_Color(WHITE);
 
@@ -319,6 +314,15 @@ int main(void)
   nav_back();
   display_router26(cur_router, X_MENU, Y_MENU);
   HAL_Delay(500);
+
+  /* uint16_t len = my_strlen((uint8_t*)"1234"); */
+  /* uint16_t len2 = my_strlen((uint8_t*)"5678"); */
+  /* while (1) { */
+  /*   sleep_screen_str((uint8_t*)"1234", len, RED, WHITE); */
+  /*   sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE); */
+  /*   sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE); */
+  /*   sleep_screen_str2((uint8_t*)"5678", len2, RED, WHITE); */
+  /* } */
 
   while (1);
     {
