@@ -85,9 +85,9 @@ void nav_left()
 void nav_valid()
 {
   if (cur_menu != 0);
-  if (cur_router == 0 && cur_window->router[0] != NULL)
+  if (cur_router == 0 && cur_window->router != NULL)
     {
-      cur_router = cur_window->router[0];
+      cur_router = cur_window->router;
     }
   else if (cur_router != 0)
     {
@@ -111,7 +111,7 @@ void nav_back()
     {
       if (cur_router->up_router != NULL)
 	{
-	  cur_router = cur_router->up_router;
+	  back_router(cur_router);
 	}
       else
 	cur_router = NULL;

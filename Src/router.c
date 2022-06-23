@@ -1,5 +1,13 @@
 #include "router.h"
 
+void init_router(router *r)
+{
+    for (uint8_t i = 0; i < MAX_NB_ROUTER; i++)
+    {
+      r->sub_routers[i] = 0;
+    }
+}
+
 // Add a pointer of another router in a router for making subrouters
 uint8_t add_elem_router(router* my_router, router* router_to_add)
 {
@@ -31,7 +39,24 @@ void into_router(router *my_router)
       if (my_router->pos_router <= MAX_NB_ROUTER && my_router->sub_routers[my_router->pos_router] != NULL)
 	{
 	  cur_router = my_router->sub_routers[my_router->pos_router];
+	  cur_window->router = my_router->sub_routers[my_router->pos_router];
 	}
+    }
+  else if (my_router->sub_menus[0] != 0)
+    {
+      if (my_router->pos_router <= NB_LINE_ROUTER && my_router->sub_menus[my_router->pos_router] != NULL)
+	{
+	  cur_menu = my_router->sub_menus[my_router->pos_router];
+	}
+    }
+}
+
+void back_router(router *my_router)
+{
+  if (my_router->up_router != 0)
+    {
+      cur_router = my_router->up_router;
+      cur_window->router = cur_router;
     }
   else if (my_router->sub_menus[0] != 0)
     {

@@ -249,7 +249,7 @@ struct window
   window* window_left;
   window* window_back;
   view* view_enter;
-  router* router[MAX_NB_ROUTER_PER_WINDOWS];
+  router* router;
   menu* menu;
   text *text[MAX_NB_TEXT_PER_WINDOWS];
   draw *draw[MAX_NB_DRAW_PER_WINDOWS];

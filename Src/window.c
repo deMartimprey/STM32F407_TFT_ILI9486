@@ -16,10 +16,7 @@ void init_window(window* w)
     {
       w->draw[i] = 0;
     }
-  for (uint8_t i = 0; i < MAX_NB_ROUTER_PER_WINDOWS; i++)
-    {
-      w->router[i] = 0;
-    }
+  w->router = NULL;
 }
 
 // 0 OK // 1 FAIL NOT ENOUGH SPACE
@@ -53,15 +50,8 @@ uint8_t add_draw_to_window(window* w, draw* d)
 // 0 OK // 1 FAIL NOT ENOUGH SPACE
 uint8_t add_router_to_window(window* w, router* r)
 {
-    for (uint8_t i = 0; i < MAX_NB_ROUTER_PER_WINDOWS; i++)
-    {
-      if (w->router[i] == 0)
-	{
-	  w->router[i] = r;
-	  return 0;
-	}
-    }
-  return 1;
+  w->router = r;
+  return 0;
 }
 
 uint8_t display_window(window* w, uint16_t view_x, uint16_t view_y)
@@ -82,12 +72,9 @@ uint8_t display_window(window* w, uint16_t view_x, uint16_t view_y)
 	  display_draw(w->draw[i], view_x + w->window_x, view_y + w->window_y);
 	}
     }
-  for (uint8_t i = 0; i < MAX_NB_ROUTER_PER_WINDOWS; i++)
+  if (w->router != NULL)
     {
-      if (w->router[i] != 0)
-	{
-	  display_router26(w->router[i], view_x + w->window_x, view_y + w->window_y);
-	}
+      display_router26(w->router, view_x + w->window_x, view_y + w->window_y);
     }
   return 0;
 }
@@ -110,12 +97,9 @@ uint8_t display_select_window(window* w, uint16_t view_x, uint16_t view_y)
 	  display_draw(w->draw[i], view_x + w->window_x, view_y + w->window_y);
 	}
     }
-  for (uint8_t i = 0; i < MAX_NB_ROUTER_PER_WINDOWS; i++)
+  if (w->router != 0)
     {
-      if (w->router[i] != 0)
-	{
-	  display_router26(w->router[i], view_x + w->window_x, view_y + w->window_y);
-	}
+      display_router26(w->router, view_x + w->window_x, view_y + w->window_y);
     }
   return 0;
 }

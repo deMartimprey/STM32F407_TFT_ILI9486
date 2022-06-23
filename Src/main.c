@@ -151,6 +151,7 @@ int main(void)
   draw1.update = 0;
 
   router router1;
+  init_router(&router1);
   router1.name = &s_router_1;
   router1.pos_router = 0;
   router1.size = 0;
@@ -180,6 +181,7 @@ int main(void)
   cur_view = &view1;
 
   router router2;
+  init_router(&router2);
   router2.name = &s_router_2;
   router2.pos_router = 0;
   router2.size = 0;
@@ -188,14 +190,18 @@ int main(void)
   router2.up_router = &router1;
 
   router router3;
+  init_router(&router3);
   router3.name = &s_router_3;
   router3.pos_router = 0;
   router3.size = 0;
   router3.arrow_pos = 0;
   router3.first_elem_pos = 0;
   router3.up_router = &router1;
+  router3.router_x = 5;
+  router3.router_y = 295;
 
   router router4;
+  init_router(&router4);
   router4.name = &s_router_4;
   router4.pos_router = 0;
   router4.size = 0;
@@ -204,6 +210,7 @@ int main(void)
   router4.up_router = &router1;
 
   router router5;
+  init_router(&router5);
   router5.name = &s_router_5;
   router5.pos_router = 0;
   router5.size = 0;
@@ -212,6 +219,7 @@ int main(void)
   router5.up_router = &router1;
 
   router router6;
+  init_router(&router6);
   router6.name = &s_router_6;
   router6.pos_router = 0;
   router6.size = 0;
@@ -220,6 +228,7 @@ int main(void)
   router6.up_router = &router1;
 
   router router7;
+  init_router(&router7);
   router7.name = &s_router_7;
   router7.pos_router = 0;
   router7.size = 0;
@@ -296,7 +305,22 @@ int main(void)
     display_view(cur_view);
     HAL_Delay(500);
 
-    nav_down();
+    nav_valid();
+    fill_with_Color(WHITE);
+    display_view(cur_view);
+    HAL_Delay(500);
+
+    nav_valid();
+    fill_with_Color(WHITE);
+    display_view(cur_view);
+    HAL_Delay(500);
+
+    nav_back();
+    fill_with_Color(WHITE);
+    display_view(cur_view);
+    HAL_Delay(500);
+
+    nav_back();
     fill_with_Color(WHITE);
     display_view(cur_view);
     HAL_Delay(500);
