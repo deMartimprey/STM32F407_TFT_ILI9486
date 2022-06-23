@@ -188,6 +188,8 @@ int main(void)
   router2.arrow_pos = 0;
   router2.first_elem_pos = 0;
   router2.up_router = &router1;
+  router2.router_x = 5;
+  router2.router_y = 295;
 
   router router3;
   init_router(&router3);
@@ -208,6 +210,8 @@ int main(void)
   router4.arrow_pos = 0;
   router4.first_elem_pos = 0;
   router4.up_router = &router1;
+  router4.router_x = 5;
+  router4.router_y = 295;
 
   router router5;
   init_router(&router5);
@@ -217,6 +221,8 @@ int main(void)
   router5.arrow_pos = 0;
   router5.first_elem_pos = 0;
   router5.up_router = &router1;
+  router5.router_x = 5;
+  router5.router_y = 295;
 
   router router6;
   init_router(&router6);
@@ -226,6 +232,8 @@ int main(void)
   router6.arrow_pos = 0;
   router6.first_elem_pos = 0;
   router6.up_router = &router1;
+  router6.router_x = 5;
+  router6.router_y = 295;
 
   router router7;
   init_router(&router7);
@@ -235,6 +243,8 @@ int main(void)
   router7.arrow_pos = 0;
   router7.first_elem_pos = 0;
   router7.up_router = &router1;
+  router7.router_x = 5;
+  router7.router_y = 295;
 
   add_elem_router(&router1, &router1);
   add_elem_router(&router1, &router2);
@@ -311,6 +321,11 @@ int main(void)
     HAL_Delay(500);
 
     nav_valid();
+    fill_with_Color(WHITE);
+    display_view(cur_view);
+    HAL_Delay(500);
+
+    nav_up();
     fill_with_Color(WHITE);
     display_view(cur_view);
     HAL_Delay(500);

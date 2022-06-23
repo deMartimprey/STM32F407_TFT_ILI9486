@@ -72,13 +72,18 @@ void display_menu(menu *my_menu, uint16_t x_pos, uint16_t y_pos)
       if (i + my_menu->first_elem_pos < my_menu->size)
 	{
 	  fill_string_with_space(str, SIZE_NAME_MENU - 1);
-	  if (i == my_menu->arrow_pos)
-	    str[0] = '>';
-	  else
-	    str[0] = ' ';
 	  fill_one_line_menu(str, my_menu->vars[my_menu->first_elem_pos + i]);
+	  if (i == my_menu->arrow_pos)
+	    {
+	      str[0] = '>';
+	      print_str_10x16(str, WHITE, MENU_HIGHLIGHT_FONT_COLOR);
+	    }
+	  else
+	    {
+	      str[0] = ' ';
+	      print_str_10x16(str, STRONG_GRAY, (i % 2 ? MENU_PAIR_FONT_COLOR : MENU_UNPAIR_FONT_COLOR));
+	    }
 	  /* add_line_number(str, i + my_menu->first_elem_pos); */
-	  print_str_10x16(str, BLACK, WHITE);
 	}
       else
 	{

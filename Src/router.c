@@ -6,6 +6,10 @@ void init_router(router *r)
     {
       r->sub_routers[i] = 0;
     }
+    for (uint8_t i = 0; i < MAX_NB_ROUTER; i++)
+    {
+      r->sub_menus[i] = 0;
+    }
 }
 
 // Add a pointer of another router in a router for making subrouters
