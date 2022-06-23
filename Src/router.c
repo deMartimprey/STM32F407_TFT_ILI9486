@@ -44,6 +44,7 @@ void into_router(router *my_router)
 	{
 	  cur_router = my_router->sub_routers[my_router->pos_router];
 	  cur_window->router = my_router->sub_routers[my_router->pos_router];
+	  cur_window->update_router = 1;
 	}
     }
   else if (my_router->sub_menus[0] != 0)
@@ -51,6 +52,7 @@ void into_router(router *my_router)
       if (my_router->pos_router <= NB_LINE_ROUTER && my_router->sub_menus[my_router->pos_router] != NULL)
 	{
 	  cur_menu = my_router->sub_menus[my_router->pos_router];
+	  cur_window->update_router = 1;
 	}
     }
 }
@@ -89,6 +91,7 @@ void router_down(router *my_router)
       else if (my_router->first_elem_pos > 0)
 	my_router->first_elem_pos -= 1;
     }
+  cur_window->update_router = 1;
 }
 
 // Scroll one elem to the top, if already at the top to go directly to the last element
@@ -109,6 +112,7 @@ void router_up(router *my_router)
       else
 	my_router->first_elem_pos += 1;
     }
+  cur_window->update_router = 1;
 }
 
 static void fill_one_line_router(uint8_t* str, router* my_router)

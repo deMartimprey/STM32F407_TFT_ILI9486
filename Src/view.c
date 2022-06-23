@@ -52,6 +52,7 @@ uint8_t add_one_window(view* v, window* win)
 
 uint8_t display_view(view* v)
 {
+  fill_with_Color(WHITE);
   for (uint8_t i = 0; i < MAX_WINDOW_PER_VIEW; i++)
     {
       if (v->windows[i] != 0)
@@ -77,7 +78,10 @@ uint8_t update_view(view* v)
     {
       if (v->windows[i] != 0)
 	{
-	  update_window(v->windows[i], v->view_x, v->view_y);
+	  if (v->windows[i] == v->cur_window)
+	    update_select_window(v->windows[i], v->view_x, v->view_y);
+	  else
+	    update_window(v->windows[i], v->view_x, v->view_y);
 	}
     }
   return 0;

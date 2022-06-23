@@ -15,5 +15,6 @@ uint8_t add_router_to_window(window* w, router* r);
 uint8_t display_window(window* w, uint16_t view_x, uint16_t view_y);
 uint8_t display_select_window(window* w, uint16_t view_x, uint16_t view_y);
 uint8_t update_window(window* w, uint16_t view_x, uint16_t view_y);
+uint8_t update_select_window(window* w, uint16_t view_x, uint16_t view_y);
 
 #endif /* __WINDOW_H */

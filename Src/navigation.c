@@ -54,9 +54,11 @@ void nav_right()
     {
       if (cur_window->window_right != NULL)
 	{
+	  cur_window->update = 1;
 	  window* new_cur_window = cur_window->window_right;
 	  cur_window = new_cur_window;
 	  cur_view->cur_window = new_cur_window;
+	  cur_window->update = 1;
 	}
     }
 }
@@ -75,9 +77,11 @@ void nav_left()
     {
       if (cur_window->window_left != NULL)
 	{
+	  cur_window->update = 1;
 	  window* new_cur_window = cur_window->window_left;
 	  cur_window = new_cur_window;
 	  cur_view->cur_window = new_cur_window;
+	  cur_window->update = 1;
 	}
     }
 }
@@ -88,6 +92,7 @@ void nav_valid()
   if (cur_router == 0 && cur_window->router != NULL)
     {
       cur_router = cur_window->router;
+      cur_window->update_router = 1;
     }
   else if (cur_router != 0)
     {
@@ -99,6 +104,7 @@ void nav_valid()
 	{
 	  cur_view = cur_window->view_enter;
 	  cur_window = cur_view->cur_window;
+	  cur_view->update = 1;
 	}
     }
 }
@@ -106,15 +112,22 @@ void nav_valid()
 void nav_back()
 {
   if (cur_menu != 0)
-    cur_menu = 0;
+    {
+      cur_menu = 0;
+      cur_window->update_router = 1;
+    }
   else if (cur_router != NULL)
     {
       if (cur_router->up_router != NULL)
 	{
 	  back_router(cur_router);
+	  cur_window->update_router = 1;
 	}
       else
-	cur_router = NULL;
+	{
+	  cur_router = NULL;
+	  cur_window->update = 1;
+	}
     }
   else if (cur_view != NULL)
     {
@@ -122,6 +135,7 @@ void nav_back()
 	{
 	  cur_view = cur_view->view_back;
 	  cur_window = cur_view->cur_window;
+	  cur_view->update = 1;
 	}
     }
 }

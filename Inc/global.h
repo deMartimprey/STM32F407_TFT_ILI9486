@@ -254,6 +254,7 @@ struct window
   text *text[MAX_NB_TEXT_PER_WINDOWS];
   draw *draw[MAX_NB_DRAW_PER_WINDOWS];
   uint8_t update;
+  uint8_t update_router;
 };
 
 struct view

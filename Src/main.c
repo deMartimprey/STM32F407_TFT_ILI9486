@@ -296,85 +296,70 @@ int main(void)
   while (1)
     {
     nav_right();
-    fill_with_Color(WHITE);
-    display_view(cur_view);
+    update_view(cur_view);
     HAL_Delay(500);
 
     nav_valid();
-    fill_with_Color(WHITE);
-    display_view(cur_view);
+    update_view(cur_view);
     HAL_Delay(500);
 
     nav_up();
-    fill_with_Color(WHITE);
-    display_view(cur_view);
+    update_view(cur_view);
     HAL_Delay(500);
 
     nav_up();
-    fill_with_Color(WHITE);
-    display_view(cur_view);
+    update_view(cur_view);
     HAL_Delay(500);
 
     nav_valid();
-    fill_with_Color(WHITE);
-    display_view(cur_view);
+    update_view(cur_view);
     HAL_Delay(500);
 
     nav_valid();
-    fill_with_Color(WHITE);
-    display_view(cur_view);
+    update_view(cur_view);
     HAL_Delay(500);
 
     nav_up();
-    fill_with_Color(WHITE);
-    display_view(cur_view);
+    update_view(cur_view);
     HAL_Delay(500);
 
     nav_back();
-    fill_with_Color(WHITE);
-    display_view(cur_view);
+    update_view(cur_view);
     HAL_Delay(500);
 
     nav_back();
-    fill_with_Color(WHITE);
-    display_view(cur_view);
+    update_view(cur_view);
     HAL_Delay(500);
 
     nav_back();
-    fill_with_Color(WHITE);
-    display_view(cur_view);
+    update_view(cur_view);
     HAL_Delay(500);
 
     nav_left();
-    fill_with_Color(WHITE);
-    display_view(cur_view);
+    update_view(cur_view);
     HAL_Delay(500);
 
     nav_left();
-    fill_with_Color(WHITE);
-    display_view(cur_view);
+    update_view(cur_view);
     HAL_Delay(500);
 
     nav_valid();
-    fill_with_Color(WHITE);
-    display_view(cur_view);
+    update_view(cur_view);
     HAL_Delay(500);
 
     nav_back();
-    fill_with_Color(WHITE);
-    display_view(cur_view);
+    update_view(cur_view);
     HAL_Delay(500);
 
     nav_left();
-    fill_with_Color(WHITE);
-    display_view(cur_view);
+    update_view(cur_view);
     HAL_Delay(500);
 /* HAL_Delay(500); */
     /* view_left(&view1); */
-    /* display_view(&view1); */
+    /* update_view(&view1); */
     /* HAL_Delay(500); */
     /* view_right(&view1); */
-    /* display_view(&view1); */
+    /* update_view(&view1); */
     }
   fill_with_Color(WHITE);
 
