@@ -323,6 +323,10 @@ int main(void)
     update_view(cur_view);
     HAL_Delay(500);
 
+    nav_right();
+    update_view(cur_view);
+    HAL_Delay(2000);
+
     nav_back();
     update_view(cur_view);
     HAL_Delay(500);

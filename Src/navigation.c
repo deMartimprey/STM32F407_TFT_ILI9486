@@ -45,6 +45,7 @@ void nav_right()
   if (cur_menu != NULL)
     {
       menu_var_up(cur_menu);
+      cur_window->update_router = 1;
     }
   else if (cur_router != NULL)
     {
@@ -68,6 +69,7 @@ void nav_left()
   if (cur_menu != NULL)
     {
       menu_var_down(cur_menu);
+      cur_window->update_router = 1;
     }
   else if (cur_router != NULL)
     {
