@@ -13,6 +13,22 @@ uint16_t my_strlen(const uint8_t *s)
   return len;
 }
 
+void			my_memcpy(void *dest, void *src, int size)
+{
+  char			*ptr_dest;
+  char			*ptr_src;
+  int			i;
+
+  i = 0;
+  ptr_dest = (char *)dest;
+  ptr_src = (char *)src;
+  while (i < size)
+    {
+      ptr_dest[i] = ptr_src[i];
+      i += 1;
+    }
+}
+
 uint8_t* my_strncpy(dst, src, n)
      uint8_t *dst;
      const uint8_t *src;

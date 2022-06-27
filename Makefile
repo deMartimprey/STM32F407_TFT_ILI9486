@@ -36,6 +36,7 @@ BUILD_DIR = build
 ######################################
 # C sources
 C_SOURCES =  \
+Src/pic.c \
 Src/var.c \
 Src/view.c \
 Src/main.c \
@@ -53,6 +54,7 @@ Src/ili9486.c \
 Src/font5x7.c \
 Src/font10x16.c \
 Src/font16x26.c \
+Src/bmp_reader.c \
 Src/navigation.c \
 Src/stm32f4xx_it.c \
 Src/stm32f4xx_hal_msp.c \

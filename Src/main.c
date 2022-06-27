@@ -4,7 +4,7 @@
 #define Y_MENU 320
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-  
+
 /**
  * @brief  The application entry point.
  * @retval int
@@ -290,80 +290,87 @@ int main(void)
   add_elem_menu(&menu2, var4);
   add_elem_menu(&menu2, current_lang);
 
+  BMPFileHeader h = {0, };
+  BMPInfoHeader hi = {0, };
+
+  fill_file_header(&h, engrenage_bmp);
+  fill_info_header(&hi, engrenage_bmp);
+  display_bmp(&h, &hi, engrenage_bmp, 300, 200);
+  while (1);
   add_menu_router(&router3, &menu2);
   display_view(cur_view);
   HAL_Delay(500);
   while (1)
     {
-    nav_right();
-    update_view(cur_view);
-    HAL_Delay(500);
+      nav_right();
+      update_view(cur_view);
+      HAL_Delay(500);
 
-    nav_valid();
-    update_view(cur_view);
-    HAL_Delay(500);
+      nav_valid();
+      update_view(cur_view);
+      HAL_Delay(500);
 
-    nav_up();
-    update_view(cur_view);
-    HAL_Delay(500);
+      nav_up();
+      update_view(cur_view);
+      HAL_Delay(500);
 
-    nav_up();
-    update_view(cur_view);
-    HAL_Delay(500);
+      nav_up();
+      update_view(cur_view);
+      HAL_Delay(500);
 
-    nav_valid();
-    update_view(cur_view);
-    HAL_Delay(500);
+      nav_valid();
+      update_view(cur_view);
+      HAL_Delay(500);
 
-    nav_valid();
-    update_view(cur_view);
-    HAL_Delay(500);
+      nav_valid();
+      update_view(cur_view);
+      HAL_Delay(500);
 
-    nav_up();
-    update_view(cur_view);
-    HAL_Delay(500);
+      nav_up();
+      update_view(cur_view);
+      HAL_Delay(500);
 
-    nav_right();
-    update_view(cur_view);
-    HAL_Delay(2000);
+      nav_right();
+      update_view(cur_view);
+      HAL_Delay(2000);
 
-    nav_back();
-    update_view(cur_view);
-    HAL_Delay(500);
+      nav_back();
+      update_view(cur_view);
+      HAL_Delay(500);
 
-    nav_back();
-    update_view(cur_view);
-    HAL_Delay(500);
+      nav_back();
+      update_view(cur_view);
+      HAL_Delay(500);
 
-    nav_back();
-    update_view(cur_view);
-    HAL_Delay(500);
+      nav_back();
+      update_view(cur_view);
+      HAL_Delay(500);
 
-    nav_left();
-    update_view(cur_view);
-    HAL_Delay(500);
+      nav_left();
+      update_view(cur_view);
+      HAL_Delay(500);
 
-    nav_left();
-    update_view(cur_view);
-    HAL_Delay(500);
+      nav_left();
+      update_view(cur_view);
+      HAL_Delay(500);
 
-    nav_valid();
-    update_view(cur_view);
-    HAL_Delay(500);
+      nav_valid();
+      update_view(cur_view);
+      HAL_Delay(500);
 
-    nav_back();
-    update_view(cur_view);
-    HAL_Delay(500);
+      nav_back();
+      update_view(cur_view);
+      HAL_Delay(500);
 
-    nav_left();
-    update_view(cur_view);
-    HAL_Delay(500);
-/* HAL_Delay(500); */
-    /* view_left(&view1); */
-    /* update_view(&view1); */
-    /* HAL_Delay(500); */
-    /* view_right(&view1); */
-    /* update_view(&view1); */
+      nav_left();
+      update_view(cur_view);
+      HAL_Delay(500);
+      /* HAL_Delay(500); */
+      /* view_left(&view1); */
+      /* update_view(&view1); */
+      /* HAL_Delay(500); */
+      /* view_right(&view1); */
+      /* update_view(&view1); */
     }
   fill_with_Color(WHITE);
 
