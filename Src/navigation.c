@@ -21,10 +21,12 @@ void nav_up()
   if (cur_menu != NULL)
     {
       menu_up(cur_menu);
+      cur_window->update_router = 1;
     }
   else if (cur_router != NULL)
     {
       router_up(cur_router);
+      cur_window->update_router = 1;
     }
 }
 
@@ -33,10 +35,12 @@ void nav_down()
   if (cur_menu != NULL)
     {
       menu_down(cur_menu);
+      cur_window->update_router = 1;
     }
   else if (cur_router != NULL)
     {
       router_down(cur_router);
+      cur_window->update_router = 1;
     }
 }
 

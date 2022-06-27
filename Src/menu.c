@@ -20,7 +20,7 @@ void fill_one_line_menu(uint8_t* str, var* my_var)
       uint8_t stringInt32[11] = "          \0";
 
       num32ToString((uint8_t*)&stringInt32, my_var->value);
-      my_strncpy((str + SIZE_NAME_VAR / 2 + 2), (const uint8_t *)stringInt32, 7);
+      my_strncpy((str + SIZE_NAME_VAR / 2 + 2), (const uint8_t *)stringInt32, 5);
     }
 }
 
@@ -55,42 +55,43 @@ void add_line_number(uint8_t* str, uint8_t position)
 
 void display_menu(menu *my_menu, uint16_t x_pos, uint16_t y_pos)
 {
-  uint8_t str[SIZE_NAME_MENU] = {0, };
+  uint8_t str[SIZE_NAME_VAR] = {0, };
+  uint8_t strmenu[SIZE_NAME_MENU] = {0, };
 
   x_font_pos = x_pos;
   y_font_pos = y_pos;
   if (my_menu  == NULL)
     return;
-  fill_string_with_space(str, SIZE_NAME_MENU - 1);
-  my_strncpy((uint8_t*)str, (uint8_t*)my_menu->name[*p_current_lang], my_strlen((uint8_t*)my_menu->name[*p_current_lang]));
-  y_font_pos -= 16;
-  print_str_10x16(str, BLACK, 0x9DDF);
-  y_font_pos -= 18;
+  fill_string_with_space(strmenu, SIZE_NAME_MENU - 1);
+  my_strncpy((uint8_t*)strmenu, (uint8_t*)my_menu->name[*p_current_lang], my_strlen((uint8_t*)my_menu->name[*p_current_lang]));
+  y_font_pos -= 28;
+  print_str_16x26(strmenu, BLACK, 0x9DDF);
+  y_font_pos -= 28;
   for (uint8_t i = 0; i < MAX_SIZE_MENU; i++)
     {
       x_font_pos = x_pos;
       if (i + my_menu->first_elem_pos < my_menu->size)
 	{
-	  fill_string_with_space(str, SIZE_NAME_MENU - 1);
+	  fill_string_with_space(str, SIZE_NAME_VAR - 1);
 	  fill_one_line_menu(str, my_menu->vars[my_menu->first_elem_pos + i]);
 	  if (i == my_menu->arrow_pos)
 	    {
 	      str[0] = '>';
-	      print_str_10x16(str, WHITE, MENU_HIGHLIGHT_FONT_COLOR);
+	      print_str_16x26(str, WHITE, MENU_HIGHLIGHT_FONT_COLOR);
 	    }
 	  else
 	    {
 	      str[0] = ' ';
-	      print_str_10x16(str, STRONG_GRAY, (i % 2 ? MENU_PAIR_FONT_COLOR : MENU_UNPAIR_FONT_COLOR));
+	      print_str_16x26(str, STRONG_GRAY, (i % 2 ? MENU_PAIR_FONT_COLOR : MENU_UNPAIR_FONT_COLOR));
 	    }
 	  /* add_line_number(str, i + my_menu->first_elem_pos); */
 	}
       else
 	{
-	  fill_string_with_space(str, MAX_SIZE_MENU - 1);
-	  print_str_10x16(str, BLACK, WHITE);
+	  fill_string_with_space(str, MAX_SIZE_VAR  - 1);
+	  print_str_16x26(str, BLACK, WHITE);
 	}
-  y_font_pos -= 18;
+  y_font_pos -= 28;
     }
 }
 

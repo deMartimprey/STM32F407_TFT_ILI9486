@@ -194,6 +194,11 @@ void display_router(router* my_router, uint16_t x_pos, uint16_t y_pos)
 	      print_str_10x16(str, BLACK, WHITE);
 	    }
 	}
+      else
+	{
+	  fill_string_with_space(str, SIZE_NAME_ROUTER - 1);
+	  print_str_10x16(str, BLACK, WHITE);
+	}
       y_font_pos -= 18;
    }
 }
@@ -266,6 +271,11 @@ void display_router26(router* my_router, uint16_t x_pos, uint16_t y_pos)
 	      fill_string_with_space(str, SIZE_NAME_ROUTER - 1);
 	      print_str_16x26(str, BLACK, WHITE);
 	    }
+	}
+      else
+	{
+	  fill_string_with_space(str, SIZE_NAME_ROUTER - 1);
+	  print_str_16x26(str, BLACK, WHITE);
 	}
       y_font_pos -= 28;
    }

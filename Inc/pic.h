@@ -4,6 +4,5 @@
 #include "stm32f4xx_hal.h"
 
 extern const uint8_t engrenage_bmp[];
-extern const uint8_t etnamini_bmp[];
 
 #endif /* __PIC_H */

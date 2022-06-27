@@ -3,6 +3,7 @@
 
 #include "stm32f4xx_hal.h"
 #include "font10x16.h"
+#include "font16x26.h"
 #include "global.h"
 #include "tools.h"
 #include "var.h"

@@ -296,10 +296,6 @@ int main(void)
   fill_file_header(&h, engrenage_bmp);
   fill_info_header(&hi, engrenage_bmp);
   display_bmp(&h, &hi, engrenage_bmp, 300, 200);
-  while (1);
-  /* fill_file_header(&h, etnamini_bmp); */
-  /* fill_info_header(&hi, etnamini_bmp); */
-  /* display_bmp(&h, &hi, etnamini_bmp, 100, 100); */
   add_menu_router(&router3, &menu2);
   display_view(cur_view);
   HAL_Delay(500);
@@ -335,7 +331,7 @@ int main(void)
 
       nav_right();
       update_view(cur_view);
-      HAL_Delay(2000);
+      HAL_Delay(800);
 
       nav_back();
       update_view(cur_view);

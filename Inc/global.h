@@ -124,9 +124,9 @@ extern uint16_t buffer[X_SIZE][Y_SIZE]; // Not enough place
 
   // Define for VAR, struct that cointain all information for 1 parameter
 #define NB_VAR		        40 // Nb of var allocated
-#define SIZE_NAME_VAR	        20 // Max name size of a VAR
-#define NB_NAME_VAR_MENU	5 // Max of String possible if parameter is display as stromg
-#define SIZE_NAME_VAR_MENU	20 // Max if string size if parameter is display as soze
+#define SIZE_NAME_VAR	        18 // Max name size of a VAR
+#define NB_NAME_VAR_MENU	5 // Max of String possible if parameter is display as number
+#define SIZE_NAME_VAR_MENU	18 // Max if string size if parameter is display as string
 #define DIGIT_TYPE		0 // Pointer null to menu_var mean this var (parameter is display a number)
 #define NAME_TYPE		1 // Value display as string
 
@@ -178,7 +178,7 @@ typedef struct
 } var;
 
 #define MAX_SIZE_MENU	        20 // Number of parameter max in one menu
-#define SIZE_NAME_MENU		20 // Max size of a menu name
+#define SIZE_NAME_MENU		16 // Max size of a menu name
 extern var vars[NB_VAR];
 
 typedef struct router router;
@@ -323,13 +323,13 @@ const static uint8_t s_router_7[NB_LANG][SIZE_NAME_ROUTER] =
  "Sub menu 7"
 };
 
-const static uint8_t s_menu1[NB_LANG][SIZE_NAME_VAR] =
+const static uint8_t s_menu1[NB_LANG][SIZE_NAME_MENU] =
 {
   "MENU_1",
   "MENU_1"
 };
 
-const static uint8_t s_menu2[NB_LANG][SIZE_NAME_VAR] =
+const static uint8_t s_menu2[NB_LANG][SIZE_NAME_MENU] =
 {
   "MENU_2",
   "MENU_2"
