@@ -155,7 +155,7 @@ typedef struct text text;
 
 struct text
 {
-  uint8_t (*str)[NB_LANG][SIZE_TEXT];
+  const uint8_t (*str)[NB_LANG][SIZE_TEXT];
   uint16_t text_x;
   uint16_t text_y;
   uint8_t update;

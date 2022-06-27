@@ -2,7 +2,7 @@
 
 #ifdef USE_16X26
 
-void print_str_16x26(uint8_t* str, uint16_t color, uint16_t font)
+void print_str_16x26(const uint8_t* str, uint16_t color, uint16_t font)
 {
   uint16_t len = my_strlen(str);
   for (uint16_t i = 0; i < len; i++)

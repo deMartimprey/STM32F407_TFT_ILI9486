@@ -22,7 +22,7 @@ void Error_Handler(void);
 #ifdef USE_10X16
 // Standard ASCII 5x7 font
 
-void print_str_10x16(uint8_t* str, uint16_t color, uint16_t font);
+void print_str_10x16(const uint8_t* str, uint16_t color, uint16_t font);
 void draw_one_char_10x16(uint8_t num, uint16_t color, uint16_t font);
 
 static const unsigned char font10x16[256][20]={

@@ -2,6 +2,7 @@
 #define __BMP_READER_H
 
 #include "stm32f4xx_hal.h"
+#include "ili9486.h"
 #include "tools.h"
 
 #define MAGIC_NUMBER_OFFSET	0x00
@@ -57,9 +58,9 @@ typedef struct {
 } BMPColorHeader;
 
 uint8_t fill_file_header(BMPFileHeader* header, const uint8_t* f);
-uint8_t fill_info_header(BMPInfoHeader* header, uint8_t* f);
-uint8_t fill_color_header(BMPInfoHeader* header, uint8_t* f);
-uint8_t display_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader, uint8_t* f, uint16_t x_pos, uint16_t y_pos);
-uint16_t find_one_pixel_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader, uint8_t* f, uint16_t x_pos, uint16_t y_pos);
+uint8_t fill_info_header(BMPInfoHeader* header, const uint8_t* f);
+uint8_t fill_color_header(BMPInfoHeader* header, const uint8_t* f);
+uint8_t display_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader, const uint8_t* f, uint16_t x_pos, uint16_t y_pos);
+uint16_t find_one_pixel_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader, const uint8_t* f, uint16_t x_pos, uint16_t y_pos);
 
 #endif /* __BMP_READER_H */
