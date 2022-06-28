@@ -1,5 +1,55 @@
 #include "draw.h"
 
+// http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#C
+void draw_line(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color)
+{
+  int16_t dx = abs(x1-x0), sx = x0<x1 ? 1 : -1;
+  int16_t dy = abs(y1-y0), sy = y0<y1 ? 1 : -1;
+  int16_t err = (dx>dy ? dx : -dy)/2, e2;
+
+  for(;;){
+    write_one_pixel(x0, y0, color);
+    if (x0==x1 && y0==y1)
+      break;
+    e2 = err;
+    if (e2 >-dx)
+      {
+	err -= dy; x0 += sx;
+      }
+    if (e2 < dy)
+      {
+	err += dx; y0 += sy;
+      }
+  }
+}
+
+//https://saideepdicholkar.blogspot.com/2017/04/bresenhams-line-algorithm-thick-line.html
+void draw_thick_line(float x0, float y0, float x1, float y1, uint16_t thickness, uint16_t color)
+{
+  uint16_t i = 0;
+  float wy;
+  float wx;
+  draw_line(x0, y0, x1, y1, color);
+  if((y1-y0)/(x1-x0)<1)
+    {
+      wy=(thickness-1)*sqrt(pow((x1-x0),2)+pow((y1-y0),2))/(2*fabs(x1-x0));
+      for(i=0;i<wy;i++)
+	{
+	  draw_line(x0, y0-i, x1, y1-i, color);
+	  draw_line(x0, y0+i, x1, y1+i, color);
+	}
+    }
+  else
+    {
+      wx=(thickness-1)*sqrt(pow((x1-x0),2)+pow((y1-y0),2))/(2*fabs(y1-y0));
+      for(i=0;i<wx;i++)
+        {
+	  draw_line(x0-i, y0, x1-i, y1, color);
+	  draw_line(x0+i, y0, x1+i, y1, color);
+        }
+    }
+}
+
 uint8_t display_draw(draw* d, uint16_t window_x, uint16_t window_y)
 {
   if (d->type == RECTANGLE)

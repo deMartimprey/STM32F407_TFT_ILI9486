@@ -296,9 +296,13 @@ int main(void)
   fill_file_header(&h, engrenage_bmp);
   fill_info_header(&hi, engrenage_bmp);
   display_bmp(&h, &hi, engrenage_bmp, 300, 200);
+  HAL_Delay(1000);
   add_menu_router(&router3, &menu2);
   display_view(cur_view);
   HAL_Delay(500);
+  draw_thick_line((float)0, (float)0, (float)480, (float)320, 20, BLACK);
+  draw_thick_line((float)480, (float)0, (float)0, (float)320, 20, BLACK);
+  HAL_Delay(2000);
   while (1)
     {
       nav_right();

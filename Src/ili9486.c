@@ -169,6 +169,8 @@ void write_zone(uint16_t x, uint16_t y, uint16_t x_size, uint16_t y_size)
 
 void write_one_pixel(uint16_t x, uint16_t y, uint16_t color)
 {
+  if (x > X_SIZE || y > Y_SIZE)
+    return;
   pos_pixel(x, y);
 
   Write_Command(0x2C);	// Page Address Set
