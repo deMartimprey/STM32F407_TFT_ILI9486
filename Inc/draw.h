@@ -21,6 +21,7 @@ void DrawCircle2(uint16_t x, uint16_t y, uint16_t r, uint16_t color);
 uint8_t draw_empty_rectangle(uint16_t x_pos, uint16_t y_pos, uint16_t x_size, uint16_t y_size, uint16_t thickness, uint16_t color);
 void DrawFillCircle(uint16_t x_pos, uint16_t y_pos, uint16_t r, uint16_t color);
 void draw_thick_line(float x0, float y0, float x1, float y1, uint16_t thickness, uint16_t color);
+void fill_triangle(int x1, int y1, int x2, int y2, int x3, int y3, uint16_t color);
 
 #ifdef __cplusplus
 }

@@ -302,6 +302,7 @@ int main(void)
   HAL_Delay(500);
   draw_thick_line((float)0, (float)0, (float)480, (float)320, 20, BLACK);
   draw_thick_line((float)480, (float)0, (float)0, (float)320, 20, BLACK);
+  fill_triangle(100, 10, 200, 110, 300, 10, BLACK);
   HAL_Delay(2000);
   while (1)
     {
