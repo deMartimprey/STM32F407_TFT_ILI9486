@@ -232,8 +232,10 @@ void fill_triangle(int x1, int y1, int x2, int y2, int x3, int y3, uint16_t colo
 
   for (int i = 0; i < dx1;) {
     t1xp=0; t2xp=0;
-    if(t1x<t2x) { minx=t1x; maxx=t2x; }
-    else		{ minx=t2x; maxx=t1x; }
+    if(t1x<t2x)
+      { minx=t1x; maxx=t2x; }
+    else
+      { minx=t2x; maxx=t1x; }
     // process first line until y value is about to change
     while(i<dx1) {
       i++;

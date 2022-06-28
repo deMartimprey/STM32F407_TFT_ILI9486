@@ -130,3 +130,45 @@ void num32ToString(uint8_t* str, uint32_t nb)
     if (str[i] == 0)
       str[i] = ' ';
 }
+
+//https://stackoverflow.com/questions/2442576/how-does-one-convert-16-bit-rgb565-to-24-bit-rgb888
+uint32_t convert565_to_888(uint16_t color565)
+{
+  uint32_t R8, G8, B8 = 0;
+  float R5, G6, B5 = 0;
+  uint32_t RGB888 = 0;
+
+  R5 = (float) ((color565 & 0b1111100000000000) >> 11);
+  G6 = (float) ((color565 & 0b0000011111100000) >> 5);
+  B5 = (float) ((color565 & 0b0000000000011111) >> 0);
+  /* R8 = ( R5 * 527 + 23 ) >> 6; */
+  /* G8 = ( G6 * 259 + 33 ) >> 6; */
+  /* B8 = ( B5 * 527 + 23 ) >> 6; */
+  R8 = (int) floor( R5 * 255.0 / 31.0 + 0.5);
+  G8 = (int) floor( G6 * 255.0 / 63.0 + 0.5);
+  B8 = (int) floor( R5 * 255.0 / 31.0 + 0.5);
+
+  RGB888 |= R8 << 16;
+  RGB888 |= G8 << 8;
+  RGB888 |= B8 << 0;
+}
+
+//https://stackoverflow.com/questions/2442576/how-does-one-convert-16-bit-rgb565-to-24-bit-rgb888
+uint16_t convert888_to_565(uint32_t color888)
+{
+  uint32_t R8, G8, B8 = 0;
+  uint8_t R5, G6, B5 = 0;
+  uint16_t RGB565 = 0;
+
+  R8 = ((color888 & 0b00000000111111110000000000000000) >> 16);
+  G8 = ((color888 & 0b00000000000000001111111100000000) >> 8);
+  B8 = ((color888 & 0b00000000000000000000000011111111) >> 0);
+
+  R5 = ( R8 * 249 + 1014 ) >> 11;
+  G6 = ( G8 * 253 +  505 ) >> 10;
+  B5 = ( B8 * 249 + 1014 ) >> 11;
+
+  RGB565 |= R5 << 11;
+  RGB565 |= G6 << 5;
+  RGB565 |= B5 << 0;
+}
