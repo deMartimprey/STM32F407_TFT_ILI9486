@@ -1,6 +1,30 @@
+/**
+ * @file draw.c
+ * @brief Fonctions to fill and display a view.
+ * @author de Martimprey Edmond
+ * @version 0.1
+ * @date 28 june 2022
+ *
+ * View is a list of windows.
+ *
+ */
+
 #include "draw.h"
 
-// http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#C
+/**
+  * @fn void draw_line(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color)
+  * @brief  Draw a line between two point
+  * @note   Only one pixel width
+  * @param  x0 X axis of the first point
+  * @param  y0 Y axis of the first point
+  * @param  x1 X axis of the second point
+  * @param  y1 Y axis of the second point
+  * @param  color color of the line
+  * @retval None
+  *
+  * http://rosettacode.org/wiki/Bitmap/Bresenham%27s_line_algorithm#C
+  *
+  */
 void draw_line(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color)
 {
   int16_t dx = abs(x1-x0), sx = x0<x1 ? 1 : -1;
@@ -23,7 +47,21 @@ void draw_line(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color)
   }
 }
 
-//https://saideepdicholkar.blogspot.com/2017/04/bresenhams-line-algorithm-thick-line.html
+/**
+  * @fn void draw_thick_line(float x0, float y0, float x1, float y1, uint16_t thickness, uint16_t color)
+  * @brief  Draw a line between two point and with variable thickness
+  * @note   None
+  * @param  x0 X axis of the first point
+  * @param  y0 Y axis of the first point
+  * @param  x1 X axis of the second point
+  * @param  y1 Y axis of the second point
+  * @param  thickness thickness of the line in pixel
+  * @param  color color of the line
+  * @retval None
+  *
+  * https://saideepdicholkar.blogspot.com/2017/04/bresenhams-line-algorithm-thick-line.htlm
+  *
+  */
 void draw_thick_line(float x0, float y0, float x1, float y1, uint16_t thickness, uint16_t color)
 {
   uint16_t i = 0;
@@ -50,6 +88,18 @@ void draw_thick_line(float x0, float y0, float x1, float y1, uint16_t thickness,
     }
 }
 
+/**
+  * @fn uint8_t display_draw(draw* d, uint16_t window_x, uint16_t window_y)
+  * @brief  Display any draw struct store in a window
+  * @note   None
+  * @param  window_x offset X axis of the window
+  * @param  window_y offset Y axis of the window
+  * @param  d draw struct contaning all information about draw
+  * @retval None
+  *
+  *
+  *
+  */
 uint8_t display_draw(draw* d, uint16_t window_x, uint16_t window_y)
 {
   if (d->type == RECTANGLE)
@@ -71,6 +121,18 @@ uint8_t display_draw(draw* d, uint16_t window_x, uint16_t window_y)
   return 0;
 }
 
+/**
+  * @fn uint8_t update_draw(draw* d, uint16_t window_x, uint16_t window_y)
+  * @brief  Update a draw in a window
+  * @note   None
+  * @param  window_x offset X axis of the window
+  * @param  window_y offset Y axis of the window
+  * @param  d draw struct contaning all information about draw
+  * @retval None
+  *
+  *
+  *
+  */
 uint8_t update_draw(draw* d, uint16_t window_x, uint16_t window_y)
 {
   if (d->update == 1)
@@ -81,6 +143,22 @@ uint8_t update_draw(draw* d, uint16_t window_x, uint16_t window_y)
   return 0;
 }
 
+
+/**
+  * @fn uint8_t draw_empty_rectangle(uint16_t x_pos, uint16_t y_pos, uint16_t x_size, uint16_t y_size, uint16_t thickness, uint16_t color)
+  * @brief  Draw a frame
+  * @note   Thickness can be ajusted
+  * @param  x_pos bottom left X axis
+  * @param  y_pos bottom left Y axis
+  * @param  x_size width of frame
+  * @param  y_size height of frame
+  * @param  thickness thickness of the frame in the inside
+  * @param  color color of the frame
+  * @retval 0
+  *
+  *
+  *
+  */
 uint8_t draw_empty_rectangle(uint16_t x_pos, uint16_t y_pos, uint16_t x_size, uint16_t y_size, uint16_t thickness, uint16_t color)
 {
   draw_rectangle(x_pos, y_pos, x_size, thickness, color);
@@ -91,9 +169,20 @@ uint8_t draw_empty_rectangle(uint16_t x_pos, uint16_t y_pos, uint16_t x_size, ui
   return 0;
 }
 
-// return 0 : OK
-// return 1 : DRAW BUT TO BIG
-// reuturn 2 : OUTSIDE SCREEN, DIDN'T DRAW
+/**
+  * @fn uint8_t draw_rectangle(uint16_t x_pos, uint16_t y_pos, uint16_t x_size, uint16_t y_size, uint16_t color)
+  * @brief  Draw a rectangle
+  * @note   rectangle is fill and unicolor
+  * @param  x_pos bottom left X axis
+  * @param  y_pos bottom left Y axis
+  * @param  x_size width of rectangle
+  * @param  y_size height of rectangle
+  * @param  color color of the rectangle
+  * @retval 0 : OK, 1 : draw but to big, didn't draw all of it, 2 : outside screen, didn't draw
+  *
+  *
+  *
+  */
 uint8_t draw_rectangle(uint16_t x_pos, uint16_t y_pos, uint16_t x_size, uint16_t y_size, uint16_t color)
 {
   uint8_t altered = 0;
@@ -156,7 +245,19 @@ void DrawCircle2(uint16_t x_pos, uint16_t y_pos, uint16_t r, uint16_t color)
 }
 #endif /* USE_RAM_BUFFER */
 
-
+/**
+  * @fn void DrawFillCircle(uint16_t x_pos, uint16_t y_pos, uint16_t r, uint16_t color)
+  * @brief  Draw a circle fill
+  * @note   None
+  * @param  x_pos center X axis
+  * @param  y_pos center Y axis
+  * @param  r radius
+  * @param  color color of the circle
+  * @retval None
+  *
+  *
+  *
+  */
 void DrawFillCircle(uint16_t x_pos, uint16_t y_pos, uint16_t r, uint16_t color)
 {
   for(int y=-r; y<=r; y++)
@@ -165,6 +266,19 @@ void DrawFillCircle(uint16_t x_pos, uint16_t y_pos, uint16_t r, uint16_t color)
         write_one_pixel(x_pos+x, y_pos+y, color);
 }
 
+/**
+  * @fn void DrawCircle(uint16_t x, uint16_t y, uint16_t r, uint16_t color)
+  * @brief  Draw empty circle
+  * @note   thickness not ajustable, limited
+  * @param  x_pos center X axis
+  * @param  y_pos center Y axis
+  * @param  r radius
+  * @param  color color of the circle
+  * @retval None
+  *
+  *
+  *
+  */
 void DrawCircle(uint16_t x, uint16_t y, uint16_t r, uint16_t color)
 {
       static const double PI = 3.1415926535;
@@ -181,7 +295,19 @@ void DrawCircle(uint16_t x, uint16_t y, uint16_t r, uint16_t color)
 
 #define SWAP(x,y) 		do { (x)=(x)^(y); (y)=(x)^(y); (x)=(x)^(y); } while(0)
 
-/* Horizontal Line */
+/**
+  * @fn void DrawCircle(uint16_t x, uint16_t y, uint16_t r, uint16_t color)
+  * @brief  Horizontal Line, only use to draw triangle
+  * @note   None
+  * @param  x1
+  * @param  y2
+  * @param  radius
+  * @param  color color of the circle
+  * @retval None
+  *
+  *
+  *
+  */
 static void lcd_hline(int x1, int x2, int y, uint16_t color)
 {
   if (x1 >= x2)
@@ -192,8 +318,22 @@ static void lcd_hline(int x1, int x2, int y, uint16_t color)
   // for drawing 1 pixel
 }
 
-//https://www.codegrepper.com/code-examples/c/how+to+fill+a+triangle+in+c
-/* Fill Triangle Function */
+/**
+  * @fn void fill_triangle(int x1, int y1, int x2, int y2, int x3, int y3, uint16_t color)
+  * @brief  Draw fill triangle with three point
+  * @note   None
+  * @param  x1 X axis first point of triangle
+  * @param  y1 y axis first point of triangle
+  * @param  x2 X axis second point of triangle
+  * @param  y2 Y axis second point of triangle
+  * @param  x3 X axis third point of triangle
+  * @param  y3 Y axis third point of triangle
+  * @param  color color of the triangle
+  * @retval None
+  *
+  * https://www.codegrepper.com/code-examples/c/how+to+fill+a+triangle+in+c
+  *
+  */
 void fill_triangle(int x1, int y1, int x2, int y2, int x3, int y3, uint16_t color)
 {
   int t1x, t2x, y, minx, maxx, t1xp, t2xp;

@@ -1,5 +1,23 @@
+/**
+ * @file ili9486.c
+ * @brief Send command to ili9486.
+ * @author de Martimprey Edmond
+ * @version 0.1
+ * @date 28 june 2022
+ *
+ * Send command to ili9486.
+ *
+ */
+
 #include "ili9486.h"
 
+/**
+ * @fn void Initialization()
+ * @brief Initalise TFT with ILI8486 Driver
+ *
+ * @param None
+ * @return None
+ */
 void Initialization()
 {	//******* Reset tft driver ***************
   HAL_GPIO_WritePin(TFT_RESX_GPIO_Port, TFT_RESX_Pin, 1);
@@ -137,6 +155,14 @@ void Initialization()
   Write_Command_init(0x29);	// Display ON
 }
 
+/**
+ * @fn void pos_pixel(uint16_t x, uint16_t y)
+ * @brief Declare writing zone from x, y and the max of the screen. You need to declare a rectanble writing zone, noe juste place a cursor somwhere in the memory
+ *
+ * @param x X axis start
+ * @param y Y axis start
+ * @return None
+ */
 void pos_pixel(uint16_t x, uint16_t y)
 {
   Write_Command(0x2A);	// Column Address Set
@@ -152,6 +178,16 @@ void pos_pixel(uint16_t x, uint16_t y)
   Write_Data((X_SIZE & 0b0000000011111111));
 }
 
+/**
+ * @fn void write_zone(uint16_t x, uint16_t y, uint16_t x_size, uint16_t y_size)
+ * @brief Declare writing zone from x, y and limited by size. You need to declare a rectanble writing zone, noe juste place a cursor somwhere in the memory
+ *
+ * @param x X axis start
+ * @param y Y axis start
+ * @param x_size size of writing zone from x
+ * @param y_size size of writing zone from y
+ * @return None
+ */
 void write_zone(uint16_t x, uint16_t y, uint16_t x_size, uint16_t y_size)
 {
   Write_Command(0x2A);	// Column Address Set
@@ -167,6 +203,15 @@ void write_zone(uint16_t x, uint16_t y, uint16_t x_size, uint16_t y_size)
   Write_Data(((x + x_size - 1) & 0b0000000011111111));
 }
 
+/**
+ * @fn void write_one_pixel(uint16_t x, uint16_t y, uint16_t color)
+ * @brief Declare writing zone from x, y and draw one pixel from chosen color, very cusuming ans slow
+ *
+ * @param x X axis start
+ * @param y Y axis start
+ * @param color color of the pixel
+ * @return None
+ */
 void write_one_pixel(uint16_t x, uint16_t y, uint16_t color)
 {
   if (x > X_SIZE || y > Y_SIZE)
@@ -178,6 +223,16 @@ void write_one_pixel(uint16_t x, uint16_t y, uint16_t color)
 }
 
 #ifdef USE_RAM_BUFFER
+/**
+ * @fn void write_one_pixel_buffer(uint16_t** buffer, uint16_t x, uint16_t y, uint16_t color)
+ * @brief Not used and not tested, fill the buffer
+ *
+ * @param buffer boffer to pic pixel from
+ * @param x X axis start
+ * @param y Y axis start
+ * @param color color of the pixel
+ * @return None
+ */
 void write_one_pixel_buffer(uint16_t** buffer, uint16_t x, uint16_t y, uint16_t color)
 {
   buffer[x][y] = color;
@@ -188,6 +243,17 @@ void write_one_pixel_buffer(uint16_t** buffer, uint16_t x, uint16_t y, uint16_t 
 // return 0 : OK
 // return 1 : DRAW BUT TO BIG
 // reuturn 2 : OUTSIDE SCREEN, DIDN'T DRAW
+/**
+ * @fn uint8_t write_buffer(uint16_t** buffer, uint16_t x_pos, uint16_t y_pos, uint16_t x_size, uint16_t y_size)
+ * @brief Write a buffer Not used and not tested
+ *
+ * @param buffer boffer to pic pixel from
+ * @param x X axis start
+ * @param y Y axis start
+ * @param x_size X axis size to write
+ * @param y_size Y axis size to write
+ * @return 0 if no error, 1 draw it but not entirely because part go outside the screen, 2 position outside the screen, don't display anything
+ */
 uint8_t write_buffer(uint16_t** buffer, uint16_t x_pos, uint16_t y_pos, uint16_t x_size, uint16_t y_size)
 {
   uint8_t altered = 0;

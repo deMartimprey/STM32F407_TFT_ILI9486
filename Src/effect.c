@@ -1,5 +1,29 @@
+/**
+ * @file effect.c
+ * @brief Somme effect for demo purpose
+ * @author de Martimprey Edmond
+ * @version 0.1
+ * @date 28 june 2022
+ *
+ * List of easter eggs of demo
+ *
+ */
+
 #include "effect.h"
-// Same as sleep_screen_str() with this own static variable so we can display multiple string moving
+
+/**
+  * @fn void sleep_screen_str2(uint8_t* str, uint16_t len_str, uint16_t color_str, uint16_t color_font)
+  * @brief  Display a second text zone bouncing on the screen
+  * @note   None
+  * @param  str : Pointeur to the allocated str
+  * @param  len_str : len of the str to display, in parameter so we don't have to recalculate it every time
+  * @param  color_str : color of the charactere
+  * @param  color_font : color of the font
+  * @retval None
+  *
+  * Same as sleep_screen_str() with this own static variable so we can display multiple string moving
+  *
+  */
 void sleep_screen_str2(uint8_t* str, uint16_t len_str, uint16_t color_str, uint16_t color_font)
 {
   static uint16_t xd = 1;
@@ -68,6 +92,19 @@ void sleep_screen_str2(uint8_t* str, uint16_t len_str, uint16_t color_str, uint1
   /*   } */
 }
 
+/**
+  * @fn void sleep_screen_str(uint8_t* str, uint16_t len_str, uint16_t color_str, uint16_t color_font)
+  * @brief  Display a text zone bouncing on the screen
+  * @note   None
+  * @param  str : Pointeur to the allocated str
+  * @param  len_str : len of the str to display, in parameter so we don't have to recalculate it every time
+  * @param  color_str : color of the charactere
+  * @param  color_font : color of the font
+  * @retval None
+  *
+  *
+  *
+  */
 void sleep_screen_str(uint8_t* str, uint16_t len_str, uint16_t color_str, uint16_t color_font)
 {
   static uint16_t xd = 1;
@@ -138,6 +175,16 @@ void sleep_screen_str(uint8_t* str, uint16_t len_str, uint16_t color_str, uint16
   /*   } */
 }
 
+/**
+  * @fn void fill_with_Color(uint16_t color)
+  * @brief  Fill all the screen with unicolor
+  * @note   None
+  * @param  color : color to fill the screen
+  * @retval None
+  *
+  *
+  *
+  */
 void fill_with_Color(uint16_t color)
 {
   pos_pixel(0, 0);
@@ -153,6 +200,16 @@ void fill_with_Color(uint16_t color)
   Write_Command(0x00);
 }
 
+
+/**
+  * @fn void fill_with_RGB()
+  * @brief  Fill all the screen with R, G AND B
+  * @note   None
+  * @retval None
+  *
+  *
+  *
+  */
 void fill_with_RGB()
 {
   uint16_t color = 0;

@@ -1,3 +1,14 @@
+/**
+ * @file global.c
+ * @brief All global variable and structure.
+ * @author de Martimprey Edmond
+ * @version 0.1
+ * @date 28 june 2022
+ *
+ * All global variable and structure.
+ *
+ */
+
 #include "global.h"
 
 TIM_HandleTypeDef htim_timer;

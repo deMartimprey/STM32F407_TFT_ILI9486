@@ -1,5 +1,24 @@
+/**
+ * @file bmp_reader.c
+ * @brief Lib for bmp
+ * @author de Martimprey Edmond
+ * @version 0.1
+ * @date 28 june 2022
+ *
+ * To read headers and display bmp
+ *
+ */
+
 #include "bmp_reader.h"
 
+/**
+  * @fn uint8_t fill_file_header(BMPFileHeader* header, const uint8_t* f)
+  * @brief  Fill file header of a bmp pic
+  * @note   None
+  * @param  header : Pointeur to the allocated header to fill
+  * @param  f : bmp pic
+  * @retval 0
+  */
 uint8_t fill_file_header(BMPFileHeader* header, const uint8_t* f)
 {
   header->file_type = f[MAGIC_NUMBER_OFFSET + 1] << 8 | f[MAGIC_NUMBER_OFFSET];
@@ -10,6 +29,14 @@ uint8_t fill_file_header(BMPFileHeader* header, const uint8_t* f)
   return 0;
 }
 
+/**
+  * @fn uint8_t fill_info_header(BMPInfoHeader* header, const uint8_t* f)
+  * @brief  Fill file header of a bmp pic
+  * @note   None
+  * @param  header : Pointeur to the allocated header to fill
+  * @param  f : bmp pic
+  * @retval 0
+  */
 uint8_t fill_info_header(BMPInfoHeader* header, const uint8_t* f)
 {
   header->size = f[SIZE_BITMAP_INFO_OFFSET + 3] << 24 | f[SIZE_BITMAP_INFO_OFFSET + 2] << 16 | f[SIZE_BITMAP_INFO_OFFSET + 1] << 8 | f[SIZE_BITMAP_INFO_OFFSET];
@@ -36,11 +63,31 @@ uint8_t fill_info_header(BMPInfoHeader* header, const uint8_t* f)
   return 0;
 }
 
+/**
+  * @fn uint8_t fill_color_header(BMPInfoHeader* header, const uint8_t* f)
+  * @brief  Fill color header of a bmp pic
+  * @note   None
+  * @param  header : Pointeur to the allocated header to fill
+  * @param  f : bmp pic
+  * @retval 0
+  */
 uint8_t fill_color_header(BMPInfoHeader* header, const uint8_t* f)
 {
   return 0;
 }
 
+/**
+  * @fn uint16_t find_one_pixel_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader, const uint8_t* f, uint16_t x_pos, uint16_t y_pos)
+  * @brief  find and return the color on a pixel in a bmp depending location x and y
+  * @note   None
+  * @param  FileHeader : Pointeur to the file header info
+  * @param  Infoheader : Pointeur to the info header info
+  * @param  f : bmp pic
+  * @param  x : X axis of the pixel to find
+  * @param  y : Y axis of the pixel to find
+  * @param  f : bmp pic
+  * @retval None
+  */
 uint16_t find_one_pixel_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader, const uint8_t* f, uint16_t x_pos, uint16_t y_pos)
 {
   const uint8_t* ptr_pic;
@@ -51,6 +98,17 @@ uint16_t find_one_pixel_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader
   return *place_pixel;
 }
 
+/**
+  * @fn uint8_t display_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader, const uint8_t* f, uint16_t x_pos, uint16_t y_pos)
+  * @brief  find and return the color on a pixel in a bmp depending location x and y
+  * @note   None
+  * @param  FileHeader : Pointeur to the file header info
+  * @param  Infoheader : Pointeur to the info header info
+  * @param  f : bmp pic
+  * @param  x : X axis of the pixel to find
+  * @param  y : Y axis of the pixel to find
+  * @retval None
+  */
 uint8_t display_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader, const uint8_t* f, uint16_t x_pos, uint16_t y_pos)
 {
   uint8_t x_size = Infoheader->width;

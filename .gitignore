@@ -6,3 +6,4 @@ argsgdb
 *.bin
 *.elf
 build/
+doc/

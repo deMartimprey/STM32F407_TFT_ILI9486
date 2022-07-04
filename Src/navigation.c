@@ -1,5 +1,22 @@
+/**
+ * @file navigation.c
+ * @brief Action depending of input from buttons
+ * @author de Martimprey Edmond
+ * @version 0.1
+ * @date 28 june 2022
+ *
+ * Navigate in views, windows and menus
+ *
+ */
+
 #include "navigation.h"
 
+/**
+  * @fn void check_nav()
+  * @brief  Check if any of the button have been press
+  * @note   None
+  * @retval None
+  */
 void check_nav()
 {
   if (pressed_up)
@@ -16,6 +33,12 @@ void check_nav()
     nav_back();
 }
 
+/**
+  * @fn void nav_up()
+  * @brief  Monitoring up button behaviour
+  * @note   None
+  * @retval None
+  */
 void nav_up()
 {
   if (cur_menu != NULL)
@@ -30,6 +53,12 @@ void nav_up()
     }
 }
 
+/**
+  * @fn void nav_down()
+  * @brief  Monitoring down button behaviour
+  * @note   None
+  * @retval None
+  */
 void nav_down()
 {
   if (cur_menu != NULL)
@@ -44,6 +73,12 @@ void nav_down()
     }
 }
 
+/**
+  * @fn void nav_right()
+  * @brief  Monitoring right button behaviour
+  * @note   None
+  * @retval None
+  */
 void nav_right()
 {
   if (cur_menu != NULL)
@@ -68,6 +103,12 @@ void nav_right()
     }
 }
 
+/**
+  * @fn void nav_left()
+  * @brief  Monitoring left button behaviour
+  * @note   None
+  * @retval None
+  */
 void nav_left()
 {
   if (cur_menu != NULL)
@@ -92,6 +133,12 @@ void nav_left()
     }
 }
 
+/**
+  * @fn void nav_valid()
+  * @brief  Monitoring valid button behaviour
+  * @note   None
+  * @retval None
+  */
 void nav_valid()
 {
   if (cur_menu != 0);
@@ -115,6 +162,12 @@ void nav_valid()
     }
 }
 
+/**
+  * @fn void nav_back()
+  * @brief  Monitoring back button behaviour
+  * @note   None
+  * @retval None
+  */
 void nav_back()
 {
   if (cur_menu != 0)

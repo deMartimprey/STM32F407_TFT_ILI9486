@@ -1,6 +1,22 @@
+/**
+ * @file timer.c
+ * @brief Init timer for microseconde delay.
+ * @author de Martimprey Edmond
+ * @version 0.1
+ * @date 28 june 2022
+ *
+ * Init timer for microseconde delay.
+ *
+ */
+
 #include "timer.h"
 
-// INIT TIM1 FOR us DELAY
+/**
+  * @fn void delay_init ()
+  * @brief  Init delay so one period is 1 us
+  * @note   None
+  * @retval None
+  */
 void delay_init ()
 {
   __HAL_RCC_TIM1_CLK_ENABLE();
@@ -39,7 +55,13 @@ void delay_init ()
   htim_timer.Instance->CR1 |= 1;
 }
 
-// RUN delay_init() once FIRST
+/**
+  * @fn void delay_us (uint16_t delay)
+  * @brief  Init delay so one period is 1 us
+  * @note   ! RUN delay_init() once FIRST !
+  * @param  delay number of us to delay
+  * @retval None
+  */
 void delay_us (uint16_t delay)
 {
   __HAL_TIM_SET_COUNTER(&htim_timer, 0);  // reset the counter

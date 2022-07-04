@@ -1,3 +1,14 @@
+/**
+ * @file global.h
+ * @brief All variable and structure.
+ * @author de Martimprey Edmond
+ * @version 0.1
+ * @date 28 june 2022
+ *
+ * Contain all the structure and global variable
+ *
+ */
+
 #ifndef __GLOBAL_H
 #define __GLOBAL_H
 
@@ -80,6 +91,12 @@
 #define X_SIZE	480
 #define Y_SIZE	320
 
+/**
+ * @defgroup COLOR Test Group
+ *
+ * @{
+ */
+
 #define BLACK   0x0000
 #define BLUE    0x001F
 #define RED     0xF800
@@ -100,6 +117,7 @@
 #define MENU_UNPAIR_FONT_COLOR		0xF7DF
 #define MENU_HIGHLIGHT_FONT_COLOR	0x3193
 #define MENU_STRONG_COLOR		0x0398
+/** @} */
 
 #ifdef __cplusplus
 extern "C" {
@@ -139,20 +157,49 @@ extern uint16_t buffer[X_SIZE][Y_SIZE]; // Not enough place
 
 typedef struct draw draw;
 
+/** @struct draw
+ *  @brief This structure store information about a draw in a window
+ *  @var draw::type
+ *  Member 'type'  the type of draw  RECTANGLE 0, FRAME	1, DOT 2, CIRCLE 3
+ *  @var draw::x_pos
+ *  Member 'x_pos' contains the X position relative to the windows X position...
+ *  @var draw::y_pos
+ *  Member 'y_pos' contains the Y position relative to the windows X position...
+ *  @var draw::x_size
+ *  Member 'x_size' contains the X size of draw, radius in case of circle or dot
+ *  @var draw::y_size
+ *  Member 'y_size' contains the Y size of draw, use only rectangle or frame
+ *  @var draw::thickness
+ *  Member 'thiockness' contains the thickness size of draw, use only rectangle or frame
+ *  @var draw::color
+ *  Member 'color' contains the color of the draw, only on possible per draw
+ *  @var draw::update
+ *  Member 'update' contains the flag for update the display of this element
+ */
 struct draw
 {
   uint8_t type;
   uint16_t x_pos;
   uint16_t y_pos;
-  uint16_t x_size; // r in case of circle or dot
-  uint16_t y_size; // use only rectangle or frame
+  uint16_t x_size;
+  uint16_t y_size;
   uint16_t thickness; // Frame only
   uint16_t color;
   uint8_t update;
 };
 
+/** @struct text
+ *  @brief This structure store information about a text in a window
+ *  @var text::str
+ *  Member 'str' contain the strings in all different languages
+ *  @var text::text_x
+ *  Member 'text_x' contains the X position relative to the windows X position
+ *  @var text::text_y
+ *  Member 'text_y' contains the Y position relative to the windows Y position
+ *  @var text::update
+ *  Member 'update' contains the flag for update the display of this element
+ */
 typedef struct text text;
-
 struct text
 {
   const uint8_t (*str)[NB_LANG][SIZE_TEXT];
@@ -161,6 +208,23 @@ struct text
   uint8_t update;
 };
 
+/** @struct var
+ *  @brief This structure store information about a var that is generaly incorporate in a menu
+ *  @var var::id
+ *  Member 'id' contain the unique id of the var, increment by one each time a new one is created
+ *  @var var::type
+ *  Member 'type' contains the type of var 0 Digit ; 1 list of string
+ *  @var var::min
+ *  Member 'min' contains the min value of var
+ *  @var var::max
+ *  Member 'max' contains the min value of var
+ *  @var var::value
+ *  Member 'value' contains the current value of var
+ *  @var var::menu_name
+ *  Member 'menu_name' contains the name of the parameter possible as display in menu
+ *  @var text::update
+ *  Member 'update' contains the flag for update the display of this element
+ */
 typedef struct
 {
   uint16_t id; // Unique id of var(parameter) increment of 1 each time a new one is created
@@ -184,6 +248,30 @@ extern var vars[NB_VAR];
 typedef struct router router;
 
 // Menu contain list of vars that can change value
+
+/** @struct menu
+ *  @brief This structure store information about a menu in a window
+ *  @var menu::name
+ *  Member 'name' contains the name of the menu as display in upper menu
+ *  @var menu::pos_menu
+ *  Member 'name' contains the current position highlight in this menu
+ *  @var menu::size
+ *  Member 'size' contains the number of element in the menu
+ *  @var menu::arrow_pos
+ *  Member 'size' contains the position of the highlight relative to the first display
+ *  @var menu::first_elem_pos
+ *  Member 'first_elem_pos' contains the position of the first display
+ *  @var menu::up_router
+ *  Member 'up_router' contains the router destination when press back
+ *  @var menu::vars
+ *  Member 'vars' contains the list of vars to display
+ *  @var menu::menu_x
+ *  Member 'menu_x' contains the X position relative to the windows X position
+ *  @var menu::menu_y
+ *  Member 'menu_y' contains the Y position relative to the windows Y position
+ *  @var menu::update
+ *  Member 'update' contains the flag for update the display of this element
+ */
 typedef struct
 {
   const uint8_t (*name)[NB_LANG][SIZE_NAME_MENU]; // Name of the menu
@@ -212,7 +300,32 @@ extern int32_t* p_current_lang;
 #define NB_LINE_ROUTER 4
 
 
-// A router is a menu that contain other router or menu
+
+/** @struct router
+ *  @brief This structure store information about a router in a window,  A router is a router that contain other router or router
+ *  @var router::name
+ *  Member 'name' contains the name of the router as display in upper router
+ *  @var router::pos_router
+ *  Member 'name' contains the current position highlight in this router
+ *  @var router::size
+ *  Member 'size' contains the number of element in the router
+ *  @var router::arrow_pos
+ *  Member 'size' contains the position of the highlight relative to the first display
+ *  @var router::first_elem_pos
+ *  Member 'first_elem_pos' contains the position of the first display
+ *  @var router::up_router
+ *  Member 'up_router' contains the router destination when press back
+ *  @var router::sub_routers
+ *  Member 'sub_routers' contains the list of router to display, if not NULL sub_menus need to be NULL
+ *  @var router::sub_menus
+ *  Member 'sub_menus' contains the list of router to display, if not NULL sub_routers need to be NULL
+ *  @var router::router_x
+ *  Member 'router_x' contains the X position relative to the windows X position
+ *  @var router::router_y
+ *  Member 'router_y' contains the Y position relative to the windows Y position
+ *  @var router::update
+ *  Member 'update' contains the flag for update the display of this element
+ */
 struct router
 {
   const uint8_t (*name)[NB_LANG][SIZE_NAME_ROUTER]; // Name in menu
@@ -237,6 +350,47 @@ typedef struct window window;
 #define MAX_NB_DRAW_PER_WINDOWS 5
 #define MAX_NB_ROUTER_PER_WINDOWS 1
 
+/** @struct window
+ *  @brief This structure store information about a window in a window,  A window is a window that contain other window or window
+
+ *  @var draw::window_x_size
+ *  Member 'window_x_size' contains the X size of the window
+ *  @var draw::window_y_size
+ *  Member 'window_y_size' contains the Y size of the window
+ *  @var window::window_x
+ *  Member 'window_x' contains the X position relative to the windows X position
+ *  @var window::window_y
+ *  Member 'window_y' contains the Y position relative to the windows Y position
+
+ *  @var window::window_up
+ *  Member 'window_up' contains the window to highlight when press up
+ *  @var window::window_down
+ *  Member 'window_down' contains the window to highlight when press down
+ *  @var window::window_right
+ *  Member 'window_right' contains the window to highlight when press right
+ *  @var window::window_left
+ *  Member 'window_left' contains the window to highlight when press left
+
+ *  @var window::view_enter
+ *  Member 'view_enter' contains the view destination when press enter
+ *  @var window::router
+ *  Member 'router' contains the pointer of the router if there is one, only one per window
+
+ *  @var window::menu
+ *  Member 'menu' contains the pointer of the menu if there is one, only one per window
+
+ *  @var window::text
+ *  Member 'text' contains the text struct to display in window
+
+ *  @var window::draw
+ *  Member 'draw' contains the text struct to display in window
+
+ *  @var window::update
+ *  Member 'update' contains the flag for update the display of this element
+
+ *  @var window::update_router
+ *  Member 'update_router' update the router in the window
+ */
 struct window
 {
   uint16_t window_size_x;
@@ -247,7 +401,6 @@ struct window
   window* window_down;
   window* window_right;
   window* window_left;
-  window* window_back;
   view* view_enter;
   router* router;
   menu* menu;
@@ -257,6 +410,21 @@ struct window
   uint8_t update_router;
 };
 
+/** @struct view
+ *  @brief This structure store window
+ *  @var view::windows
+ *  Member 'windows' contains the list of window to display
+ *  @var view::cur_window
+ *  Member 'cur_window' contains the list of cur_window highlighted
+ *  @var view::update
+ *  Member 'update' contains the flag for update the display of all the view abd all sub element
+ *  @var view::view_x
+ *  Member 'window_x' contains the X position relative to the windows X position
+ *  @var view::view_y
+ *  Member 'window_y' contains the Y position relative to the windows Y position
+ *  @var view::view_back
+ *  Member 'window_back' contains the view direction when press back
+ */
 struct view
 {
   window* windows[MAX_WINDOW_PER_VIEW];

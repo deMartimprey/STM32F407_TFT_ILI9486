@@ -1,7 +1,26 @@
+/**
+ * @file font16x26.c
+ * @brief Fonctions to display 16x26 font.
+ * @author de Martimprey Edmond
+ * @version 0.1
+ * @date 28 june 2022
+ *
+ * Fonctions to display 16x26 font.
+ *
+ */
+
 #include "font16x26.h"
 
 #ifdef USE_16X26
 
+/**
+ * @fn void print_str_16x26(const uint8_t* str, uint16_t color, uint16_t font)
+ * @brief Print one line in 16x26 font must not go over the screen
+ * @param str line to print need to terminate by 0
+ * @param color color of charactere
+ * @param font color of font
+ * @retval None
+ */
 void print_str_16x26(const uint8_t* str, uint16_t color, uint16_t font)
 {
   uint16_t len = my_strlen(str);
@@ -32,6 +51,14 @@ void draw_one_char_16x26_2(uint8_t num, uint16_t color, uint16_t font)
 	  }
 }
 
+/**
+ * @fn int find_one_pixel_in_16x26(uint8_t charactere, uint8_t x, uint8_t y)
+ * @brief Find one pixel of one charactere
+ * @param charactere char to print
+ * @param color color of charactere
+ * @param font color of font
+ * @retval None
+ */
 int find_one_pixel_in_16x26(uint8_t charactere, uint8_t x, uint8_t y)
 {
   return font16x26_lsb[charactere][51 - y * 2 - (1 - x / 8)] & (1 << (x - (x > 7 ? 8 : 0)));
@@ -70,6 +97,14 @@ int find_one_pixel_in_16x26_3(uint8_t charactere, uint8_t x, uint8_t y)
   return 0;
 }
 
+/**
+ * @fn void draw_one_char_16x26(uint8_t num, uint16_t color, uint16_t font)
+ * @brief Print one char in 16x26 font must not go over the screen
+ * @param num char to print
+ * @param color color of charactere
+ * @param font color of font
+ * @retval None
+ */
 void draw_one_char_16x26(uint8_t num, uint16_t color, uint16_t font)
 {
   write_zone(x_font_pos, y_font_pos, 16, 26);

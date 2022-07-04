@@ -1,3 +1,14 @@
+/**
+ * @file pic.c
+ * @brief Declaration of picture as tab.
+ * @author de Martimprey Edmond
+ * @version 0.1
+ * @date 28 june 2022
+ *
+ * Declaration of picture as tab.
+ *
+ */
+
 #include "pic.h"
 
 const uint8_t engrenage_bmp[] = {

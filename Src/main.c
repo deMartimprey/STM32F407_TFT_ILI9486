@@ -1,3 +1,14 @@
+/**
+ * @file main.c
+ * @brief main.
+ * @author de Martimprey Edmond
+ * @version 0.1
+ * @date 28 june 2022
+ *
+ * Main. Contain a demo.
+ *
+ */
+
 #include "main.h"
 
 #define X_MENU 0

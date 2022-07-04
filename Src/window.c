@@ -1,5 +1,23 @@
+/**
+ * @file window.c
+ * @brief Fonctions to fill and display a window.
+ * @author de Martimprey Edmond
+ * @version 0.1
+ * @date 28 june 2022
+ *
+ * Windos is a rectangle with element in it: router, menu, draw, rectangle, triangle...
+ *
+ */
+
 #include "window.h"
 
+/**
+  * @fn void init_window(window* w)
+  * @brief  Reset struct elem of a window.
+  * @note   Need to be executed on every window created, other function check null pointer to know if some element is present or not
+  * @param  v : Pointeur to the allocated window
+  * @retval 0
+  */
 void init_window(window* w)
 {
   w->menu = 0;
@@ -20,7 +38,14 @@ void init_window(window* w)
   w->router = NULL;
 }
 
-// 0 OK // 1 FAIL NOT ENOUGH SPACE
+/**
+  * @fn uint8_t add_text_to_window(window* w, text* t)
+  * @brief  Add one text to the window
+  * @note   none
+  * @param  w : Pointeur to the allocated window where to add text struct
+  * @param  t : Pointeur to the text that is added to the window
+  * @retval 0 : OK 1 : Fail not enough space
+  */
 uint8_t add_text_to_window(window* w, text* t)
 {
     for (uint8_t i = 0; i < MAX_NB_TEXT_PER_WINDOWS; i++)
@@ -34,7 +59,14 @@ uint8_t add_text_to_window(window* w, text* t)
   return 1;
 }
 
-// 0 OK // 1 FAIL NOT ENOUGH SPACE
+/**
+  * @fn uint8_t add_draw_to_window(window* w, draw* d)
+  * @brief  Add one draw to the window
+  * @note   none
+  * @param  w : Pointeur to the allocated window where to add draw struct
+  * @param  d : Pointeur to the draw that is added to the window
+  * @retval 0 : OK 1 : Fail not enough space
+  */
 uint8_t add_draw_to_window(window* w, draw* d)
 {
     for (uint8_t i = 0; i < MAX_NB_DRAW_PER_WINDOWS; i++)
@@ -48,13 +80,29 @@ uint8_t add_draw_to_window(window* w, draw* d)
   return 1;
 }
 
-// 0 OK // 1 FAIL NOT ENOUGH SPACE
+/**
+  * @fn uint8_t add_router_to_window(window* w, router* r)
+  * @brief  Add router the window
+  * @note   Only one router per window
+  * @param  w : Pointeur to the allocated window where to add router struct
+  * @param  d : Pointeur to the router that is added to the window
+  * @retval 0
+  */
 uint8_t add_router_to_window(window* w, router* r)
 {
   w->router = r;
   return 0;
 }
 
+/**
+  * @fn uint8_t display_window(window* w, uint16_t view_x, uint16_t view_y)
+  * @brief  Display a window entirely
+  * @note   Prefere update when possible much faster
+  * @param  w : Pointeur to the allocated window
+  * @param  view_x : bottom left X axis
+  * @param  view_y : bottom left Y axis
+  * @retval 0
+  */
 uint8_t display_window(window* w, uint16_t view_x, uint16_t view_y)
 {
   draw_rectangle(view_x + w->window_x, view_y + w->window_y, w->window_size_x, w->window_size_y, FONT_COLOR);
@@ -80,6 +128,15 @@ uint8_t display_window(window* w, uint16_t view_x, uint16_t view_y)
   return 0;
 }
 
+/**
+  * @fn uint8_t display_select_window(window* w, uint16_t view_x, uint16_t view_y)
+  * @brief  Display a window entirely with some change in color to highlight it
+  * @note   None
+  * @param  w : Pointeur to the allocated window
+  * @param  view_x : bottom left X axis
+  * @param  view_y : bottom left Y axis
+  * @retval 0
+  */
 uint8_t display_select_window(window* w, uint16_t view_x, uint16_t view_y)
 {
   draw_rectangle(view_x + w->window_x, view_y + w->window_y, w->window_size_x, w->window_size_y, STRONG_FONT);
@@ -105,6 +162,15 @@ uint8_t display_select_window(window* w, uint16_t view_x, uint16_t view_y)
   return 0;
 }
 
+/**
+  * @fn uint8_t update_window(window* w, uint16_t view_x, uint16_t view_y)
+  * @brief  update all element and sub element of a window
+  * @note   None
+  * @param  w : Pointeur to the allocated window
+  * @param  view_x : bottom left X axis
+  * @param  view_y : bottom left Y axis
+  * @retval 0
+  */
 uint8_t update_window(window* w, uint16_t view_x, uint16_t view_y)
 {
   if (w->update == 1)
@@ -135,6 +201,15 @@ uint8_t update_window(window* w, uint16_t view_x, uint16_t view_y)
   return 0;
 }
 
+/**
+  * @fn uint8_t update_select_window(window* w, uint16_t view_x, uint16_t view_y)
+  * @brief  update all element and sub element of a window that is highlight, in case we need to uppdate the all window it wille trigger display_select_window and not just display_window otherwise same as update_window
+  * @note   None
+  * @param  w : Pointeur to the allocated window
+  * @param  view_x : bottom left X axis
+  * @param  view_y : bottom left Y axis
+  * @retval 0
+  */
 uint8_t update_select_window(window* w, uint16_t view_x, uint16_t view_y)
 {
   if (w->update == 1)

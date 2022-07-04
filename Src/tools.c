@@ -1,3 +1,14 @@
+/**
+ * @file menu.c
+ * @brief Various function.
+ * @author de Martimprey Edmond
+ * @version 0.1
+ * @date 28 june 2022
+ *
+ * Various function non classable or copy of the stdlib
+ *
+ */
+
 #include "tools.h"
 
 uint16_t my_strlen(const uint8_t *s)
