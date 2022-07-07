@@ -148,6 +148,28 @@ extern uint16_t buffer[X_SIZE][Y_SIZE]; // Not enough place
 #define DIGIT_TYPE		0 // Pointer null to menu_var mean this var (parameter is display a number)
 #define NAME_TYPE		1 // Value display as string
 
+typedef struct bmp bmp;
+
+/** @struct draw
+ *  @brief This structure store information about a draw in a window
+ *  @var draw::file
+ *  Member 'file' is the pointeur to the bmp to display
+ *  @var draw::x_pos
+ *  Member 'x_pos' contains the X position relative to the windows X position
+ *  @var draw::y_pos
+ *  Member 'y_pos' contains the Y position relative to the windows X position
+ *  @var draw::update
+ *  Member 'update' contains the flag for update the display of this element
+ */
+
+struct bmp
+{
+  const uint8_t* file;
+  uint16_t x_pos;
+  uint16_t y_pos;
+  uint8_t update;
+};
+
 #define RECTANGLE	0
 #define FRAME		1
 #define DOT		2
@@ -162,11 +184,11 @@ typedef struct draw draw;
 /** @struct draw
  *  @brief This structure store information about a draw in a window
  *  @var draw::type
- *  Member 'type'  the type of draw  RECTANGLE 0, FRAME	1, DOT 2, CIRCLE 3
+ *  Member 'type'  the type of draw  RECTANGLE 0, FRAME	1, DOT 2, CIRCLE 3, LINE 4, TRIANGLE 5
  *  @var draw::x_pos
- *  Member 'x_pos' contains the X position relative to the windows X position...
+ *  Member 'x_pos' contains the X position relative to the windows X position
  *  @var draw::y_pos
- *  Member 'y_pos' contains the Y position relative to the windows X position...
+ *  Member 'y_pos' contains the Y position relative to the windows X position
  *  @var draw::x1_size
  *  Member 'x1_pos' contains the X position of segond point relative to the windows X position only line and triangle
  *  @var draw::y1_pos
@@ -313,8 +335,6 @@ extern int32_t* p_current_lang;
 #define MAX_NB_ROUTER 20
 #define NB_LINE_ROUTER 4
 
-
-
 /** @struct router
  *  @brief This structure store information about a router in a window,  A router is a router that contain other router or router
  *  @var router::name
@@ -363,6 +383,7 @@ typedef struct window window;
 #define MAX_NB_TEXT_PER_WINDOWS 5
 #define MAX_NB_DRAW_PER_WINDOWS 5
 #define MAX_NB_ROUTER_PER_WINDOWS 1
+#define MAX_NB_BMP_PER_WINDOWS 2
 
 /** @struct window
  *  @brief This structure store information about a window in a window,  A window is a window that contain other window or window
@@ -375,7 +396,6 @@ typedef struct window window;
  *  Member 'window_x' contains the X position relative to the windows X position
  *  @var window::window_y
  *  Member 'window_y' contains the Y position relative to the windows Y position
-
  *  @var window::window_up
  *  Member 'window_up' contains the window to highlight when press up
  *  @var window::window_down
@@ -384,24 +404,18 @@ typedef struct window window;
  *  Member 'window_right' contains the window to highlight when press right
  *  @var window::window_left
  *  Member 'window_left' contains the window to highlight when press left
-
  *  @var window::view_enter
  *  Member 'view_enter' contains the view destination when press enter
  *  @var window::router
  *  Member 'router' contains the pointer of the router if there is one, only one per window
-
  *  @var window::menu
  *  Member 'menu' contains the pointer of the menu if there is one, only one per window
-
  *  @var window::text
  *  Member 'text' contains the text struct to display in window
-
  *  @var window::draw
  *  Member 'draw' contains the text struct to display in window
-
  *  @var window::update
  *  Member 'update' contains the flag for update the display of this element
-
  *  @var window::update_router
  *  Member 'update_router' update the router in the window
  */
@@ -420,6 +434,7 @@ struct window
   menu* menu;
   text *text[MAX_NB_TEXT_PER_WINDOWS];
   draw *draw[MAX_NB_DRAW_PER_WINDOWS];
+  bmp *bmp[MAX_NB_BMP_PER_WINDOWS];
   uint8_t update;
   uint8_t update_router;
 };

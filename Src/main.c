@@ -118,10 +118,10 @@ int main(void)
   window5_v1.window_left = &window1_v1;
   window5_v1.window_right = &window1_v1;
 
-  window1_v2.window_x = 180;
-  window1_v2.window_y = 100;
-  window1_v2.window_size_x = 100;
-  window1_v2.window_size_y = 200;
+  window1_v2.window_x = 0;
+  window1_v2.window_y = 0;
+  window1_v2.window_size_x = 40;
+  window1_v2.window_size_y = Y_SIZE;
   window1_v2.window_left = &window1_v2;
   window1_v2.window_right = &window1_v2;
 
@@ -172,6 +172,18 @@ int main(void)
   router1.router_x = 5;
   router1.router_y = 295;
 
+  bmp bmp1;
+  bmp1.file = engrenage_bmp;
+  bmp1.x_pos = 0;
+  bmp1.y_pos = Y_SIZE / 2;
+  bmp1.update = 0;
+
+  bmp bmp2;
+  bmp2.file = engrenage_bmp;
+  bmp2.x_pos = 0;
+  bmp2.y_pos = Y_SIZE / 3 * 2;
+  bmp2.update = 0;
+
   add_one_window(&view1, &window1_v1);
   add_one_window(&view1, &window2_v1);
   add_one_window(&view1, &window5_v1);
@@ -182,6 +194,9 @@ int main(void)
   view2.cur_window = &window1_v2;
 
   add_one_window(&view3, &window1_v3);
+
+  add_bmp_to_window(&window1_v2, &bmp1);
+  add_bmp_to_window(&window1_v2, &bmp2);
 
   add_text_to_window(&window2_v1, &text1_w1_v1);
   add_text_to_window(&window1_v2, &text1_w1_v2);

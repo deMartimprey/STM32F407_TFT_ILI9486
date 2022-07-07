@@ -2,6 +2,7 @@
 #define __WINDOW_H
 
 #include "stm32f4xx_hal.h"
+#include "bmp_reader.h"
 #include "global.h"
 #include "router.h"
 #include "tools.h"
@@ -16,5 +17,6 @@ uint8_t display_window(window* w, uint16_t view_x, uint16_t view_y);
 uint8_t display_select_window(window* w, uint16_t view_x, uint16_t view_y);
 uint8_t update_window(window* w, uint16_t view_x, uint16_t view_y);
 uint8_t update_select_window(window* w, uint16_t view_x, uint16_t view_y);
+uint8_t add_bmp_to_window(window* w, bmp* b);
 
 #endif /* __WINDOW_H */

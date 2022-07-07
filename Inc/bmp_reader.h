@@ -62,5 +62,7 @@ uint8_t fill_info_header(BMPInfoHeader* header, const uint8_t* f);
 uint8_t fill_color_header(BMPInfoHeader* header, const uint8_t* f);
 uint8_t display_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader, const uint8_t* f, uint16_t x_pos, uint16_t y_pos);
 uint16_t find_one_pixel_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader, const uint8_t* f, uint16_t x_pos, uint16_t y_pos);
+uint8_t display_bmp_from_window(bmp* bmp, uint16_t x_pos, uint16_t y_pos);
+uint8_t update_bmp_from_window(bmp* bmp, uint16_t x_pos, uint16_t y_pos);
 
 #endif /* __BMP_READER_H */

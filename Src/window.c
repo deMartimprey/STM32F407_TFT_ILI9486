@@ -35,6 +35,10 @@ void init_window(window* w)
     {
       w->draw[i] = 0;
     }
+  for (uint8_t i = 0; i < MAX_NB_BMP_PER_WINDOWS; i++)
+    {
+      w->bmp[i] = 0;
+    }
   w->router = NULL;
 }
 
@@ -74,6 +78,27 @@ uint8_t add_draw_to_window(window* w, draw* d)
       if (w->draw[i] == 0)
 	{
 	  w->draw[i] = d;
+	  return 0;
+	}
+    }
+  return 1;
+}
+
+/**
+  * @fn uint8_t add_bmp_to_window(window* w, draw* d)
+  * @brief  Add one bmp to the window
+  * @note   none
+  * @param  w : Pointeur to the allocated window where to add draw struct
+  * @param  b : Pointeur to the bmp that is added to the window
+  * @retval 0 : OK 1 : Fail not enough space
+  */
+uint8_t add_bmp_to_window(window* w, bmp* b)
+{
+    for (uint8_t i = 0; i < MAX_NB_BMP_PER_WINDOWS; i++)
+    {
+      if (w->bmp[i] == 0)
+	{
+	  w->bmp[i] = b;
 	  return 0;
 	}
     }
@@ -121,6 +146,13 @@ uint8_t display_window(window* w, uint16_t view_x, uint16_t view_y)
 	  display_draw(w->draw[i], view_x + w->window_x, view_y + w->window_y);
 	}
     }
+  for (uint8_t i = 0; i < MAX_NB_BMP_PER_WINDOWS; i++)
+    {
+      if (w->bmp[i] != 0)
+	{
+	  display_bmp_from_window(w->bmp[i], view_x + w->window_x, view_y + w->window_y);
+	}
+    }
   if (w->router != NULL)
     {
       display_router26(w->router, view_x + w->window_x, view_y + w->window_y);
@@ -153,6 +185,13 @@ uint8_t display_select_window(window* w, uint16_t view_x, uint16_t view_y)
       if (w->draw[i] != 0)
 	{
 	  display_draw(w->draw[i], view_x + w->window_x, view_y + w->window_y);
+	}
+    }
+  for (uint8_t i = 0; i < MAX_NB_BMP_PER_WINDOWS; i++)
+    {
+      if (w->bmp[i] != 0)
+	{
+	  display_bmp_from_window(w->bmp[i], view_x + w->window_x, view_y + w->window_y);
 	}
     }
   if (w->router != 0)
@@ -191,6 +230,13 @@ uint8_t update_window(window* w, uint16_t view_x, uint16_t view_y)
       if (w->draw[i] != 0)
 	{
 	  update_draw(w->draw[i], view_x + w->window_x, view_y + w->window_y);
+	}
+    }
+  for (uint8_t i = 0; i < MAX_NB_BMP_PER_WINDOWS; i++)
+    {
+      if (w->bmp[i] != 0)
+	{
+	  update_bmp_from_window(w->bmp[i], view_x + w->window_x, view_y + w->window_y);
 	}
     }
   if (w->router != 0 && w->update_router == 1)

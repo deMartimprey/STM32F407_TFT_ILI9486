@@ -15,8 +15,8 @@
   * @fn uint8_t fill_file_header(BMPFileHeader* header, const uint8_t* f)
   * @brief  Fill file header of a bmp pic
   * @note   None
-  * @param  header : Pointeur to the allocated header to fill
-  * @param  f : bmp pic
+  * @param  header Pointeur to the allocated header to fill
+  * @param  f bmp pic
   * @retval 0
   */
 uint8_t fill_file_header(BMPFileHeader* header, const uint8_t* f)
@@ -33,8 +33,8 @@ uint8_t fill_file_header(BMPFileHeader* header, const uint8_t* f)
   * @fn uint8_t fill_info_header(BMPInfoHeader* header, const uint8_t* f)
   * @brief  Fill file header of a bmp pic
   * @note   None
-  * @param  header : Pointeur to the allocated header to fill
-  * @param  f : bmp pic
+  * @param  header Pointeur to the allocated header to fill
+  * @param  f bmp pic
   * @retval 0
   */
 uint8_t fill_info_header(BMPInfoHeader* header, const uint8_t* f)
@@ -67,8 +67,8 @@ uint8_t fill_info_header(BMPInfoHeader* header, const uint8_t* f)
   * @fn uint8_t fill_color_header(BMPInfoHeader* header, const uint8_t* f)
   * @brief  Fill color header of a bmp pic
   * @note   None
-  * @param  header : Pointeur to the allocated header to fill
-  * @param  f : bmp pic
+  * @param  header Pointeur to the allocated header to fill
+  * @param  f bmp pic
   * @retval 0
   */
 uint8_t fill_color_header(BMPInfoHeader* header, const uint8_t* f)
@@ -80,12 +80,12 @@ uint8_t fill_color_header(BMPInfoHeader* header, const uint8_t* f)
   * @fn uint16_t find_one_pixel_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader, const uint8_t* f, uint16_t x_pos, uint16_t y_pos)
   * @brief  find and return the color on a pixel in a bmp depending location x and y
   * @note   None
-  * @param  FileHeader : Pointeur to the file header info
-  * @param  Infoheader : Pointeur to the info header info
-  * @param  f : bmp pic
-  * @param  x : X axis of the pixel to find
-  * @param  y : Y axis of the pixel to find
-  * @param  f : bmp pic
+  * @param  FileHeader Pointeur to the file header info
+  * @param  Infoheader Pointeur to the info header info
+  * @param  f bmp pic
+  * @param  x X axis of the pixel to find
+  * @param  y Y axis of the pixel to find
+  * @param  f bmp pic
   * @retval None
   */
 uint16_t find_one_pixel_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader, const uint8_t* f, uint16_t x_pos, uint16_t y_pos)
@@ -102,11 +102,11 @@ uint16_t find_one_pixel_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader
   * @fn uint8_t display_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader, const uint8_t* f, uint16_t x_pos, uint16_t y_pos)
   * @brief  find and return the color on a pixel in a bmp depending location x and y
   * @note   None
-  * @param  FileHeader : Pointeur to the file header info
-  * @param  Infoheader : Pointeur to the info header info
-  * @param  f : bmp pic
-  * @param  x : X axis of the pixel to find
-  * @param  y : Y axis of the pixel to find
+  * @param  FileHeader Pointeur to the file header info
+  * @param  Infoheader Pointeur to the info header info
+  * @param  f bmp pic
+  * @param  x X axis of the pixel to find
+  * @param  y Y axis of the pixel to find
   * @retval None
   */
 uint8_t display_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader, const uint8_t* f, uint16_t x_pos, uint16_t y_pos)
@@ -122,6 +122,52 @@ uint8_t display_bmp(BMPFileHeader* Fileheader, BMPInfoHeader* Infoheader, const 
 	  pixel = find_one_pixel_bmp(Fileheader, Infoheader, f, x, y);
 	  write_one_pixel(x_pos + x, y_pos + y, pixel);
 	}
+    }
+  return 0;
+}
+
+/**
+  * @fn uint8_t display_bmp_from_window(bmp* bmp, uint16_t x_pos, uint16_t y_pos)
+
+  * @brief  Display bmp from bmp structure and the offset
+  * @note   None
+  * @param  bmp Pointeur to the bmp structure that contain all the necessary information
+  * @param  x_pos X axis of bmp offset
+  * @param  y_pos Y axis of bmp offset
+  * @retval None
+  */
+uint8_t display_bmp_from_window(bmp* bmp, uint16_t x_pos, uint16_t y_pos)
+{
+  BMPFileHeader h = {0, };
+  BMPInfoHeader hi = {0, };
+
+  fill_file_header(&h, bmp->file);
+  fill_info_header(&hi, bmp->file);
+
+  return display_bmp(&h, &hi, bmp->file, x_pos + bmp->x_pos, y_pos + bmp->y_pos);
+}
+
+/**
+  * @fn uint8_t update_bmp_from_window(bmp* bmp, uint16_t x_pos, uint16_t y_pos)
+
+  * @brief  Display bmp from bmp structure and the offset only if update element is 1
+  * @note   None
+  * @param  bmp Pointeur to the bmp structure that contain all the necessary information
+  * @param  x_pos X axis of bmp offset
+  * @param  y_pos Y axis of bmp offset
+  * @retval None
+  */
+uint8_t update_bmp_from_window(bmp* bmp, uint16_t x_pos, uint16_t y_pos)
+{
+  BMPFileHeader h = {0, };
+  BMPInfoHeader hi = {0, };
+
+  if (bmp->update == 1)
+    {
+      fill_file_header(&h, bmp->file);
+      fill_info_header(&hi, bmp->file);
+
+      return display_bmp(&h, &hi, bmp->file, x_pos + bmp->x_pos, y_pos + bmp->y_pos);
     }
   return 0;
 }
