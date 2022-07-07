@@ -284,7 +284,7 @@ void display_router(router* my_router, uint16_t x_pos, uint16_t y_pos)
 	      if (i == my_router->arrow_pos) // If this is the element seleted we display it with highlight with different backcolor
 		{
 		  str[0] = '>';
-		  print_str_10x16(str, BLACK, YELLOW);
+		  print_str_10x16(str, WHITE, MENU_HIGHLIGHT_FONT_COLOR);
 		}
 	      else // If it is not the select elem print it with normal backcolor
 		print_str_10x16(str, BLACK, WHITE);
@@ -371,7 +371,7 @@ void display_router26(router* my_router, uint16_t x_pos, uint16_t y_pos)
 	      if (i == my_router->arrow_pos) // If this is the element seleted we display it with highlight with different backcolor
 		{
 		  /* str[0] = '>'; */
-		  print_str_16x26(str, BLACK, YELLOW);
+		  print_str_16x26(str, WHITE, MENU_HIGHLIGHT_FONT_COLOR);
 		}
 	      else // If it is not the select elem print it with normal backcolor
 		print_str_16x26(str, BLACK, WHITE);

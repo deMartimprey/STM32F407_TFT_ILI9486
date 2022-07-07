@@ -109,7 +109,10 @@ void display_menu(menu *my_menu, uint16_t x_pos, uint16_t y_pos)
   fill_string_with_space(strmenu, SIZE_NAME_MENU - 1);
   my_strncpy((uint8_t*)strmenu, (uint8_t*)my_menu->name[*p_current_lang], my_strlen((uint8_t*)my_menu->name[*p_current_lang]));
   y_font_pos -= 28;
-  print_str_16x26(strmenu, BLACK, 0x9DDF);
+  if (cur_menu == my_menu)
+    print_str_16x26(strmenu, WHITE, RED);
+  else
+  print_str_16x26(strmenu, WHITE, STRONG_FONT);
   y_font_pos -= 28;
   for (uint8_t i = 0; i < MAX_SIZE_MENU; i++)
     {
