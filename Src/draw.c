@@ -47,7 +47,6 @@ void draw_line(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color)
   }
 }
 
-
 /**
   * @fn void draw_line_in_degree(uint16_t x0, uint16_t y0, uint16_t lenght, uint16_t thickness, uint16_t degree, uint16_t color)
   * @brief  Draw a line from a starting point with a degree and a lenght
@@ -134,17 +133,25 @@ uint8_t display_draw(draw* d, uint16_t window_x, uint16_t window_y)
     {
       draw_rectangle(d->x_pos + window_x, d->y_pos + window_y, d->x_size, d->y_size, d->color);
     }
-  if (d->type == FRAME)
+  else if (d->type == FRAME)
     {
       draw_empty_rectangle(d->x_pos + window_x, d->y_pos + window_y, d->x_size, d->y_size, d->thickness, d->color);
     }
-  if (d->type == DOT)
+  else if (d->type == DOT)
     {
       DrawFillCircle(d->x_pos + window_x, d->y_pos + window_y, d->x_size, d->color);
     }
-  if (d->type == CIRCLE)
+  else if (d->type == CIRCLE)
     {
       DrawCircle(d->x_pos + window_x, d->y_pos + window_y, d->x_size, d->color);
+    }
+  else if (d->type == LINE)
+    {
+      draw_thick_line(d->x_pos + window_x, d->y_pos + window_y, d->x_pos + window_x, d->y_pos + window_y, d->thickness, d->color);
+    }
+  else if (d->type == TRIANGLE)
+    {
+      fill_triangle(d->x_pos + window_x, d->y_pos + window_y, d->x1_pos + window_x, d->y1_pos + window_y, d->x2_pos + window_x, d->y2_pos + window_y, d->color);
     }
   return 0;
 }
@@ -170,7 +177,6 @@ uint8_t update_draw(draw* d, uint16_t window_x, uint16_t window_y)
     }
   return 0;
 }
-
 
 /**
   * @fn uint8_t draw_empty_rectangle(uint16_t x_pos, uint16_t y_pos, uint16_t x_size, uint16_t y_size, uint16_t thickness, uint16_t color)

@@ -152,6 +152,8 @@ extern uint16_t buffer[X_SIZE][Y_SIZE]; // Not enough place
 #define FRAME		1
 #define DOT		2
 #define CIRCLE		3
+#define LINE		4
+#define TRIANGLE	5
 
 #define SIZE_TEXT 20
 
@@ -165,6 +167,14 @@ typedef struct draw draw;
  *  Member 'x_pos' contains the X position relative to the windows X position...
  *  @var draw::y_pos
  *  Member 'y_pos' contains the Y position relative to the windows X position...
+ *  @var draw::x1_size
+ *  Member 'x1_pos' contains the X position of segond point relative to the windows X position only line and triangle
+ *  @var draw::y1_pos
+ *  Member 'y1_pos' contains the Y position of segond point relative to the windows X position only line and triangle
+ *  @var draw::x3_size
+ *  Member 'x2_pos' contains the X position of third point relative to the windows X position only line and triangle
+ *  @var draw::y2_pos
+ *  Member 'y2_pos' contains the Y position of third  point relative to the windows X position only line and triangle
  *  @var draw::x_size
  *  Member 'x_size' contains the X size of draw, radius in case of circle or dot
  *  @var draw::y_size
@@ -181,6 +191,10 @@ struct draw
   uint8_t type;
   uint16_t x_pos;
   uint16_t y_pos;
+  uint16_t x1_pos; // Line and triangle only
+  uint16_t y1_pos; // Line and triangle only
+  uint16_t x2_pos; // Triangle only
+  uint16_t y2_pos; // Triangle only
   uint16_t x_size;
   uint16_t y_size;
   uint16_t thickness; // Frame only
