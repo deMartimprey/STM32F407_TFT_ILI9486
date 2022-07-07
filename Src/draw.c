@@ -47,6 +47,34 @@ void draw_line(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t color)
   }
 }
 
+
+/**
+  * @fn void draw_line_in_degree(uint16_t x0, uint16_t y0, uint16_t lenght, uint16_t thickness, uint16_t degree, uint16_t color)
+  * @brief  Draw a line from a starting point with a degree and a lenght
+  * @note   None
+  * @param  x0 X axis of the first point
+  * @param  y0 Y axis of the first point
+  * @param  lenght lenght of the line
+  * @param  thickness thickness of the line in pixel
+  * @param  color color of the line
+  * @retval None
+  *
+  *
+  *
+  */
+void draw_line_in_degree(uint16_t x0, uint16_t y0, uint16_t lenght, uint16_t thickness, uint16_t degree, uint16_t color)
+{
+  uint16_t x1 = 0;
+  uint16_t y1 = 0;
+  double r = 0;
+  static const double PI = 3.1415926535;
+
+  r = (double)degree * (PI / 180.0);
+  x1 = lenght * cos(r) + x0;
+  y1 = lenght * sin(r) + y0;
+  draw_thick_line(x0, y0, x1, y1, thickness, color);
+}
+
 /**
   * @fn void draw_thick_line(float x0, float y0, float x1, float y1, uint16_t thickness, uint16_t color)
   * @brief  Draw a line between two point and with variable thickness
