@@ -5,7 +5,18 @@
 extern "C" {
 #endif
 
+#ifdef STM32F103xE
+#include "stm32f1xx_hal.h"
+#endif
+#ifdef STM32F207xx
+#include "stm32f2xx_hal.h"
+#endif
+#ifdef STM32F429xx
 #include "stm32f4xx_hal.h"
+#endif
+#ifdef STM32F407xx
+#include "stm32f4xx_hal.h"
+#endif
 #include "pic.h"
 #include "navigation.h"
 #include "bmp_reader.h"
